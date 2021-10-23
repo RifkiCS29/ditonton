@@ -7,6 +7,7 @@ import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/data/datasources/tv_show_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_show_remote_data_source.dart';
 import 'package:ditonton/data/models/tv_show_table.dart';
+import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
 import 'package:ditonton/domain/repositories/tv_show_repository.dart';
@@ -48,6 +49,18 @@ class TvShowRepositoryImpl implements TvShowRepository {
     try {
       final result = await remoteDataSource.getTvShowDetail(id);
       return Right(result.toEntity());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, List<Episode>>> getTvShowSeasonEpisodes(int id, int seasonNumber) async {
+    try {
+      final result = await remoteDataSource.getTvShowSeasonEpisodes(id, seasonNumber);
+      return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
