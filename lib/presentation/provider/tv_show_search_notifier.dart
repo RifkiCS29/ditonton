@@ -28,8 +28,8 @@ class TvShowSearchNotifier extends ChangeNotifier {
         _state = RequestState.Error;
         notifyListeners();
       },
-      (dataTvShows) {
-        _searchResult = dataTvShows;
+      (tvShowsData) {
+        _searchResult = tvShowsData;
         _state = RequestState.Loaded;
         notifyListeners();
       },
