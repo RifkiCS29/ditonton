@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 class TopRatedTvShowsNotifier extends ChangeNotifier {
   final GetTopRatedTvShows getTopRatedTvShows;
 
-  TopRatedTvShowsNotifier({required this.getTopRatedTvShows});
+  TopRatedTvShowsNotifier(this.getTopRatedTvShows);
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;

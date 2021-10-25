@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 class AiringTodayTvShowsNotifier extends ChangeNotifier {
   final GetAiringTodayTvShows getAiringTodayTvShows;
 
-  AiringTodayTvShowsNotifier({required this.getAiringTodayTvShows});
+  AiringTodayTvShowsNotifier(this.getAiringTodayTvShows);
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
