@@ -1,10 +1,14 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:ditonton/presentation/pages/airing_today_tv_show_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/popular_tv_shows_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
+import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -50,17 +54,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.dark().copyWith(
-          colorScheme: kColorScheme,
           primaryColor: kRichBlack,
-          accentColor: kMikadoYellow,
           scaffoldBackgroundColor: kRichBlack,
-          textTheme: kTextTheme,
+          textTheme: kTextTheme, 
+          colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
         ),
-        home: Material(
-          child: CustomDrawer(
-            content: HomeMoviePage()
-          ),
-        ),
+        home: HomeMoviePage(),
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
             case '/home':
@@ -73,6 +72,18 @@ class MyApp extends StatelessWidget {
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
+                settings: settings,
+              );
+            case AiringTodayTvShowsPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => AiringTodayTvShowsPage());
+            case PopularTvShowsPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => PopularTvShowsPage());
+            case TopRatedTvShowsPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => TopRatedTvShowsPage());
+            case TvShowDetailPage.ROUTE_NAME:
+              final id = settings.arguments as int;
+              return MaterialPageRoute(
+                builder: (_) => TvShowDetailPage(id: id),
                 settings: settings,
               );
             case SearchPage.ROUTE_NAME:
