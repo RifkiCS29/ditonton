@@ -1,3 +1,4 @@
+import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/home_tv_show_page.dart';
@@ -50,12 +51,12 @@ class _HomePageState extends State<HomePage> {
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage('assets/circle-g.png'),
               ),
-              accountName: Text('Ditonton'),
-              accountEmail: Text('ditonton@dicoding.com'),
+              accountName: Text('Ditonton', style: kHeading6.copyWith(fontSize: 17)),
+              accountEmail: Text('ditonton@dicoding.com', style: kSubtitle),
             ),
             ListTile(
               leading: Icon(Icons.movie),
-              title: Text(_tabTitle[0]),
+              title: Text(_tabTitle[0], style: kSubtitle),
               onTap: () {
                 _onSelectedPage(0);
                 Navigator.pop(context);
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.tv),
-              title: Text(_tabTitle[1]),
+              title: Text(_tabTitle[1], style: kSubtitle),
               onTap: () {
                 _onSelectedPage(1);
                 Navigator.pop(context);
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.save_alt),
-              title: Text('Watchlist'),
+              title: Text('Watchlist', style: kSubtitle),
               onTap: () {
                 Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
               },
@@ -81,13 +82,13 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
               },
               leading: Icon(Icons.info_outline),
-              title: Text('About'),
+              title: Text('About', style: kSubtitle),
             ),
           ],
         ),
       ),
       appBar: AppBar(
-        title: Text('Ditonton - ${_tabTitle[_index]}'),
+        title: Text('${_tabTitle[_index]}'),
         actions: [
           IconButton(
             onPressed: () {

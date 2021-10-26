@@ -88,9 +88,12 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: kHeading6,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            title,
+            style: kHeading6,
+          ),
         ),
         InkWell(
           onTap: onTap,
