@@ -189,6 +189,86 @@ class DetailContent extends StatelessWidget {
                             ),
                             SizedBox(height: 16),
                             Text(
+                              'Seasons',
+                              style: kHeading6,
+                            ),
+                            Container(
+                              height: 180,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: tvShow.seasons.length,
+                                itemBuilder: (context, index) {
+                                  final season = tvShow.seasons[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: InkWell(
+                                      onTap: () {
+
+                                      },
+                                      child: 
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: 130,
+                                              width: 96,
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(10),
+                                                child: ShaderMask(
+                                                  shaderCallback: (rect) {
+                                                    return LinearGradient(
+                                                      colors: [
+                                                        Colors.transparent,
+                                                        Colors.black.withOpacity(0.4),
+                                                      ],
+                                                      begin: Alignment.topCenter,
+                                                      end: Alignment.bottomCenter,
+                                                    ).createShader(
+                                                      Rect.fromLTRB(0, 0, rect.width, rect.bottom),
+                                                    );
+                                                  },
+                                                  blendMode: BlendMode.darken,
+                                                  child: Container(
+                                                    child: CachedNetworkImage(
+                                                      imageUrl:
+                                                        season.posterPath == null
+                                                        ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
+                                                        : 'https://image.tmdb.org/t/p/w500${season.posterPath}',
+                                                      placeholder: (context, url) =>
+                                                        Center(
+                                                          child:
+                                                            CircularProgressIndicator(),
+                                                        ),
+                                                      errorWidget:
+                                                        (context, url, error) =>
+                                                            Icon(Icons.error),
+                                                      imageBuilder: (context, imageProvider) {
+                                                        return Container(
+                                                          decoration: new BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            image: DecorationImage(
+                                                              image: imageProvider,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Text('Season ${season.seasonNumber}'),
+                                            Text('${season.episodeCount} Episodes')
+                                          ],
+                                        ),
+                                    ),
+                                  );
+                                }
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Text(
                               'Recommendations',
                               style: kHeading6,
                             ),
