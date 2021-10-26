@@ -4,6 +4,7 @@ import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
 import 'package:ditonton/domain/entities/tv_show_detail.dart';
+import 'package:ditonton/presentation/pages/tv_show_season_episodes_page.dart';
 import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -203,7 +204,14 @@ class DetailContent extends StatelessWidget {
                                     padding: const EdgeInsets.all(4.0),
                                     child: InkWell(
                                       onTap: () {
-
+                                        Navigator.pushNamed(
+                                          context, 
+                                          TvShowSeasonEpisodesPage.ROUTE_NAME,
+                                          arguments: <String, dynamic> {
+                                            "id": tvShow.id,
+                                            "seasonNumber": season.seasonNumber
+                                          }
+                                        );
                                       },
                                       child: 
                                         Column(

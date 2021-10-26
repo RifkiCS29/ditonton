@@ -9,6 +9,7 @@ import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
+import 'package:ditonton/presentation/pages/tv_show_season_episodes_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/airing_today_tv_shows_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
@@ -115,6 +116,16 @@ class MyApp extends StatelessWidget {
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TvShowDetailPage(id: id),
+                settings: settings,
+              );
+            case TvShowSeasonEpisodesPage.ROUTE_NAME:
+              final args = settings.arguments as Map<String, dynamic>;
+              final id = args['id'];
+              final seasonNumber = args['seasonNumber'];
+              return MaterialPageRoute(
+                builder: (_) => TvShowSeasonEpisodesPage(
+                    id: id,
+                    seasonNumber: seasonNumber),
                 settings: settings,
               );
             case SearchPage.ROUTE_NAME:
