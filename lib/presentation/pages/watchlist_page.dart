@@ -38,6 +38,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
         appBar: AppBar(
           title: Text('Watchlist'),
           bottom: TabBar(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50), // Creates border
               color: Colors.lightGreen[600]),

@@ -194,7 +194,7 @@ class DetailContent extends StatelessWidget {
                               style: kHeading6,
                             ),
                             Container(
-                              height: 180,
+                              height: 185,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: tvShow.seasons.length,
@@ -218,7 +218,7 @@ class DetailContent extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
                                             Container(
-                                              height: 130,
+                                              height: 135,
                                               width: 96,
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.circular(10),
