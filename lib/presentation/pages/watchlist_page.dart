@@ -21,13 +21,13 @@ class _WatchlistPageState extends State<WatchlistPage> {
   @override
   void initState() {
     super.initState();
+    // WidgetsBinding.instance?.addObserver(this);
     Future.microtask(() =>
         Provider.of<WatchlistMovieNotifier>(context, listen: false)
             .fetchWatchlistMovies());
     Future.microtask(() =>
         Provider.of<WatchlistTvShowNotifier>(context, listen: false)
             .fetchWatchlistTvShows());
-    
   }
 
   @override
@@ -70,6 +70,37 @@ class _WatchlistPageState extends State<WatchlistPage> {
       ),
     );
   }
+
+  // @override
+  // void dispose() {
+  //   WidgetsBinding.instance?.removeObserver(this);
+  //   super.dispose();
+  // }
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   print("APP_STATE: $state");
+
+  //   if(state == AppLifecycleState.resumed){
+  //   Future.microtask(() =>
+  //       Provider.of<WatchlistMovieNotifier>(context, listen: false)
+  //           .fetchWatchlistMovies());
+  //   Future.microtask(() =>
+  //       Provider.of<WatchlistTvShowNotifier>(context, listen: false)
+  //           .fetchWatchlistTvShows());
+  //   } else if(state == AppLifecycleState.inactive){
+  //     // app is inactive
+  //   }else if(state == AppLifecycleState.paused){
+  //     // user quit our app temporally
+  //   }else if(state == AppLifecycleState.detached){
+  //         Future.microtask(() =>
+  //       Provider.of<WatchlistMovieNotifier>(context, listen: false)
+  //           .fetchWatchlistMovies());
+  //   Future.microtask(() =>
+  //       Provider.of<WatchlistTvShowNotifier>(context, listen: false)
+  //           .fetchWatchlistTvShows());
+  //   }
+  // }
 }
 
 class _WatchlistMovies extends StatelessWidget {

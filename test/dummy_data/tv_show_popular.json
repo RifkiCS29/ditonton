@@ -1,0 +1,406 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "backdrop_path": "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
+            "first_air_date": "2021-10-12",
+            "genre_ids": [
+                10765,
+                35,
+                80
+            ],
+            "id": 90462,
+            "name": "Chucky",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Chucky",
+            "overview": "After a vintage Chucky doll turns up at a suburban yard sale, an idyllic American town is thrown into chaos as a series of horrifying murders begin to expose the town’s hypocrisies and secrets. Meanwhile, the arrival of enemies — and allies — from Chucky’s past threatens to expose the truth behind the killings, as well as the demon doll’s untold origins.",
+            "popularity": 6008.272,
+            "poster_path": "/iF8ai2QLNiHV4anwY1TuSGZXqfN.jpg",
+            "vote_average": 8,
+            "vote_count": 987
+        },
+        {
+            "backdrop_path": "/qw3J9cNeLioOLoR68WX7z79aCdK.jpg",
+            "first_air_date": "2021-09-17",
+            "genre_ids": [
+                10759,
+                9648,
+                18
+            ],
+            "id": 93405,
+            "name": "Squid Game",
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "오징어 게임",
+            "overview": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
+            "popularity": 4034.749,
+            "poster_path": "/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+            "vote_average": 7.8,
+            "vote_count": 8209
+        },
+        {
+            "backdrop_path": "/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg",
+            "first_air_date": "2006-09-18",
+            "genre_ids": [
+                10767
+            ],
+            "id": 1991,
+            "name": "Rachael Ray",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Rachael Ray",
+            "overview": "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio. In January 2012, CBS Television Distribution announced a two-year renewal for the show, taking it through the 2013–14 season.",
+            "popularity": 3026.459,
+            "poster_path": "/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg",
+            "vote_average": 5.4,
+            "vote_count": 33
+        },
+        {
+            "backdrop_path": "/yF7G00lb3AbCSa8ZPgR8M4nFtFL.jpg",
+            "first_air_date": "2020-09-14",
+            "genre_ids": [],
+            "id": 107602,
+            "name": "5 chefs dans ma cuisine",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "5 chefs dans ma cuisine",
+            "overview": "",
+            "popularity": 1479.78,
+            "poster_path": "/2UuRWSoLCTohtKOTpKI1lwL5GrD.jpg",
+            "vote_average": 1.5,
+            "vote_count": 4
+        },
+        {
+            "backdrop_path": "/fCgTw8Tpe6R5SyB1UnLad2gPbq4.jpg",
+            "first_air_date": "2021-08-23",
+            "genre_ids": [
+                18,
+                10766,
+                35
+            ],
+            "id": 133372,
+            "name": "Meet",
+            "origin_country": [
+                "IN"
+            ],
+            "original_language": "hi",
+            "original_name": "मीत",
+            "overview": "Despite her efforts to provide for her family, Meets disregard for societal gender norms and her nonconformist job as a delivery agent make her an unsuitable girl in the eyes of her family.",
+            "popularity": 1390.699,
+            "poster_path": "/9X7FovF5n8NQUHUPJYYfxRlF3yp.jpg",
+            "vote_average": 4.5,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": "/e92qfYRVYUL602ztyEoujUtXlS1.jpg",
+            "first_air_date": "2018-09-09",
+            "genre_ids": [
+                9648,
+                80,
+                18
+            ],
+            "id": 78191,
+            "name": "You",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "You",
+            "overview": "A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself into the lives of those he is transfixed by.",
+            "popularity": 1233.915,
+            "poster_path": "/yxIdKGEjagaLs5kMjw92kAHmopH.jpg",
+            "vote_average": 8.1,
+            "vote_count": 1545
+        },
+        {
+            "backdrop_path": "/ccaZ3yyyC6rcMAQrlLZ51FpahNO.jpg",
+            "first_air_date": "2016-01-25",
+            "genre_ids": [
+                80,
+                10765
+            ],
+            "id": 63174,
+            "name": "Lucifer",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Lucifer",
+            "overview": "Bored and unhappy as the Lord of Hell, Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. But the longer he's away from the underworld, the greater the threat that the worst of humanity could escape.",
+            "popularity": 1196.887,
+            "poster_path": "/ekZobS8isE6mA53RAiGDG93hBxL.jpg",
+            "vote_average": 8.5,
+            "vote_count": 10839
+        },
+        {
+            "backdrop_path": "/1HiLMi66dO8Ia7EsPT2D9FwK5tL.jpg",
+            "first_air_date": "2021-09-28",
+            "genre_ids": [
+                18,
+                10765,
+                10759
+            ],
+            "id": 128839,
+            "name": "La Brea",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "La Brea",
+            "overview": "An epic adventure begins when a massive sinkhole opens in the middle of Los Angeles, pulling hundreds of people and buildings into its depths. Those who fell in find themselves in a mysterious and dangerous primeval land, where they have no choice but to band together to survive. Meanwhile, the rest of the world desperately seeks to understand what happened. In the search for answers, one family torn apart by this disaster will have to unlock the secrets of this inexplicable event to find a way back to each other.",
+            "popularity": 858.907,
+            "poster_path": "/nsoRsiUEakEO7VMIoa6Jkw4cPHs.jpg",
+            "vote_average": 7.9,
+            "vote_count": 45
+        },
+        {
+            "backdrop_path": "/bxU79lpl8ZQAVJ72155kqWkuqMu.jpg",
+            "first_air_date": "2019-01-11",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "id": 81356,
+            "name": "Sex Education",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Sex Education",
+            "overview": "Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.",
+            "popularity": 1038.186,
+            "poster_path": "/8j12tohv1NBZNmpU93f47sAKBbw.jpg",
+            "vote_average": 8.4,
+            "vote_count": 4982
+        },
+        {
+            "backdrop_path": "/1vgdmeW6keP47DQ1tGwfVCdUKqu.jpg",
+            "first_air_date": "2020-10-12",
+            "genre_ids": [
+                35
+            ],
+            "id": 111551,
+            "name": "Haireta mou ton Platano",
+            "origin_country": [
+                "GR"
+            ],
+            "original_language": "el",
+            "original_name": "Χαιρέτα μου τον Πλάτανο",
+            "overview": "The small Greek village of Platanos (Plane Tree) buries the elderly recluse Vangelas and notifies the deceased's estranged children and grandchildren about his death. Vangela's will leaves 3 million euros to his family, but requires them to move to the village and obey certain terms in order to inherit.",
+            "popularity": 1442.027,
+            "poster_path": "/vAu6or1W4G1q7wJxQfDmATtnIg.jpg",
+            "vote_average": 6,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": "/9OYu6oDLIidSOocW3JTGtd2Oyqy.jpg",
+            "first_air_date": "2017-09-25",
+            "genre_ids": [
+                18
+            ],
+            "id": 71712,
+            "name": "The Good Doctor",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Good Doctor",
+            "overview": "Shaun Murphy, a young surgeon with autism and savant syndrome, relocates from a quiet country life to join a prestigious hospital's surgical unit. Unable to personally connect with those around him, Shaun uses his extraordinary medical gifts to save lives and challenge the skepticism of his colleagues.",
+            "popularity": 1020.405,
+            "poster_path": "/cXUqtadGsIcZDWUTrfnbDjAy8eN.jpg",
+            "vote_average": 8.6,
+            "vote_count": 9634
+        },
+        {
+            "backdrop_path": "/fN9lbQkCLHyUZIr9Ba8jPm2F4Hi.jpg",
+            "first_air_date": "2002-09-09",
+            "genre_ids": [
+                10751,
+                10767
+            ],
+            "id": 16359,
+            "name": "Ricardo",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Ricardo",
+            "overview": "A daily French-language cooking show in which Ricardo Larrivée presents accessible recipes alone or accompanied by a guest or a member of his rotating panel of contributors.",
+            "popularity": 986.356,
+            "poster_path": "/my510tqdGLiBhtKzS1LMgXT5mXl.jpg",
+            "vote_average": 2.2,
+            "vote_count": 3
+        },
+        {
+            "backdrop_path": "/4LZuFMhLivOSO7zuWAQ3RffMnnr.jpg",
+            "first_air_date": "2021-10-14",
+            "genre_ids": [
+                80,
+                18,
+                9648,
+                10759
+            ],
+            "id": 110356,
+            "name": "My Name",
+            "origin_country": [
+                "KR"
+            ],
+            "original_language": "ko",
+            "original_name": "마이 네임",
+            "overview": "Following her father's murder, a revenge-driven woman puts her trust in a powerful crime boss — and enters the police force under his direction.",
+            "popularity": 906.678,
+            "poster_path": "/h9p1zxKzti35Aqe6xpwkP9NlG7p.jpg",
+            "vote_average": 8.6,
+            "vote_count": 98
+        },
+        {
+            "backdrop_path": "/uAWB8qOs7L6zGTwxAbeT97AsJk6.jpg",
+            "first_air_date": "2021-09-23",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "id": 93740,
+            "name": "Foundation",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Foundation",
+            "overview": "Follow a band of exiles on their monumental journey to save humanity and rebuild civilization amid the fall of the Galactic Empire.",
+            "popularity": 838.367,
+            "poster_path": "/A1fXGFxDifQzj08OlaGTVcnXHyd.jpg",
+            "vote_average": 8.2,
+            "vote_count": 244
+        },
+        {
+            "backdrop_path": "/wvdWb5kTQipdMDqCclC6Y3zr4j3.jpg",
+            "first_air_date": "2010-10-31",
+            "genre_ids": [
+                10759,
+                18,
+                10765
+            ],
+            "id": 1402,
+            "name": "The Walking Dead",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Walking Dead",
+            "overview": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
+            "popularity": 861.326,
+            "poster_path": "/w21lgYIi9GeUH5dO8l3B9ARZbCB.jpg",
+            "vote_average": 8.1,
+            "vote_count": 11916
+        },
+        {
+            "backdrop_path": "/eyG9srihv68ScRdEbJZj66WT4O0.jpg",
+            "first_air_date": "2014-10-07",
+            "genre_ids": [
+                18,
+                10765
+            ],
+            "id": 60735,
+            "name": "The Flash",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Flash",
+            "overview": "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \"meta-human\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.",
+            "popularity": 820.019,
+            "poster_path": "/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg",
+            "vote_average": 7.8,
+            "vote_count": 8640
+        },
+        {
+            "backdrop_path": "/pLn4lsSBtGUY1whHyCoEJhgziaP.jpg",
+            "first_air_date": "1984-09-10",
+            "genre_ids": [],
+            "id": 2912,
+            "name": "Jeopardy!",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Jeopardy!",
+            "overview": "America's favorite quiz show where contestants are presented with general knowledge clues in the form of answers, and must phrase their responses in question form.",
+            "popularity": 1088.039,
+            "poster_path": "/11rWvQOEZBouD7wet0sWHwu7NDs.jpg",
+            "vote_average": 7,
+            "vote_count": 78
+        },
+        {
+            "backdrop_path": "/6ygiUWflbmz5p2LFc3COVHriQzK.jpg",
+            "first_air_date": "2019-07-25",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "id": 79130,
+            "name": "Another Life",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Another Life",
+            "overview": "After a massive alien artifact lands on Earth, Niko Breckinridge leads an interstellar mission to track down its source and make first contact.",
+            "popularity": 722.185,
+            "poster_path": "/htazQ0cPoloL5SJ2bqOCKh9UTcc.jpg",
+            "vote_average": 5.8,
+            "vote_count": 143
+        },
+        {
+            "backdrop_path": "/wiE9doxiLwq3WCGamDIOb2PqBqc.jpg",
+            "first_air_date": "2013-09-12",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "id": 60574,
+            "name": "Peaky Blinders",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Peaky Blinders",
+            "overview": "A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby, who means to move up in the world.",
+            "popularity": 738.793,
+            "poster_path": "/bGZn5RVzMMXju4ev7xbl1aLdXqq.jpg",
+            "vote_average": 8.6,
+            "vote_count": 4084
+        },
+        {
+            "backdrop_path": "/b3YoKUxr9fHNLgWEplNBYCtBy8K.jpg",
+            "first_air_date": "2019-08-16",
+            "genre_ids": [
+                18
+            ],
+            "id": 90239,
+            "name": "El Juego de las Llaves",
+            "origin_country": [
+                "MX",
+                "US"
+            ],
+            "original_language": "es",
+            "original_name": "El Juego de las Llaves",
+            "overview": "A casual encounter between Adriana and Sergio, two former high school friends, triggers the beginning of the game of the keys where four couples generate new sexual and emotional combinations in a dangerous and lustful game.",
+            "popularity": 723.171,
+            "poster_path": "/9NQybnf78WiXWcxPaf7cyF09bOm.jpg",
+            "vote_average": 7.5,
+            "vote_count": 1405
+        }
+    ],
+    "total_pages": 500,
+    "total_results": 10000
+}

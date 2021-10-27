@@ -1,7 +1,11 @@
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/season.dart';
+import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/domain/entities/tv_show_detail.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -20,7 +24,22 @@ final testMovie = Movie(
   voteCount: 13507,
 );
 
+final testTvShow = TvShow(
+  backdropPath: 'backdropPath',
+  firstAirDate: '2021-10-31',
+  genreIds: [10, 20],
+  id: 1,
+  name: 'name',
+  originalName: 'originalName',
+  overview: 'overview',
+  popularity: 5.0,
+  posterPath: 'posterPath',
+  voteAverage: 5.0,
+  voteCount: 1,
+);
+
 final testMovieList = [testMovie];
+final testTvShowList = [testTvShow];
 
 final testMovieDetail = MovieDetail(
   adult: false,
@@ -37,12 +56,50 @@ final testMovieDetail = MovieDetail(
   voteCount: 1,
 );
 
+final testTvShowDetail = TvShowDetail(
+  backdropPath: 'backdropPath', 
+  firstAirDate: '2021-10-31', 
+  genres: [
+    Genre(
+      id: 1, 
+      name: 'Action'
+    )
+  ], 
+  id: 1, 
+  name: 'name', 
+  originalName: 'originalName', 
+  overview: 'overview', 
+  posterPath: 'posterPath', 
+  seasons: [
+    Season(
+      airDate: '2021-10-31',
+      episodeCount: 1,
+      id: 1,
+      name: 'name',
+      overview: 'overview',
+      posterPath: 'posterPath',
+      seasonNumber: 1,
+    ),
+  ], 
+  tagline: 'tagline', 
+  voteAverage: 5.0, 
+  voteCount: 1
+);
+
 final testMovieCache = MovieTable(
   id: 557,
   overview:
       'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
   posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
   title: 'Spider-Man',
+);
+
+final testTvShowCache = TvShowTable(
+  id: 93405,
+  name: 'Squid Game',
+  posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+  overview:
+      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
 );
 
 final testMovieCacheMap = {
@@ -53,6 +110,14 @@ final testMovieCacheMap = {
   'title': 'Spider-Man',
 };
 
+final testTvShowCacheMap = {
+  'id': 93405,
+  'name': 'Squid Game',
+  'posterPath': '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+  'overview':
+      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
+};
+
 final testMovieFromCache = Movie.watchlist(
   id: 557,
   overview:
@@ -61,11 +126,27 @@ final testMovieFromCache = Movie.watchlist(
   title: 'Spider-Man',
 );
 
+final testTvShowFromCache = TvShow.watchlist(
+  id: 93405,
+  overview:
+      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
+  posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+  name: 'Squid Game',
+);
+
+
 final testWatchlistMovie = Movie.watchlist(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
+);
+
+final testWatchlistTvShow = TvShow.watchlist(
+  id: 1,
+  overview: 'overview',
+  posterPath: 'posterPath',
+  name: 'name'
 );
 
 final testMovieTable = MovieTable(
@@ -75,9 +156,23 @@ final testMovieTable = MovieTable(
   overview: 'overview',
 );
 
+final testTvShowTable = TvShowTable(
+  id: 1,
+  name: 'name',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
 final testMovieMap = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',
+};
+
+final testTvShowMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'name': 'name',
 };
