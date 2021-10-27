@@ -32,6 +32,12 @@ class WatchlistMovieNotifier extends ChangeNotifier {
         _watchlistState = RequestState.Loaded;
         _watchlistMovies = moviesData;
         notifyListeners();
+
+        if(moviesData.isEmpty) {
+          _watchlistState = RequestState.Empty;
+          notifyListeners();
+          return _message = 'Empty Data';
+        }
       },
     );
   }

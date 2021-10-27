@@ -112,6 +112,14 @@ class _WatchlistMovies extends StatelessWidget {
                 },
                 itemCount: data.watchlistMovies.length,
               );
+            } else if (data.watchlistState == RequestState.Empty) {
+              return Center(
+                child: Text(data.message),
+              );
+            } else if (data.watchlistState == RequestState.Error) {
+              return Center(
+                child: Text(data.message),
+              );
             } else {
               return Center(
                 key: Key('error_message'),
@@ -145,7 +153,15 @@ class _WatchlistTvShows extends StatelessWidget {
                 },
                 itemCount: data.watchlistTvShows.length,
               );
-            } else {
+            } else if (data.watchlistState == RequestState.Empty) {
+              return Center(
+                child: Text(data.message),
+              );
+            } else if (data.watchlistState == RequestState.Error) {
+              return Center(
+                child: Text(data.message),
+              );
+            }  else {
               return Center(
                 key: Key('error_message'),
                 child: Text(data.message),

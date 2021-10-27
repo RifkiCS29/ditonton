@@ -107,6 +107,14 @@ class _SearchMovieResult extends StatelessWidget {
             },
             itemCount: result.length,
           );
+        } else if (data.state == RequestState.Empty) {
+          return Center(
+            child: Text(data.message),
+          );
+        } else if (data.state == RequestState.Error) {
+          return Center(
+            child: Text(data.message),
+          );
         } else {
           return Container();
         }
@@ -135,6 +143,14 @@ class _SearchTvShowResult extends StatelessWidget {
               return TvShowCard(tvShow);
             },
             itemCount: result.length,
+          );
+        } else if (data.state == RequestState.Empty) {
+          return Center(
+            child: Text(data.message),
+          );
+        } else if (data.state == RequestState.Error) {
+          return Center(
+            child: Text(data.message),
           );
         } else {
           return Container();

@@ -32,6 +32,12 @@ class TvShowSearchNotifier extends ChangeNotifier {
         _searchResult = tvShowsData;
         _state = RequestState.Loaded;
         notifyListeners();
+
+        if(tvShowsData.isEmpty) {
+          _state = RequestState.Empty;
+          notifyListeners();
+          return _message = 'Empty Data';
+        }
       },
     );
   }
