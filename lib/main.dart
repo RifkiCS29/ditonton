@@ -1,4 +1,5 @@
 import 'package:ditonton/common/constants.dart';
+import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/airing_today_tv_show_page.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
@@ -92,6 +93,7 @@ class MyApp extends StatelessWidget {
           colorScheme: kColorScheme.copyWith(secondary: kMikadoYellow),
         ),
         home: HomePage(),
+        navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
             case '/home':

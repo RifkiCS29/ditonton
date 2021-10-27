@@ -1,5 +1,6 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:ditonton/presentation/widgets/movie_card_list.dart';
@@ -14,20 +15,32 @@ class WatchlistPage extends StatefulWidget {
   _WatchlistPageState createState() => _WatchlistPageState();
 }
 
-class _WatchlistPageState extends State<WatchlistPage> {
+class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   final List<String> _tabTitle = ['Movies', 'Tv Shows'];
   final List<Widget> _bodyPage = [_WatchlistMovies(), _WatchlistTvShows()];
 
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance?.addObserver(this);
     Future.microtask(() =>
         Provider.of<WatchlistMovieNotifier>(context, listen: false)
             .fetchWatchlistMovies());
     Future.microtask(() =>
         Provider.of<WatchlistTvShowNotifier>(context, listen: false)
             .fetchWatchlistTvShows());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  void didPopNext() {
+    Provider.of<WatchlistMovieNotifier>(context, listen: false)
+        .fetchWatchlistMovies();
+    Provider.of<WatchlistTvShowNotifier>(context, listen: false)
+        .fetchWatchlistTvShows();
   }
 
   @override
@@ -71,36 +84,11 @@ class _WatchlistPageState extends State<WatchlistPage> {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   WidgetsBinding.instance?.removeObserver(this);
-  //   super.dispose();
-  // }
-
-  // @override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   print("APP_STATE: $state");
-
-  //   if(state == AppLifecycleState.resumed){
-  //   Future.microtask(() =>
-  //       Provider.of<WatchlistMovieNotifier>(context, listen: false)
-  //           .fetchWatchlistMovies());
-  //   Future.microtask(() =>
-  //       Provider.of<WatchlistTvShowNotifier>(context, listen: false)
-  //           .fetchWatchlistTvShows());
-  //   } else if(state == AppLifecycleState.inactive){
-  //     // app is inactive
-  //   }else if(state == AppLifecycleState.paused){
-  //     // user quit our app temporally
-  //   }else if(state == AppLifecycleState.detached){
-  //         Future.microtask(() =>
-  //       Provider.of<WatchlistMovieNotifier>(context, listen: false)
-  //           .fetchWatchlistMovies());
-  //   Future.microtask(() =>
-  //       Provider.of<WatchlistTvShowNotifier>(context, listen: false)
-  //           .fetchWatchlistTvShows());
-  //   }
-  // }
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
 }
 
 class _WatchlistMovies extends StatelessWidget {
