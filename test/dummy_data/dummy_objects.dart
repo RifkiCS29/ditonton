@@ -72,7 +72,7 @@ final testTvShowDetail = TvShowDetail(
   posterPath: 'posterPath', 
   seasons: [
     Season(
-      airDate: '2021-10-31',
+      airDate: '2012-02-27',
       episodeCount: 1,
       id: 1,
       name: 'name',
@@ -99,7 +99,7 @@ final testTvShowCache = TvShowTable(
   name: 'Squid Game',
   posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   overview:
-      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
+      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
 );
 
 final testMovieCacheMap = {
@@ -115,7 +115,7 @@ final testTvShowCacheMap = {
   'name': 'Squid Game',
   'posterPath': '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   'overview':
-      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
+      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
 };
 
 final testMovieFromCache = Movie.watchlist(
@@ -129,7 +129,7 @@ final testMovieFromCache = Movie.watchlist(
 final testTvShowFromCache = TvShow.watchlist(
   id: 93405,
   overview:
-      'Hundreds of cash-strapped players accept a strange invitation to compete in childres games—with high stakes. But, a tempting prize awaits the victor.',
+      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
   posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   name: 'Squid Game',
 );
