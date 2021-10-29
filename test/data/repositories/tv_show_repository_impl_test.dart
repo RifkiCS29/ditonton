@@ -472,7 +472,7 @@ void main() {
     final tTvShowList = <TvShowModel>[];
     final tId = 1;
 
-    test('should return data (Tv Show list) when the call is successful',
+    test('should return data Tv Show Recommendations when the call is successful',
         () async {
       // arrange
       when(mockRemoteDataSource.getTvShowRecommendations(tId))
