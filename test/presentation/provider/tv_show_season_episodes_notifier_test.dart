@@ -52,7 +52,7 @@ void main() {
       expect(provider.state, RequestState.Loading);
     });
 
-    test('should change search result data when data is gotten successfully',
+    test('should change episode data when data is gotten successfully',
         () async {
       // arrange
       when(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber))
