@@ -36,7 +36,6 @@ void main() {
     stillPath: '/vMFJS9LIUUAmQ1thq4vJ7iHKwRz.jpg',
     voteAverage: 8.1,
     voteCount: 51,
-
   );
   final tEpisodeList = <Episode>[tEpisodeModel];
   final tId = 1;
