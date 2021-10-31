@@ -117,6 +117,7 @@ class TvShowList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: Key('tvShowItem'),
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

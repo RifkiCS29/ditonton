@@ -112,6 +112,7 @@ class DetailContent extends StatelessWidget {
                               mainAxisAlignment : MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
+                                  key: Key('watchlistButtonMovie'),
                                   onPressed: () async {
                                     if (!isAddedWatchlist) {
                                       await Provider.of<MovieDetailNotifier>(

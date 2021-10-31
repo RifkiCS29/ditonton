@@ -118,6 +118,7 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: Key('movieItem'),
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

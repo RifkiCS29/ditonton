@@ -113,6 +113,7 @@ class DetailContent extends StatelessWidget {
                               mainAxisAlignment : MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
+                                  key: Key('watchlistButtonTvShow'),
                                   onPressed: () async {
                                     if (!isAddedWatchlist) {
                                       await Provider.of<TvShowDetailNotifier>(
