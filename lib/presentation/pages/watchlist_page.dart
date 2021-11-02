@@ -114,16 +114,16 @@ class _WatchlistMovies extends StatelessWidget {
               );
             } else if (data.watchlistState == RequestState.Empty) {
               return Center(
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             } else if (data.watchlistState == RequestState.Error) {
               return Center(
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             } else {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             }
           },
@@ -155,16 +155,16 @@ class _WatchlistTvShows extends StatelessWidget {
               );
             } else if (data.watchlistState == RequestState.Empty) {
               return Center(
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             } else if (data.watchlistState == RequestState.Error) {
               return Center(
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             }  else {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(data.message, style: kSubtitle),
               );
             }
           },

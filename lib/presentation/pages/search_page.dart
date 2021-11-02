@@ -109,11 +109,11 @@ class _SearchMovieResult extends StatelessWidget {
           );
         } else if (data.state == RequestState.Empty) {
           return Center(
-            child: Text(data.message),
+            child: Text(data.message, style: kSubtitle),
           );
         } else if (data.state == RequestState.Error) {
           return Center(
-            child: Text(data.message),
+            child: Text(data.message, style: kSubtitle),
           );
         } else {
           return Container();
@@ -146,11 +146,11 @@ class _SearchTvShowResult extends StatelessWidget {
           );
         } else if (data.state == RequestState.Empty) {
           return Center(
-            child: Text(data.message),
+            child: Text(data.message, style: kSubtitle),
           );
         } else if (data.state == RequestState.Error) {
           return Center(
-            child: Text(data.message),
+            child: Text(data.message, style: kSubtitle),
           );
         } else {
           return Container();

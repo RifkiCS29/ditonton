@@ -53,7 +53,7 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
             );
           } else {
             return Center(
-              child: Text(provider.message)
+              child: Text(provider.message, style: kSubtitle)
             );
           }
         },
@@ -253,7 +253,7 @@ class DetailContent extends StatelessWidget {
                                                             Icon(Icons.error),
                                                       imageBuilder: (context, imageProvider) {
                                                         return Container(
-                                                          decoration: new BoxDecoration(
+                                                          decoration: BoxDecoration(
                                                             borderRadius: BorderRadius.circular(10),
                                                             image: DecorationImage(
                                                               image: imageProvider,

@@ -36,7 +36,7 @@ class WatchlistTvShowNotifier extends ChangeNotifier {
         if(tvShowsData.isEmpty) {
           _watchlistState = RequestState.Empty;
           notifyListeners();
-          return _message = 'Empty Data';
+          return _message = 'You haven\'t added a watch list';
         }
       },
     );

@@ -52,7 +52,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             );
           } else {
             return Center(
-              child: Text(provider.message)
+              child: Text(provider.message, style: kSubtitle)
             );
           }
         },

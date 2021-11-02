@@ -36,7 +36,7 @@ class MovieSearchNotifier extends ChangeNotifier {
         if(data.isEmpty) {
           _state = RequestState.Empty;
           notifyListeners();
-          return _message = 'Empty Data';
+          return _message = 'No Result Found';
         }
       },
     );
