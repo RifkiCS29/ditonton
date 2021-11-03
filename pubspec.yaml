@@ -47,6 +47,8 @@ dependencies:
     path: watchlist
   search:
     path: search
+  movie:
+    path: movie
 
 dev_dependencies:
   build_runner: ^2.0.4
