@@ -28,6 +28,34 @@ void main() {
     );
   }
 
+    testWidgets(
+      'Detail Tv Page should display Progressbar when loading',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvShowState).thenReturn(RequestState.Loading);
+
+    final progressBarFinder = find.byType(CircularProgressIndicator);
+
+    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+    expect(progressBarFinder, findsOneWidget);
+  });
+
+    testWidgets(
+      'should display loading when recommendationState loading',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvShowState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvShow).thenReturn(testTvShowDetail);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.Loading);
+    when(mockNotifier.tvShowRecommendations).thenReturn(<TvShow>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+
+    final progressBarFinder = find.byType(CircularProgressIndicator);
+
+    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+    expect(progressBarFinder, findsWidgets);
+  });
+
   testWidgets(
       'Watchlist button should display add icon when Tv Show not added to watchlist',
       (WidgetTester tester) async {
@@ -84,6 +112,29 @@ void main() {
   });
 
   testWidgets(
+      'Watchlist button should display Snackbar when removed from watchlist',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvShowState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvShow).thenReturn(testTvShowDetail);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.tvShowRecommendations).thenReturn(<TvShow>[]);
+    when(mockNotifier.isAddedToWatchlist).thenReturn(false);
+    when(mockNotifier.watchlistMessage).thenReturn('Removed from Watchlist');
+
+    final watchlistButton = find.byType(ElevatedButton);
+
+    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+    expect(find.byIcon(Icons.add), findsOneWidget);
+
+    await tester.tap(watchlistButton);
+    await tester.pump();
+
+    expect(find.byType(SnackBar), findsOneWidget);
+    expect(find.text('Removed from Watchlist'), findsOneWidget);
+  });
+
+  testWidgets(
       'Watchlist button should display AlertDialog when add to watchlist failed',
       (WidgetTester tester) async {
     when(mockNotifier.tvShowState).thenReturn(RequestState.Loaded);
@@ -104,5 +155,18 @@ void main() {
 
     expect(find.byType(AlertDialog), findsOneWidget);
     expect(find.text('Failed'), findsOneWidget);
+  });
+
+    testWidgets(
+      'Detail Tv Show Page should display Error Text when No Internet Network (Error)',
+      (WidgetTester tester) async {
+    when(mockNotifier.tvShowState).thenReturn(RequestState.Error);
+    when(mockNotifier.message).thenReturn('Failed to connect to the network');
+
+    final textErrorBarFinder = find.text('Failed to connect to the network');
+
+    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+    expect(textErrorBarFinder, findsOneWidget);
   });
 }
