@@ -27,6 +27,8 @@ dependencies:
   path_provider: ^2.0.2
   provider: ^5.0.0
   sqflite: ^2.0.0+3
+  movie:
+    path: ../movie
 
 dev_dependencies:
   flutter_test:
