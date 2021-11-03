@@ -45,6 +45,8 @@ dependencies:
     path: core
   watchlist:
     path: watchlist
+  search:
+    path: search
 
 dev_dependencies:
   build_runner: ^2.0.4

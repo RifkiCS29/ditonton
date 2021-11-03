@@ -1,39 +1,39 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/usecases/search_movies.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:flutter/foundation.dart';
 
-class MovieSearchNotifier extends ChangeNotifier {
-  final SearchMovies searchMovies;
+class TvShowSearchNotifier extends ChangeNotifier {
+  final SearchTvShows searchTvShows;
 
-  MovieSearchNotifier({required this.searchMovies});
+  TvShowSearchNotifier({required this.searchTvShows});
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
 
-  List<Movie> _searchResult = [];
-  List<Movie> get searchResult => _searchResult;
+  List<TvShow> _searchResult = [];
+  List<TvShow> get searchResult => _searchResult;
 
   String _message = '';
   String get message => _message;
 
-  Future<void> fetchMovieSearch(String query) async {
+  Future<void> fetchTvShowSearch(String query) async {
     _state = RequestState.Loading;
     notifyListeners();
 
-    final result = await searchMovies.execute(query);
+    final result = await searchTvShows.execute(query);
     result.fold(
       (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-      (data) {
-        _searchResult = data;
+      (tvShowsData) {
+        _searchResult = tvShowsData;
         _state = RequestState.Loaded;
         notifyListeners();
 
-        if(data.isEmpty) {
+        if(tvShowsData.isEmpty) {
           _state = RequestState.Empty;
           notifyListeners();
           return _message = 'No Result Found';
