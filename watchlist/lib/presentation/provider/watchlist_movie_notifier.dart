@@ -1,11 +1,11 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/get_watchlist_tv_shows.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/movie.dart';
+import 'package:watchlist/domain/usecases/get_watchlist_movies.dart';
 import 'package:flutter/foundation.dart';
 
-class WatchlistTvShowNotifier extends ChangeNotifier {
-  var _watchlistTvShows = <TvShow>[];
-  List<TvShow> get watchlistTvShows => _watchlistTvShows;
+class WatchlistMovieNotifier extends ChangeNotifier {
+  var _watchlistMovies = <Movie>[];
+  List<Movie> get watchlistMovies => _watchlistMovies;
 
   var _watchlistState = RequestState.Empty;
   RequestState get watchlistState => _watchlistState;
@@ -13,27 +13,27 @@ class WatchlistTvShowNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  WatchlistTvShowNotifier({required this.getWatchlistTvShows});
+  WatchlistMovieNotifier({required this.getWatchlistMovies});
 
-  final GetWatchlistTvShows getWatchlistTvShows;
+  final GetWatchlistMovies getWatchlistMovies;
 
-  Future<void> fetchWatchlistTvShows() async {
+  Future<void> fetchWatchlistMovies() async {
     _watchlistState = RequestState.Loading;
     notifyListeners();
 
-    final result = await getWatchlistTvShows.execute();
+    final result = await getWatchlistMovies.execute();
     result.fold(
       (failure) {
         _watchlistState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-      (tvShowsData) {
+      (moviesData) {
         _watchlistState = RequestState.Loaded;
-        _watchlistTvShows = tvShowsData;
+        _watchlistMovies = moviesData;
         notifyListeners();
 
-        if(tvShowsData.isEmpty) {
+        if(moviesData.isEmpty) {
           _watchlistState = RequestState.Empty;
           notifyListeners();
           return _message = 'You haven\'t added a watch list';

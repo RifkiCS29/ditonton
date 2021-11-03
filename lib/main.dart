@@ -10,7 +10,6 @@ import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
 import 'package:ditonton/presentation/pages/tv_show_season_episodes_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/provider/airing_today_tv_shows_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -23,12 +22,13 @@ import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_search_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_show_season_episodes_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:watchlist/presentation/pages/watchlist_page.dart';
+import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
 
 void main() {
   di.init();
@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
               );
             case SearchPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchPage());
-            case WatchlistPage.ROUTE_NAME:
+            case WatchlistPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistPage());
             case AboutPage.routeName:
               return MaterialPageRoute(builder: (_) => AboutPage());

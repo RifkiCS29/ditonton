@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
+import 'package:core/common/constants.dart';
+import 'package:core/domain/entities/movie.dart';
+import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 
-class TvShowCard extends StatelessWidget {
-  final TvShow tvShow;
+class MovieCard extends StatelessWidget {
+  final Movie movie;
 
-  TvShowCard(this.tvShow);
+  MovieCard(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class TvShowCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            TvShowDetailPage.ROUTE_NAME,
-            arguments: tvShow.id,
+            MovieDetailPage.routeName,
+            arguments: movie.id,
           );
         },
         child: Stack(
@@ -35,14 +35,14 @@ class TvShowCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tvShow.name ?? '-',
+                      movie.title ?? '-',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
                     ),
                     SizedBox(height: 16),
                     Text(
-                      tvShow.overview ?? '-',
+                      movie.overview ?? '-',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -57,7 +57,7 @@ class TvShowCard extends StatelessWidget {
               ),
               child: ClipRRect(
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tvShow.posterPath}',
+                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
                   width: 80,
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),

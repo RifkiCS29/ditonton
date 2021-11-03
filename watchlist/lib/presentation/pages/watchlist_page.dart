@@ -1,15 +1,15 @@
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/common/utils.dart';
-import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/watchlist_tv_show_notifier.dart';
-import 'package:ditonton/presentation/widgets/movie_card_list.dart';
-import 'package:ditonton/presentation/widgets/tv_show_card_list.dart';
+import 'package:core/common/constants.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/common/utils.dart';
+import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
+import 'package:core/presentation/widgets/movie_card_list.dart';
+import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WatchlistPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist-page';
+  static const routeName = '/watchlist-page';
 
   @override
   _WatchlistPageState createState() => _WatchlistPageState();
