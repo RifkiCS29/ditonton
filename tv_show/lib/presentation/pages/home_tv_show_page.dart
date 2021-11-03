@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/presentation/pages/airing_today_tv_show_page.dart';
-import 'package:ditonton/presentation/pages/popular_tv_shows_page.dart';
-import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
-import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
-import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
+import 'package:core/common/constants.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
+import 'package:tv_show/presentation/pages/popular_tv_shows_page.dart';
+import 'package:tv_show/presentation/pages/top_rated_tv_shows_page.dart';
+import 'package:tv_show/presentation/pages/tv_show_detail_page.dart';
+import 'package:tv_show/presentation/provider/tv_show_list_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -30,7 +30,7 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
               _buildSubHeading(
                 title: 'Airing Today',
                 onTap: () =>
-                    Navigator.pushNamed(context, AiringTodayTvShowsPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, AiringTodayTvShowsPage.routeName),
               ),
               Consumer<TvShowListNotifier>(builder: (context, data, child) {
                 final state = data.airingTodayState;
@@ -47,7 +47,7 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
-                    Navigator.pushNamed(context, PopularTvShowsPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, PopularTvShowsPage.routeName),
               ),
               Consumer<TvShowListNotifier>(builder: (context, data, child) {
                 final state = data.popularTvShowsState;
@@ -64,7 +64,7 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
               _buildSubHeading(
                 title: 'Top Rated',
                 onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvShowsPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TopRatedTvShowsPage.routeName),
               ),
               Consumer<TvShowListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedTvShowsState;
@@ -129,7 +129,7 @@ class TvShowList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  TvShowDetailPage.ROUTE_NAME,
+                  TvShowDetailPage.routeName,
                   arguments: tvShow.id,
                 );
               },

@@ -1,12 +1,12 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/get_top_rated_tv_shows.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:tv_show/domain/usecases/get_popular_tv_shows.dart';
 import 'package:flutter/foundation.dart';
 
-class TopRatedTvShowsNotifier extends ChangeNotifier {
-  final GetTopRatedTvShows getTopRatedTvShows;
+class PopularTvShowsNotifier extends ChangeNotifier {
+  final GetPopularTvShows getPopularTvShows;
 
-  TopRatedTvShowsNotifier(this.getTopRatedTvShows);
+  PopularTvShowsNotifier(this.getPopularTvShows);
 
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
@@ -17,11 +17,11 @@ class TopRatedTvShowsNotifier extends ChangeNotifier {
   String _message = '';
   String get message => _message;
 
-  Future<void> fetchTopRatedTvShows() async {
+  Future<void> fetchPopularTvShows() async {
     _state = RequestState.Loading;
     notifyListeners();
 
-    final result = await getTopRatedTvShows.execute();
+    final result = await getPopularTvShows.execute();
 
     result.fold(
       (failure) {

@@ -1,8 +1,8 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/usecases/get_airing_today_tv_shows.dart';
-import 'package:ditonton/domain/usecases/get_popular_tv_shows.dart';
-import 'package:ditonton/domain/usecases/get_top_rated_tv_shows.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:tv_show/domain/usecases/get_airing_today_tv_shows.dart';
+import 'package:tv_show/domain/usecases/get_popular_tv_shows.dart';
+import 'package:tv_show/domain/usecases/get_top_rated_tv_shows.dart';
 import 'package:flutter/material.dart';
 
 class TvShowListNotifier extends ChangeNotifier {

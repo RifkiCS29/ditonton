@@ -1,24 +1,24 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
-import 'package:ditonton/presentation/pages/airing_today_tv_show_page.dart';
-import 'package:ditonton/presentation/pages/home_page.dart';
+import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
+import 'package:core/presentation/pages/home_page.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:movie/presentation/pages/popular_movies_page.dart';
-import 'package:ditonton/presentation/pages/popular_tv_shows_page.dart';
+import 'package:tv_show/presentation/pages/popular_tv_shows_page.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
-import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
-import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
-import 'package:ditonton/presentation/pages/tv_show_season_episodes_page.dart';
-import 'package:ditonton/presentation/provider/airing_today_tv_shows_notifier.dart';
+import 'package:tv_show/presentation/pages/top_rated_tv_shows_page.dart';
+import 'package:tv_show/presentation/pages/tv_show_detail_page.dart';
+import 'package:tv_show/presentation/pages/tv_show_season_episodes_page.dart';
+import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
 import 'package:movie/presentation/provider/movie_detail_notifier.dart';
 import 'package:movie/presentation/provider/movie_list_notifier.dart';
 import 'package:movie/presentation/provider/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/popular_tv_shows_notifier.dart';
+import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
 import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/top_rated_tv_shows_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
-import 'package:ditonton/presentation/provider/tv_show_season_episodes_notifier.dart';
+import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
+import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
+import 'package:tv_show/presentation/provider/tv_show_list_notifier.dart';
+import 'package:tv_show/presentation/provider/tv_show_season_episodes_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -107,19 +107,19 @@ class MyApp extends StatelessWidget {
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case AiringTodayTvShowsPage.ROUTE_NAME:
+            case AiringTodayTvShowsPage.routeName:
               return CupertinoPageRoute(builder: (_) => AiringTodayTvShowsPage());
-            case PopularTvShowsPage.ROUTE_NAME:
+            case PopularTvShowsPage.routeName:
               return CupertinoPageRoute(builder: (_) => PopularTvShowsPage());
-            case TopRatedTvShowsPage.ROUTE_NAME:
+            case TopRatedTvShowsPage.routeName:
               return CupertinoPageRoute(builder: (_) => TopRatedTvShowsPage());
-            case TvShowDetailPage.ROUTE_NAME:
+            case TvShowDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TvShowDetailPage(id: id),
                 settings: settings,
               );
-            case TvShowSeasonEpisodesPage.ROUTE_NAME:
+            case TvShowSeasonEpisodesPage.routeName:
               final args = settings.arguments as Map<String, dynamic>;
               final id = args['id'];
               final seasonNumber = args['seasonNumber'];

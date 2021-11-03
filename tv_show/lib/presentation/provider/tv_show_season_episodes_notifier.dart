@@ -1,6 +1,6 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/episode.dart';
-import 'package:ditonton/domain/usecases/get_tv_show_season_episodes.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/episode.dart';
+import 'package:tv_show/domain/usecases/get_tv_show_season_episodes.dart';
 import 'package:flutter/foundation.dart';
 
 class TvShowSeasonEpisodesNotifier extends ChangeNotifier {

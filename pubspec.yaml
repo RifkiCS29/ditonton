@@ -49,6 +49,8 @@ dependencies:
     path: search
   movie:
     path: movie
+  tv_show:
+    path: tv_show
 
 dev_dependencies:
   build_runner: ^2.0.4

@@ -8,13 +8,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "30.0.0"
-  about:
-    dependency: "direct main"
-    description:
-      path: "../about"
-      relative: true
-    source: path
-    version: "0.0.1"
   analyzer:
     dependency: "direct main"
     description:
@@ -99,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  core:
+    dependency: "direct main"
+    description:
+      path: "../core"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
@@ -121,7 +121,7 @@ packages:
     source: hosted
     version: "0.10.0"
   data_connection_checker:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "."
       ref: master
@@ -184,7 +184,7 @@ packages:
     source: hosted
     version: "1.0.4"
   flutter_rating_bar:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_rating_bar
       url: "https://pub.dartlang.org"
@@ -196,7 +196,7 @@ packages:
     source: sdk
     version: "0.0.0"
   get_it:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: get_it
       url: "https://pub.dartlang.org"
@@ -210,14 +210,14 @@ packages:
     source: hosted
     version: "2.0.2"
   google_fonts:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -252,7 +252,7 @@ packages:
     source: hosted
     version: "1.7.0"
   movie:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "../movie"
       relative: true
@@ -287,7 +287,7 @@ packages:
     source: hosted
     version: "1.8.0"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -370,13 +370,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.2"
-  search:
-    dependency: "direct main"
-    description:
-      path: "../search"
-      relative: true
-    source: path
-    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -390,7 +383,7 @@ packages:
     source: hosted
     version: "1.8.1"
   sqflite:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: sqflite
       url: "https://pub.dartlang.org"
@@ -445,13 +438,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.2"
-  tv_show:
-    dependency: "direct main"
-    description:
-      path: "../tv_show"
-      relative: true
-    source: path
-    version: "0.0.1"
   typed_data:
     dependency: transitive
     description:
@@ -481,7 +467,7 @@ packages:
     source: hosted
     version: "1.0.1"
   watchlist:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "../watchlist"
       relative: true

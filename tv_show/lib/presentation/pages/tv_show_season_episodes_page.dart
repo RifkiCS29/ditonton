@@ -1,11 +1,11 @@
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/provider/tv_show_season_episodes_notifier.dart';
-import 'package:ditonton/presentation/widgets/episode_card_list.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:tv_show/presentation/provider/tv_show_season_episodes_notifier.dart';
+import 'package:core/presentation/widgets/episode_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TvShowSeasonEpisodesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/tv-show-season-episodes-page';
+  static const routeName = '/tv-show-season-episodes-page';
   final int id;
   final int seasonNumber;
   

@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/genre.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv_show.dart';
-import 'package:ditonton/domain/entities/tv_show_detail.dart';
-import 'package:ditonton/presentation/pages/tv_show_season_episodes_page.dart';
-import 'package:ditonton/presentation/provider/tv_show_detail_notifier.dart';
+import 'package:core/common/constants.dart';
+import 'package:core/domain/entities/genre.dart';
+import 'package:core/common/state_enum.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:core/domain/entities/tv_show_detail.dart';
+import 'package:tv_show/presentation/pages/tv_show_season_episodes_page.dart';
+import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class TvShowDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tvShow';
+  static const routeName = '/detail-tvShow';
 
   final int id;
   TvShowDetailPage({required this.id});
@@ -207,7 +207,7 @@ class DetailContent extends StatelessWidget {
                                       onTap: () {
                                         Navigator.pushNamed(
                                           context, 
-                                          TvShowSeasonEpisodesPage.ROUTE_NAME,
+                                          TvShowSeasonEpisodesPage.routeName,
                                           arguments: <String, dynamic> {
                                             "id": tvShow.id,
                                             "seasonNumber": season.seasonNumber
@@ -305,7 +305,7 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                TvShowDetailPage.ROUTE_NAME,
+                                                TvShowDetailPage.routeName,
                                                 arguments: tvShow.id,
                                               );
                                             },
