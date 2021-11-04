@@ -1,0 +1,387 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "backdrop_path": "/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg",
+            "first_air_date": "2006-09-18",
+            "genre_ids": [
+                10767
+            ],
+            "id": 1991,
+            "name": "Rachael Ray",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Rachael Ray",
+            "overview": "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio. In January 2012, CBS Television Distribution announced a two-year renewal for the show, taking it through the 2013–14 season.",
+            "popularity": 3026.459,
+            "poster_path": "/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg",
+            "vote_average": 5.4,
+            "vote_count": 33
+        },
+        {
+            "backdrop_path": "/yF7G00lb3AbCSa8ZPgR8M4nFtFL.jpg",
+            "first_air_date": "2020-09-14",
+            "genre_ids": [],
+            "id": 107602,
+            "name": "5 chefs dans ma cuisine",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "5 chefs dans ma cuisine",
+            "overview": "",
+            "popularity": 1479.78,
+            "poster_path": "/2UuRWSoLCTohtKOTpKI1lwL5GrD.jpg",
+            "vote_average": 1.5,
+            "vote_count": 4
+        },
+        {
+            "backdrop_path": "/fCgTw8Tpe6R5SyB1UnLad2gPbq4.jpg",
+            "first_air_date": "2021-08-23",
+            "genre_ids": [
+                18,
+                10766,
+                35
+            ],
+            "id": 133372,
+            "name": "Meet",
+            "origin_country": [
+                "IN"
+            ],
+            "original_language": "hi",
+            "original_name": "मीत",
+            "overview": "Despite her efforts to provide for her family, Meets disregard for societal gender norms and her nonconformist job as a delivery agent make her an unsuitable girl in the eyes of her family.",
+            "popularity": 1390.699,
+            "poster_path": "/9X7FovF5n8NQUHUPJYYfxRlF3yp.jpg",
+            "vote_average": 4.5,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": "/1vgdmeW6keP47DQ1tGwfVCdUKqu.jpg",
+            "first_air_date": "2020-10-12",
+            "genre_ids": [
+                35
+            ],
+            "id": 111551,
+            "name": "Haireta mou ton Platano",
+            "origin_country": [
+                "GR"
+            ],
+            "original_language": "el",
+            "original_name": "Χαιρέτα μου τον Πλάτανο",
+            "overview": "The small Greek village of Platanos (Plane Tree) buries the elderly recluse Vangelas and notifies the deceased's estranged children and grandchildren about his death. Vangela's will leaves 3 million euros to his family, but requires them to move to the village and obey certain terms in order to inherit.",
+            "popularity": 1442.027,
+            "poster_path": "/vAu6or1W4G1q7wJxQfDmATtnIg.jpg",
+            "vote_average": 6,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": "/fN9lbQkCLHyUZIr9Ba8jPm2F4Hi.jpg",
+            "first_air_date": "2002-09-09",
+            "genre_ids": [
+                10751,
+                10767
+            ],
+            "id": 16359,
+            "name": "Ricardo",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Ricardo",
+            "overview": "A daily French-language cooking show in which Ricardo Larrivée presents accessible recipes alone or accompanied by a guest or a member of his rotating panel of contributors.",
+            "popularity": 986.356,
+            "poster_path": "/my510tqdGLiBhtKzS1LMgXT5mXl.jpg",
+            "vote_average": 2.2,
+            "vote_count": 3
+        },
+        {
+            "backdrop_path": "/pLn4lsSBtGUY1whHyCoEJhgziaP.jpg",
+            "first_air_date": "1984-09-10",
+            "genre_ids": [],
+            "id": 2912,
+            "name": "Jeopardy!",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Jeopardy!",
+            "overview": "America's favorite quiz show where contestants are presented with general knowledge clues in the form of answers, and must phrase their responses in question form.",
+            "popularity": 1088.039,
+            "poster_path": "/11rWvQOEZBouD7wet0sWHwu7NDs.jpg",
+            "vote_average": 7,
+            "vote_count": 78
+        },
+        {
+            "backdrop_path": "/2748H9LoK2oQd9L7ofze8VjCGhS.jpg",
+            "first_air_date": "2020-07-13",
+            "genre_ids": [
+                18,
+                10766
+            ],
+            "id": 116479,
+            "name": "Anupamaa",
+            "origin_country": [
+                "IN"
+            ],
+            "original_language": "hi",
+            "original_name": "अनुपमा",
+            "overview": "Anupama had to sacrifice a lot to become an ideal wife, daughter-in-law, and mother. After a bitter realisation, she sets out to live on her own terms.",
+            "popularity": 681.732,
+            "poster_path": "/9R4Qtm01pNh0CzdoIyvHKefe5RL.jpg",
+            "vote_average": 4.9,
+            "vote_count": 20
+        },
+        {
+            "backdrop_path": null,
+            "first_air_date": "1972-09-04",
+            "genre_ids": [],
+            "id": 2051,
+            "name": "The Price Is Right",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "The Price Is Right",
+            "overview": "\"Come on down!\" The Price Is Right features a wide variety of games and contests with the same basic challenge: Guess the prices of everyday (or not-quite-everyday) retail items. ",
+            "popularity": 985.555,
+            "poster_path": "/6m4uYFAJwkanZXd0n0HUQ0lYHLl.jpg",
+            "vote_average": 6.7,
+            "vote_count": 31
+        },
+        {
+            "backdrop_path": "/w1liUsngqb5lBUyKHU0sMV9FDAb.jpg",
+            "first_air_date": "",
+            "genre_ids": [
+                10764
+            ],
+            "id": 100128,
+            "name": "Big Brother",
+            "origin_country": [
+                "PT"
+            ],
+            "original_language": "pt",
+            "original_name": "Big Brother",
+            "overview": "Portuguese version of the reality competition which follows a group of HouseGuests living together 24 hours a day in the \"Big Brother\" house, isolated from the outside world but under constant surveillance with no privacy.",
+            "popularity": 576.032,
+            "poster_path": "/9Gkcvdz89Q7w0glDDga1c8m5vaW.jpg",
+            "vote_average": 2.7,
+            "vote_count": 9
+        },
+        {
+            "backdrop_path": "/t0GTpqzNZLa9xSHhPnUFw3M0EvZ.jpg",
+            "first_air_date": "2014-01-08",
+            "genre_ids": [
+                80,
+                18
+            ],
+            "id": 58841,
+            "name": "Chicago P.D.",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Chicago P.D.",
+            "overview": "A riveting police drama about the men and women of the Chicago Police Department's District 21 who put it all on the line to serve and protect their community. District 21 is made up of two distinctly different groups: the uniformed cops who patrol the beat and go head-to-head with the city's street crimes and the Intelligence Unit that combats the city's major offenses - organized crime, drug trafficking, high profile murders and beyond.",
+            "popularity": 542.889,
+            "poster_path": "/onamGdLjKolUFwIW7io11IDH0uJ.jpg",
+            "vote_average": 8.4,
+            "vote_count": 1633
+        },
+        {
+            "backdrop_path": "/tJ2fGRBKNgEwt9GiCOJ1veKRHXu.jpg",
+            "first_air_date": "2019-09-09",
+            "genre_ids": [
+                10751,
+                10765,
+                18
+            ],
+            "id": 92804,
+            "name": "Alix et les merveilleux",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Alix et les merveilleux",
+            "overview": "",
+            "popularity": 510.5,
+            "poster_path": "/38Wm4JiOtajqDOWdjlfesp5T2jE.jpg",
+            "vote_average": 0,
+            "vote_count": 0
+        },
+        {
+            "backdrop_path": "/5ie8dU1MBhHP5I2t54YqWdttbsb.jpg",
+            "first_air_date": "2021-01-04",
+            "genre_ids": [
+                10766
+            ],
+            "id": 115810,
+            "name": "Amor Amor",
+            "origin_country": [
+                "PT"
+            ],
+            "original_language": "pt",
+            "original_name": "Amor Amor",
+            "overview": "This is the story of a woman who fell in love and was betrayed. Her beloved was successful at the expense of a song that stole from her, while she was forced to fight for survival, far from her homeland.\n\nIt is also the story of a girl forced to mature quickly, to raise her daughter, without knowing that, after all, it was not her daughter she was raising...",
+            "popularity": 678.596,
+            "poster_path": "/wksRAOMoyHDxJWSW6bG4MyECW9G.jpg",
+            "vote_average": 3.2,
+            "vote_count": 23
+        },
+        {
+            "backdrop_path": "/AetbX5P3fVfvQ1DV7BqBOekAsck.jpg",
+            "first_air_date": "2017-10-01",
+            "genre_ids": [
+                10764
+            ],
+            "id": 74342,
+            "name": "Occupation Double",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Occupation Double",
+            "overview": "",
+            "popularity": 496.435,
+            "poster_path": "/qJeZfchQ4lXelbylGGJztxgC5ZC.jpg",
+            "vote_average": 1.5,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": "/pkOSjcllDSs4WP9i8DGkw9VgF5Q.jpg",
+            "first_air_date": "2015-07-06",
+            "genre_ids": [
+                10764,
+                10751
+            ],
+            "id": 63452,
+            "name": "Wer weiß denn sowas?",
+            "origin_country": [
+                "DE"
+            ],
+            "original_language": "de",
+            "original_name": "Wer weiß denn sowas?",
+            "overview": "",
+            "popularity": 672.085,
+            "poster_path": "/abKjah96esLWObidBcWmvKJv61E.jpg",
+            "vote_average": 7.3,
+            "vote_count": 4
+        },
+        {
+            "backdrop_path": null,
+            "first_air_date": "2021-03-29",
+            "genre_ids": [],
+            "id": 119903,
+            "name": "Noovo Le Fil 17",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Noovo Le Fil 17",
+            "overview": "",
+            "popularity": 663.341,
+            "poster_path": "/ppPQS4XAUTguEVKWl4HRye4H7BU.jpg",
+            "vote_average": 1.5,
+            "vote_count": 2
+        },
+        {
+            "backdrop_path": null,
+            "first_air_date": "2021-03-29",
+            "genre_ids": [
+                10763
+            ],
+            "id": 122151,
+            "name": "Noovo Le Fil 22",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Noovo Le Fil 22",
+            "overview": "",
+            "popularity": 644.983,
+            "poster_path": "/x70JHANtSvS8IiTadaDrXY1PQBB.jpg",
+            "vote_average": 1,
+            "vote_count": 1
+        },
+        {
+            "backdrop_path": null,
+            "first_air_date": "2021-03-29",
+            "genre_ids": [
+                10763
+            ],
+            "id": 122152,
+            "name": "Noovo Le Fil Québec",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Noovo Le Fil Québec",
+            "overview": "",
+            "popularity": 644.846,
+            "poster_path": "/kdpM5Iz37EWi6hRMWZvrQRxTpEF.jpg",
+            "vote_average": 10,
+            "vote_count": 1
+        },
+        {
+            "backdrop_path": "/1SLDtGpDbb7kKDmvfaJDojmY195.jpg",
+            "first_air_date": "2015-09-07",
+            "genre_ids": [
+                10764
+            ],
+            "id": 82296,
+            "name": "Silence, on joue!",
+            "origin_country": [
+                "CA"
+            ],
+            "original_language": "fr",
+            "original_name": "Silence, on joue!",
+            "overview": "",
+            "popularity": 473.329,
+            "poster_path": "/j50puaHd6SgNS6nsXxpyXVrcJFS.jpg",
+            "vote_average": 1.3,
+            "vote_count": 3
+        },
+        {
+            "backdrop_path": "/tQLsQV4dQRQglOsP2RQWrUHIVoa.jpg",
+            "first_air_date": "2009-08-24",
+            "genre_ids": [
+                10764
+            ],
+            "id": 30810,
+            "name": "Pointless",
+            "origin_country": [
+                "GB"
+            ],
+            "original_language": "en",
+            "original_name": "Pointless",
+            "overview": "Quiz in which contestants try to score as few points as possible by plumbing the depths of their general knowledge to come up with the answers no-one else can think of.",
+            "popularity": 637.399,
+            "poster_path": "/vhKxgbh4QvnBFU1jRYSBiizWpDg.jpg",
+            "vote_average": 6.9,
+            "vote_count": 18
+        },
+        {
+            "backdrop_path": "/yfXSvNfF43S0cxpxCEKaU17yZ64.jpg",
+            "first_air_date": "1983-09-19",
+            "genre_ids": [
+                10751
+            ],
+            "id": 2778,
+            "name": "Wheel of Fortune",
+            "origin_country": [
+                "US"
+            ],
+            "original_language": "en",
+            "original_name": "Wheel of Fortune",
+            "overview": "This game show sees contestants solve word puzzles, similar to those used in Hangman, to win cash and prizes determined by spinning a giant carnival wheel.",
+            "popularity": 626.426,
+            "poster_path": "/2fvAIyVfFHQdhJ7OsJWuMlF7836.jpg",
+            "vote_average": 7.6,
+            "vote_count": 24
+        }
+    ],
+    "total_pages": 26,
+    "total_results": 508
+}

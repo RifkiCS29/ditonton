@@ -23,8 +23,12 @@ dependencies:
     path: ../watchlist
 
 dev_dependencies:
+  build_runner: ^2.0.4
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.8
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
