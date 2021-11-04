@@ -1,5 +1,5 @@
-import 'package:ditonton/domain/entities/episode.dart';
-import 'package:ditonton/presentation/widgets/episode_card_list.dart';
+import 'package:core/domain/entities/episode.dart';
+import 'package:core/presentation/widgets/episode_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
