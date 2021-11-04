@@ -4,12 +4,12 @@
 
 import 'dart:async' as _i5;
 
-import 'package:dartz/dartz.dart' as _i3;
 import 'package:core/common/failure.dart' as _i6;
 import 'package:core/domain/entities/movie.dart' as _i7;
 import 'package:core/domain/repositories/movie_repository.dart' as _i2;
-import 'package:movie/domain/usecases/get_top_rated_movies.dart' as _i4;
+import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:movie/domain/usecases/get_top_rated_movies.dart' as _i4;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters

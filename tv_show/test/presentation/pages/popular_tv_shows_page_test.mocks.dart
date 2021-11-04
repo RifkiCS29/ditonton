@@ -7,10 +7,10 @@ import 'dart:ui' as _i7;
 
 import 'package:core/common/state_enum.dart' as _i4;
 import 'package:core/domain/entities/tv_show.dart' as _i5;
+import 'package:mockito/mockito.dart' as _i1;
 import 'package:tv_show/domain/usecases/get_popular_tv_shows.dart' as _i2;
 import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart'
     as _i3;
-import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
