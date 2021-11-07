@@ -26,8 +26,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/pages/search_page.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
-import 'package:search/presentation/provider/tv_show_search_notifier.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
 import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';

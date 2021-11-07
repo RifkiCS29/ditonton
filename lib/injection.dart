@@ -31,14 +31,12 @@ import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
 import 'package:movie/presentation/provider/movie_detail_notifier.dart';
 import 'package:movie/presentation/provider/movie_list_notifier.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
 import 'package:movie/presentation/provider/popular_movies_notifier.dart';
 import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
 import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_list_notifier.dart';
-import 'package:search/presentation/provider/tv_show_search_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_season_episodes_notifier.dart';
 import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
@@ -69,11 +67,6 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  // locator.registerFactory(
-  //   () => MovieSearchNotifier(
-  //     searchMovies: locator(),
-  //   ),
-  // );
   locator.registerFactory(
     () => SearchMovieBloc(
       locator(),
@@ -110,11 +103,6 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  // locator.registerFactory(
-  //   () => TvShowSearchNotifier(
-  //     searchTvShows: locator(),
-  //   ),
-  // );
   locator.registerFactory(
     () => SearchTvShowBloc(
       locator(),
