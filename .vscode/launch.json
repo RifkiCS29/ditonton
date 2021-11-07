@@ -1,0 +1,97 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ditonton",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ditonton (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "about",
+            "cwd": "about",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "about (profile mode)",
+            "cwd": "about",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "core",
+            "cwd": "core",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "core (profile mode)",
+            "cwd": "core",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "movie",
+            "cwd": "movie",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "movie (profile mode)",
+            "cwd": "movie",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "search",
+            "cwd": "search",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "search (profile mode)",
+            "cwd": "search",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tv_show",
+            "cwd": "tv_show",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "tv_show (profile mode)",
+            "cwd": "tv_show",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "watchlist",
+            "cwd": "watchlist",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "watchlist (profile mode)",
+            "cwd": "watchlist",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}

@@ -12,14 +12,19 @@ part 'search_state.dart';
 
 class SearchMovieBloc extends Bloc<SearchEvent, SearchState> {
   final SearchMovies _searchMovies;
-  SearchMovieBloc(this._searchMovies) : super(SearchEmpty()) {
+  SearchMovieBloc(this._searchMovies) : super(SearchEmpty('')) {
     on<OnQueryChanged>((event, emit) async {
       final query = event.query;
       emit(SearchLoading());
       final result = await _searchMovies.execute(query);
       result.fold(
         (failure) => emit(SearchError(failure.message)),
-        (moviesData) => emit(SearchHasData<Movie>(moviesData)),
+        (moviesData) { 
+          emit(SearchHasData<Movie>(moviesData));
+          if(moviesData.isEmpty) {
+            emit(SearchEmpty('No Result Found'));
+          }
+        }
       );
     }, transformer: debounce(const Duration(milliseconds: 500)));
   }
@@ -27,14 +32,19 @@ class SearchMovieBloc extends Bloc<SearchEvent, SearchState> {
 
 class SearchTvShowBloc extends Bloc<SearchEvent, SearchState> {
   final SearchTvShows _searchTvShows;
-  SearchTvShowBloc(this._searchTvShows) : super(SearchEmpty()) {
+  SearchTvShowBloc(this._searchTvShows) : super(SearchEmpty('')) {
     on<OnQueryChanged>((event, emit) async {
       final query = event.query;
       emit(SearchLoading());
       final result = await _searchTvShows.execute(query);
       result.fold(
         (failure) => emit(SearchError(failure.message)),
-        (tvShowsData) => emit(SearchHasData<TvShow>(tvShowsData)),
+        (tvShowsData) { 
+          emit(SearchHasData<TvShow>(tvShowsData));
+          if(tvShowsData.isEmpty) {
+            emit(SearchEmpty('No Result Found'));
+          }
+        }
       );
     }, transformer: debounce(const Duration(milliseconds: 500)));
   }

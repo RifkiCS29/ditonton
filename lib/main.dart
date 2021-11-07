@@ -1,5 +1,7 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/presentation/bloc/search_bloc.dart';
 import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
@@ -46,8 +48,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieSearchNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchMovieBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TopRatedMoviesNotifier>(),
@@ -76,8 +78,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistTvShowNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvShowSearchNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<SearchTvShowBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvShowSeasonEpisodesNotifier>(),
