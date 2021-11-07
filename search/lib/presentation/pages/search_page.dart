@@ -1,11 +1,8 @@
 import 'package:core/common/constants.dart';
-import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/bloc/search_bloc.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
-import 'package:search/presentation/provider/tv_show_search_notifier.dart';
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
@@ -30,12 +27,6 @@ class SearchPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
-                // onSubmitted: (query) {
-                //   Provider.of<MovieSearchNotifier>(context, listen: false)
-                //       .fetchMovieSearch(query);
-                //   Provider.of<TvShowSearchNotifier>(context, listen: false)
-                //       .fetchTvShowSearch(query);
-                // },
                 onChanged: (query) {
                   context.read<SearchMovieBloc>().add(OnQueryChanged(query));
                   context.read<SearchTvShowBloc>().add(OnQueryChanged(query));
