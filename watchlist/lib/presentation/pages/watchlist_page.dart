@@ -1,8 +1,9 @@
 import 'package:core/common/constants.dart';
-import 'package:core/common/state_enum.dart';
 import 'package:core/common/utils.dart';
-import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
+import 'package:core/domain/entities/movie.dart';
+import 'package:core/domain/entities/tv_show.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,11 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<WatchlistMovieNotifier>(context, listen: false)
-            .fetchWatchlistMovies());
+        Provider.of<WatchlistMoviesBloc>(context, listen: false)
+            .add(WatchlistEvent()));
     Future.microtask(() =>
-        Provider.of<WatchlistTvShowNotifier>(context, listen: false)
-            .fetchWatchlistTvShows());
+        Provider.of<WatchlistTvShowsBloc>(context, listen: false)
+            .add(WatchlistEvent()));
   }
 
   @override
@@ -37,10 +38,10 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   }
 
   void didPopNext() {
-    Provider.of<WatchlistMovieNotifier>(context, listen: false)
-        .fetchWatchlistMovies();
-    Provider.of<WatchlistTvShowNotifier>(context, listen: false)
-        .fetchWatchlistTvShows();
+    Provider.of<WatchlistMoviesBloc>(context, listen: false)
+      .add(WatchlistEvent());
+    Provider.of<WatchlistTvShowsBloc>(context, listen: false)
+      .add(WatchlistEvent());
   }
 
   @override
@@ -98,33 +99,30 @@ class _WatchlistMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistMovieNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.Loading) {
+        child: BlocBuilder<WatchlistMoviesBloc, WatchlistState>(
+          builder: (context, state) {
+            if (state is WatchlistLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.watchlistState == RequestState.Loaded) {
+            } else if (state is WatchlistHasData<Movie>) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final movie = data.watchlistMovies[index];
+                  final movie = state.WatchlistResult[index];
                   return MovieCard(movie);
                 },
-                itemCount: data.watchlistMovies.length,
+                itemCount: state.WatchlistResult.length,
               );
-            } else if (data.watchlistState == RequestState.Empty) {
+            } else if (state is WatchlistEmpty) {
               return Center(
-                child: Text(data.message, style: kSubtitle),
+                child: Text(state.message, style: kSubtitle),
               );
-            } else if (data.watchlistState == RequestState.Error) {
+            } else if (state is WatchlistError) {
               return Center(
-                child: Text(data.message, style: kSubtitle),
+                child: Text(state.message, style: kSubtitle),
               );
             } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message, style: kSubtitle),
-              );
+              return Container();
             }
           },
         ),
@@ -139,33 +137,30 @@ class _WatchlistTvShows extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvShowNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.Loading) {
+        child: BlocBuilder<WatchlistTvShowsBloc, WatchlistState>(
+          builder: (context, state) {
+            if (state is WatchlistLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.watchlistState == RequestState.Loaded) {
+            } else if (state is WatchlistHasData<TvShow>) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvShow = data.watchlistTvShows[index];
+                  final tvShow = state.WatchlistResult[index];
                   return TvShowCard(tvShow);
                 },
-                itemCount: data.watchlistTvShows.length,
+                itemCount: state.WatchlistResult.length,
               );
-            } else if (data.watchlistState == RequestState.Empty) {
+            } else if (state is WatchlistEmpty) {
               return Center(
-                child: Text(data.message, style: kSubtitle),
+                child: Text(state.message, style: kSubtitle),
               );
-            } else if (data.watchlistState == RequestState.Error) {
+            } else if (state is WatchlistError) {
               return Center(
-                child: Text(data.message, style: kSubtitle),
+                child: Text(state.message, style: kSubtitle),
               );
-            }  else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message, style: kSubtitle),
-              );
+            } else {
+              return Container();
             }
           },
         ),
