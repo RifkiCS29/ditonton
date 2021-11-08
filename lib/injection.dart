@@ -26,6 +26,7 @@ import 'package:watchlist/domain/usecases/remove_watchlist_movie.dart';
 import 'package:watchlist/domain/usecases/remove_watchlist_tv_show.dart';
 import 'package:watchlist/domain/usecases/save_watchlist_movie.dart';
 import 'package:watchlist/domain/usecases/save_watchlist_tv_show.dart';
+import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
@@ -38,8 +39,6 @@ import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_list_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_season_episodes_notifier.dart';
-import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -83,8 +82,8 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => WatchlistMovieNotifier(
-      getWatchlistMovies: locator(),
+    () => WatchlistMoviesBloc(
+      locator(),
     ),
   );
   locator.registerFactory(
@@ -124,8 +123,8 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => WatchlistTvShowNotifier(
-      getWatchlistTvShows: locator(),
+    () => WatchlistTvShowsBloc(
+      locator(),
     ),
   );
   locator.registerFactory(

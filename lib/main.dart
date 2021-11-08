@@ -2,6 +2,7 @@ import 'package:about/about_page.dart';
 import 'package:core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/presentation/bloc/search_bloc.dart';
+import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
 import 'package:core/presentation/pages/home_page.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
@@ -27,8 +28,6 @@ import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/pages/search_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
-import 'package:watchlist/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:watchlist/presentation/provider/watchlist_tv_show_notifier.dart';
 
 void main() {
   di.init();
@@ -55,8 +54,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<PopularMoviesNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistMoviesBloc>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvShowListNotifier>(),
@@ -73,8 +72,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<PopularTvShowsNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvShowNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvShowsBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchTvShowBloc>(),
