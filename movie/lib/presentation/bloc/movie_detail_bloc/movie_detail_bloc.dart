@@ -12,6 +12,9 @@ part 'movie_detail_event.dart';
 part 'movie_detail_state.dart';
 
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
+  static const watchlistAddSuccessMessage = 'Added to Watchlist';
+  static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
+
   final GetMovieDetail getMovieDetail;
   final GetMovieRecommendations getMovieRecommendations;
   final GetWatchListStatusMovie getWatchListStatus;
@@ -38,9 +41,10 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
           emit(MovieDetailError(failure.message));
         },
         (movie) {
+          emit(MovieRecommendationLoading());
           recommendationResult.fold(
             (failure) {
-              emit(MovieDetailError(failure.message));
+              emit(MovieRecommendationError(failure.message));
             },
             (movies) {
               emit(MovieDetailLoaded(movie, movies, _isAddedtoWatchlist));

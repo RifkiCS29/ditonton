@@ -37,6 +37,15 @@ class MovieDetailError extends MovieDetailState {
   List<Object> get props => [message];
 }
 
+class MovieRecommendationError extends MovieDetailState {
+  final String message;
+
+  MovieRecommendationError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
 class MovieAddedToWatchlist extends MovieDetailState {
   final String message;
 
