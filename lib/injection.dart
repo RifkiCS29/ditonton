@@ -6,6 +6,8 @@ import 'package:core/data/datasources/movie_remote_data_source.dart';
 import 'package:core/data/datasources/tv_show_remote_data_source.dart';
 import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
+import 'package:movie/presentation/bloc/popular_movies_bloc/popular_movies_bloc.dart';
+import 'package:movie/presentation/bloc/top_rated_movies_bloc/top_rated_movies_bloc.dart';
 import 'package:search/presentation/bloc/search_bloc.dart';
 import 'package:tv_show/domain/usecases/get_airing_today_tv_shows.dart';
 import 'package:movie/domain/usecases/get_movie_detail.dart';
@@ -32,9 +34,7 @@ import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
 import 'package:movie/presentation/provider/movie_detail_notifier.dart';
 import 'package:movie/presentation/provider/movie_list_notifier.dart';
-import 'package:movie/presentation/provider/popular_movies_notifier.dart';
 import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
-import 'package:movie/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_list_notifier.dart';
@@ -72,13 +72,13 @@ void init() {
     )
   );
   locator.registerFactory(
-    () => PopularMoviesNotifier(
+    () => PopularMoviesBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-    () => TopRatedMoviesNotifier(
-      getTopRatedMovies: locator(),
+    () => TopRatedMoviesBloc(
+      locator(),
     ),
   );
   locator.registerFactory(

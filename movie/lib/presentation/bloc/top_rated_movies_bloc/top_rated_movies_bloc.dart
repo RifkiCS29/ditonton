@@ -14,7 +14,12 @@ class TopRatedMoviesBloc extends Bloc<TopRatedMoviesEvent, TopRatedMoviesState> 
       final result = await getTopRatedMovies.execute();
       result.fold(
         (failure) => emit(TopRatedMoviesError(failure.message)),
-        (moviesData) => emit(TopRatedMoviesLoaded(moviesData)),
+        (moviesData) {
+          emit(TopRatedMoviesLoaded(moviesData));
+          if(moviesData.isEmpty) {
+            emit(TopRatedMoviesEmpty());
+          }
+        },
       );
     });
   }
