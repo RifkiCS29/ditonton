@@ -1,8 +1,9 @@
-import 'package:core/common/state_enum.dart';
-import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
+import 'package:core/core.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tv_show/presentation/bloc/airing_today_tv_shows_bloc/airing_today_tv_shows_bloc.dart';
 
 class AiringTodayTvShowsPage extends StatefulWidget {
   static const routeName = '/airing-today-tvshow';
@@ -16,8 +17,8 @@ class _AiringTodayTvShowsPageState extends State<AiringTodayTvShowsPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<AiringTodayTvShowsNotifier>(context, listen: false)
-            .fetchAiringTodayTvShows());
+        Provider.of<AiringTodayTvShowsBloc>(context, listen: false)
+            .add(AiringTodayTvShowsEvent()));
   }
 
   @override
@@ -28,25 +29,31 @@ class _AiringTodayTvShowsPageState extends State<AiringTodayTvShowsPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<AiringTodayTvShowsNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
+        child: BlocBuilder<AiringTodayTvShowsBloc, AiringTodayTvShowsState>(
+          builder: (context, state) {
+            if (state is AiringTodayTvShowsLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (state is AiringTodayTvShowsLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvShow = data.tvShows[index];
+                  final tvShow = state.tvShows[index];
                   return TvShowCard(tvShow);
                 },
-                itemCount: data.tvShows.length,
+                itemCount: state.tvShows.length,
               );
-            } else {
+            } else if (state is AiringTodayTvShowsEmpty) {
+              return Center(
+                child: Text('Empty AiringToday Tv Show', style: kSubtitle),
+              );
+            } else if (state is AiringTodayTvShowsError) {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),

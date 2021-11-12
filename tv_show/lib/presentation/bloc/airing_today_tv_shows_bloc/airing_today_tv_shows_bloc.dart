@@ -14,7 +14,12 @@ class AiringTodayTvShowsBloc extends Bloc<AiringTodayTvShowsEvent, AiringTodayTv
       final result = await getAiringTodayTvShows.execute();
       result.fold(
         (failure) => emit(AiringTodayTvShowsError(failure.message)),
-        (tvShowsData) => emit(AiringTodayTvShowsLoaded(tvShowsData)),
+        (tvShowsData) {
+          emit(AiringTodayTvShowsLoaded(tvShowsData));
+          if(tvShowsData.isEmpty) {
+            emit(AiringTodayTvShowsEmpty());
+          }
+        } 
       );
     });
   }
