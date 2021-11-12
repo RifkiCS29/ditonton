@@ -35,4 +35,3 @@ class WatchlistHasData<T> extends WatchlistState {
   @override
   List<Object> get props => [WatchlistResult];
 }
-

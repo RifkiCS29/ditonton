@@ -63,3 +63,12 @@ class MovieRemovedFromWatchlist extends MovieDetailState {
   @override
   List<Object> get props => [message];
 }
+
+class MovieWatchlistStatus extends MovieDetailState {
+  final bool result;
+
+  MovieWatchlistStatus(this.result);
+
+  @override
+  List<Object> get props => [result];
+}

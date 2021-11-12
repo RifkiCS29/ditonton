@@ -12,9 +12,6 @@ part 'movie_detail_event.dart';
 part 'movie_detail_state.dart';
 
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
-  static const watchlistAddSuccessMessage = 'Added to Watchlist';
-  static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
-
   final GetMovieDetail getMovieDetail;
   final GetMovieRecommendations getMovieRecommendations;
   final GetWatchListStatusMovie getWatchListStatus;
@@ -23,6 +20,9 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
 
   bool _isAddedtoWatchlist = false;
   bool get isAddedtoWatchList => _isAddedtoWatchlist;
+
+  String _watchlistMessage = '';
+  String get watchlistMessage => _watchlistMessage;
   
   MovieDetailBloc({
     required this.getMovieDetail,
@@ -58,28 +58,30 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       
       await result.fold(
         (failure) async {
-          emit(MovieDetailError(failure.message));
+          _watchlistMessage = failure.message;
         },
         (successMessage) async {
-          final result = await getWatchListStatus.execute(event.movieDetail.id);
-          _isAddedtoWatchlist = result;
-          emit(MovieAddedToWatchlist(successMessage));
+          _watchlistMessage = successMessage;
         }
       );
+
+      add(LoadWatchlistStatus(event.movieDetail.id));
+
     });
     on<RemoveFromWatchlist>((event, emit) async {
       final result = await removeWatchlist.execute(event.movieDetail);
       
       await result.fold(
         (failure) async {
-          emit(MovieDetailError(failure.message));
+          _watchlistMessage = failure.message;
         },
         (successMessage) async {
-          final result = await getWatchListStatus.execute(event.movieDetail.id);
-          _isAddedtoWatchlist = result;
-          emit(MovieRemovedFromWatchlist(successMessage));
+          _watchlistMessage = successMessage;
         }
       );
+      
+      add(LoadWatchlistStatus(event.movieDetail.id));
+      
     });
     on<LoadWatchlistStatus>((event, emit) async {
       final result = await getWatchListStatus.execute(event.id);

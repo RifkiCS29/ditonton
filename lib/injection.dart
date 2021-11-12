@@ -6,6 +6,8 @@ import 'package:core/data/datasources/movie_remote_data_source.dart';
 import 'package:core/data/datasources/tv_show_remote_data_source.dart';
 import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/domain/repositories/movie_repository.dart';
+import 'package:movie/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/movie_list_bloc/movie_list_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movies_bloc/popular_movies_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movies_bloc/top_rated_movies_bloc.dart';
 import 'package:search/presentation/bloc/search_bloc.dart';
@@ -32,8 +34,6 @@ import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
 import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
-import 'package:movie/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie/presentation/provider/movie_list_notifier.dart';
 import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
@@ -51,14 +51,22 @@ final locator = GetIt.instance;
 void init() {
   // provider
   locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
+    () => NowPlayingMovieListBloc(
+      locator(),
+    )
   );
   locator.registerFactory(
-    () => MovieDetailNotifier(
+    () => TopRatedMovieListBloc(
+      locator(),
+    )
+  );
+  locator.registerFactory(
+    () => PopularMovieListBloc(
+      locator(),
+    )
+  );
+  locator.registerFactory(
+    () => MovieDetailBloc(
       getMovieDetail: locator(),
       getMovieRecommendations: locator(),
       getWatchListStatus: locator(),

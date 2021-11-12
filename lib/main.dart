@@ -1,6 +1,8 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/movie_list_bloc/movie_list_bloc.dart';
 import 'package:movie/presentation/bloc/popular_movies_bloc/popular_movies_bloc.dart';
 import 'package:movie/presentation/bloc/top_rated_movies_bloc/top_rated_movies_bloc.dart';
 import 'package:search/presentation/bloc/search_bloc.dart';
@@ -15,8 +17,6 @@ import 'package:tv_show/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:tv_show/presentation/pages/tv_show_detail_page.dart';
 import 'package:tv_show/presentation/pages/tv_show_season_episodes_page.dart';
 import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
-import 'package:movie/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie/presentation/provider/movie_list_notifier.dart';
 import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
 import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
@@ -39,11 +39,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingMovieListBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedMovieListBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<PopularMovieListBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchMovieBloc>(),
