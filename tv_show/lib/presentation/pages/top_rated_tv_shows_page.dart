@@ -1,8 +1,9 @@
-import 'package:core/common/state_enum.dart';
-import 'package:tv_show/presentation/provider/top_rated_tv_shows_notifier.dart';
+import 'package:core/core.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tv_show/presentation/bloc/top_rated_tv_shows_bloc/top_rated_tv_shows_bloc.dart';
 
 class TopRatedTvShowsPage extends StatefulWidget {
   static const routeName = '/top-rated-tvshow';
@@ -16,8 +17,8 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<TopRatedTvShowsNotifier>(context, listen: false)
-            .fetchTopRatedTvShows());
+        Provider.of<TopRatedTvShowsBloc>(context, listen: false)
+            .add(TopRatedTvShowsEvent()));
   }
 
   @override
@@ -28,25 +29,31 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TopRatedTvShowsNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
+        child: BlocBuilder<TopRatedTvShowsBloc, TopRatedTvShowsState>(
+          builder: (context, state) {
+            if (state is TopRatedTvShowsEmpty) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (state is TopRatedTvShowsLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvShow = data.tvShows[index];
+                  final tvShow = state.tvShows[index];
                   return TvShowCard(tvShow);
                 },
-                itemCount: data.tvShows.length,
+                itemCount: state.tvShows.length,
               );
-            } else {
+            } else if (state is TopRatedTvShowsEmpty) {
+              return Center(
+                child: Text('Empty Top Rated TvShow', style: kSubtitle),
+              );
+            } else if (state is TopRatedTvShowsError) {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(state.message, style: kSubtitle),
               );
+            } else {
+              return Container();
             }
           },
         ),

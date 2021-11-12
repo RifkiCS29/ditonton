@@ -14,7 +14,12 @@ class TopRatedTvShowsBloc extends Bloc<TopRatedTvShowsEvent, TopRatedTvShowsStat
       final result = await getTopRatedTvShows.execute();
       result.fold(
         (failure) => emit(TopRatedTvShowsError(failure.message)),
-        (tvShowsData) => emit(TopRatedTvShowsLoaded(tvShowsData)),
+        (tvShowsData) {
+          emit(TopRatedTvShowsLoaded(tvShowsData));
+          if(tvShowsData.isEmpty) {
+            emit(TopRatedTvShowsEmpty());
+          }
+        } ,
       );
     });
   }
