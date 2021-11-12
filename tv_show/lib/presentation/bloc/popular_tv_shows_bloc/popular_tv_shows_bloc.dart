@@ -14,7 +14,12 @@ class PopularTvShowsBloc extends Bloc<PopularTvShowsEvent, PopularTvShowsState> 
       final result = await getPopularTvShows.execute();
       result.fold(
         (failure) => emit(PopularTvShowsError(failure.message)),
-        (tvShowsData) => emit(PopularTvShowsLoaded(tvShowsData)),
+        (tvShowsData) {
+          emit(PopularTvShowsLoaded(tvShowsData));
+          if(tvShowsData.isEmpty) {
+            emit(PopularTvShowsEmpty());
+          }
+        },
       );
     });
   }

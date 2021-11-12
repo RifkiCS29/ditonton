@@ -1,8 +1,9 @@
-import 'package:core/common/state_enum.dart';
-import 'package:tv_show/presentation/provider/popular_tv_shows_notifier.dart';
+import 'package:core/core.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tv_show/presentation/bloc/popular_tv_shows_bloc/popular_tv_shows_bloc.dart';
 
 class PopularTvShowsPage extends StatefulWidget {
   static const routeName = '/popular-tvshow';
@@ -16,8 +17,8 @@ class _PopularTvShowsPageState extends State<PopularTvShowsPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<PopularTvShowsNotifier>(context, listen: false)
-            .fetchPopularTvShows());
+        Provider.of<PopularTvShowsBloc>(context, listen: false)
+            .add(PopularTvShowsEvent()));
   }
 
   @override
@@ -28,25 +29,31 @@ class _PopularTvShowsPageState extends State<PopularTvShowsPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<PopularTvShowsNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
+        child: BlocBuilder<PopularTvShowsBloc, PopularTvShowsState>(
+          builder: (context, state) {
+            if (state is PopularTvShowsLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (state is PopularTvShowsLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final tvShow = data.tvShows[index];
+                  final tvShow = state.tvShows[index];
                   return TvShowCard(tvShow);
                 },
-                itemCount: data.tvShows.length,
+                itemCount: state.tvShows.length,
               );
-            } else {
+            } else if (state is PopularTvShowsEmpty) {
+              return Center(
+                child: Text('Empty Popular Tv Show', style: kSubtitle),
+              );
+            } else if (state is PopularTvShowsError) {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),
