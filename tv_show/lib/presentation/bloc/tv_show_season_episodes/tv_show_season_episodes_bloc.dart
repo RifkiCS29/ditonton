@@ -10,12 +10,17 @@ class TvShowSeasonEpisodesBloc
   extends Bloc<TvShowSeasonEpisodesEvent, TvShowSeasonEpisodesState> {
   final GetTvShowSeasonEpisodes getTvShowSeasonEpisodes;
   TvShowSeasonEpisodesBloc(this.getTvShowSeasonEpisodes) : super(TvShowSeasonEpisodesEmpty()) {
-    on<TvShowSeasonEpisodesEvent>((event, emit) async{
+    on<FetchTvShowSeasonEpisodesEvent>((event, emit) async{
       emit(TvShowSeasonEpisodesLoading());
       final result = await getTvShowSeasonEpisodes.execute(event.id, event.seasonNumber);
       result.fold(
         (failure) => emit(TvShowSeasonEpisodesError(failure.message)),
-        (episodesData) => emit(TvShowSeasonEpisodesLoaded(episodesData)),
+        (episodesData) {
+          emit(TvShowSeasonEpisodesLoaded(episodesData));
+          if(episodesData.isEmpty) {
+            emit(TvShowSeasonEpisodesEmpty());
+          }
+        }
       );
     });
   }

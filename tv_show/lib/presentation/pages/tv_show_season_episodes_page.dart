@@ -1,5 +1,6 @@
-import 'package:core/common/state_enum.dart';
-import 'package:tv_show/presentation/provider/tv_show_season_episodes_notifier.dart';
+import 'package:core/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv_show/presentation/bloc/tv_show_season_episodes/tv_show_season_episodes_bloc.dart';
 import 'package:core/presentation/widgets/episode_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +27,8 @@ class _TvShowSeasonEpisodesPageState extends State<TvShowSeasonEpisodesPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        Provider.of<TvShowSeasonEpisodesNotifier>(context, listen: false)
-            .fetchTvShowSeasonEpisodes(widget.id, widget.seasonNumber));
+        Provider.of<TvShowSeasonEpisodesBloc>(context, listen: false)
+            .add(FetchTvShowSeasonEpisodesEvent(widget.id, widget.seasonNumber)));
   }
   @override
   Widget build(BuildContext context) {
@@ -37,25 +38,31 @@ class _TvShowSeasonEpisodesPageState extends State<TvShowSeasonEpisodesPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<TvShowSeasonEpisodesNotifier>(
-          builder: (context, data, child) {
-            if (data.state == RequestState.Loading) {
+        child: BlocBuilder<TvShowSeasonEpisodesBloc, TvShowSeasonEpisodesState>(
+          builder: (context, state) {
+            if (state is TvShowSeasonEpisodesLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.state == RequestState.Loaded) {
+            } else if (state is TvShowSeasonEpisodesLoaded) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  final episode = data.episode[index];
+                  final episode = state.episodes[index];
                   return EpisodeCard(episode);
                 },
-                itemCount: data.episode.length,
+                itemCount: state.episodes.length,
               );
-            } else {
+            } else if (state is TvShowSeasonEpisodesEmpty) {
+              return Center(
+                child: Text('Empty Episode', style: kSubtitle),
+              );
+            } else if (state is TvShowSeasonEpisodesError) {
               return Center(
                 key: Key('error_message'),
-                child: Text(data.message),
+                child: Text(state.message),
               );
+            } else {
+              return Container();
             }
           },
         ),
