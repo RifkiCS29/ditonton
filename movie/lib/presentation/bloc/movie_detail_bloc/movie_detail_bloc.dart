@@ -59,14 +59,14 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       await result.fold(
         (failure) async {
           _watchlistMessage = failure.message;
+          emit(FailedAddOrRemoveMovieToWatchlist(failure.message));
         },
         (successMessage) async {
+          _isAddedtoWatchlist = true;
           _watchlistMessage = successMessage;
+          emit(SuccessAddOrRemoveMovieToWatchlist(successMessage));
         }
       );
-
-      add(LoadWatchlistStatus(event.movieDetail.id));
-
     });
     on<RemoveFromWatchlist>((event, emit) async {
       final result = await removeWatchlist.execute(event.movieDetail);
@@ -74,14 +74,14 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       await result.fold(
         (failure) async {
           _watchlistMessage = failure.message;
+          emit(FailedAddOrRemoveMovieToWatchlist(failure.message));
         },
         (successMessage) async {
+          _isAddedtoWatchlist = false;
           _watchlistMessage = successMessage;
+          emit(SuccessAddOrRemoveMovieToWatchlist(successMessage));
         }
       );
-      
-      add(LoadWatchlistStatus(event.movieDetail.id));
-      
     });
     on<LoadWatchlistStatus>((event, emit) async {
       final result = await getWatchListStatus.execute(event.id);

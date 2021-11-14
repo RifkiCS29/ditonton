@@ -46,19 +46,19 @@ class MovieRecommendationError extends MovieDetailState {
   List<Object> get props => [message];
 }
 
-class MovieAddedToWatchlist extends MovieDetailState {
+class SuccessAddOrRemoveMovieToWatchlist extends MovieDetailState {
   final String message;
 
-  MovieAddedToWatchlist(this.message);
+  SuccessAddOrRemoveMovieToWatchlist(this.message);
 
   @override
   List<Object> get props => [message];
 }
 
-class MovieRemovedFromWatchlist extends MovieDetailState {
+class FailedAddOrRemoveMovieToWatchlist extends MovieDetailState {
   final String message;
 
-  MovieRemovedFromWatchlist(this.message);
+  FailedAddOrRemoveMovieToWatchlist(this.message);
 
   @override
   List<Object> get props => [message];
