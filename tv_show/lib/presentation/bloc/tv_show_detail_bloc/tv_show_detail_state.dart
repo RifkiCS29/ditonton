@@ -1,66 +1,54 @@
 part of 'tv_show_detail_bloc.dart';
 
-abstract class TvShowDetailState extends Equatable {
-  const TvShowDetailState();
-  
-  @override
-  List<Object> get props => [];
-}
-
-class TvShowDetailEmpty extends TvShowDetailState {}
-
-class TvShowDetailLoading extends TvShowDetailState {}
-
-class TvShowRecommendationLoading extends TvShowDetailState {}
-
-class TvShowDetailLoaded extends TvShowDetailState {
-  final TvShowDetail tvShowDetail;
+class TvShowDetailState {
+  final TvShowDetail? tvShowDetail;
   final List<TvShow> tvShowRecommendations;
+  final RequestState tvShowDetailState;
+  final RequestState tvShowRecommendationState;
+  final String message;
+  final String watchlistMessage;
   final bool isAddedToWatchlist;
 
-  TvShowDetailLoaded(
-    this.tvShowDetail,
-    this.tvShowRecommendations,
-    this.isAddedToWatchlist,
-  );
+  TvShowDetailState({
+    required this.tvShowDetail,
+    required this.tvShowRecommendations,
+    required this.tvShowDetailState,
+    required this.tvShowRecommendationState,
+    required this.message,
+    required this.watchlistMessage,
+    required this.isAddedToWatchlist,
+  });
 
-  @override
-  List<Object> get props => [tvShowDetail, tvShowRecommendations, isAddedToWatchlist];
-}
+  TvShowDetailState copyWith({
+    TvShowDetail? tvShowDetail,
+    List<TvShow>? tvShowRecommendations,
+    RequestState? tvShowDetailState,
+    RequestState? tvShowRecommendationState,
+    String? message,
+    String? watchlistMessage,
+    bool? isAddedToWatchlist,
+  }) {
+    return TvShowDetailState(
+      tvShowDetail: tvShowDetail ?? this.tvShowDetail,
+      tvShowRecommendations: tvShowRecommendations ?? this.tvShowRecommendations,
+      tvShowDetailState: tvShowDetailState ?? this.tvShowDetailState,
+      tvShowRecommendationState: tvShowRecommendationState ?? this.tvShowRecommendationState,
+      message: message ?? this.message,
+      watchlistMessage: watchlistMessage ?? this.watchlistMessage,
+      isAddedToWatchlist: isAddedToWatchlist ?? this.isAddedToWatchlist,
+    );
+  }
 
-class TvShowDetailError extends TvShowDetailState {
-  final String message;
-
-  TvShowDetailError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
-
-class TvShowRecommendationError extends TvShowDetailState {
-  final String message;
-
-  TvShowRecommendationError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
-
-class TvShowAddedToWatchlist extends TvShowDetailState {
-  final String message;
-
-  TvShowAddedToWatchlist(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
-
-class TvShowRemovedFromWatchlist extends TvShowDetailState {
-  final String message;
-
-  TvShowRemovedFromWatchlist(this.message);
-
-  @override
-  List<Object> get props => [message];
+  factory TvShowDetailState.initial() {
+    return TvShowDetailState(
+      tvShowDetail: null,
+      tvShowRecommendations: [],
+      tvShowDetailState: RequestState.Empty,
+      tvShowRecommendationState: RequestState.Empty,
+      message: '',
+      watchlistMessage: '',
+      isAddedToWatchlist: false,
+    );
+  }
 }
 
