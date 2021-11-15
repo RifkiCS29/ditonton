@@ -18,6 +18,9 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final GetWatchListStatusMovie getWatchListStatus;
   final SaveWatchlistMovie saveWatchlist;
   final RemoveWatchlistMovie removeWatchlist;
+
+  static const watchlistAddSuccessMessage = 'Added to Watchlist';
+  static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
   
   MovieDetailBloc({
     required this.getMovieDetail,
@@ -99,7 +102,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       );
 
       add(LoadWatchlistStatus(event.movieDetail.id));
-      
+
     });
     on<LoadWatchlistStatus>((event, emit) async {
       final result = await getWatchListStatus.execute(event.id);
