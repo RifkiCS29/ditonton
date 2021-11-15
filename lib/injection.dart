@@ -25,6 +25,7 @@ import 'package:tv_show/domain/usecases/get_tv_show_season_episodes.dart';
 import 'package:tv_show/presentation/bloc/airing_today_tv_shows_bloc/airing_today_tv_shows_bloc.dart';
 import 'package:tv_show/presentation/bloc/popular_tv_shows_bloc/popular_tv_shows_bloc.dart';
 import 'package:tv_show/presentation/bloc/top_rated_tv_shows_bloc/top_rated_tv_shows_bloc.dart';
+import 'package:tv_show/presentation/bloc/tv_show_detail_bloc/tv_show_detail_bloc.dart';
 import 'package:tv_show/presentation/bloc/tv_show_list_bloc/tv_show_list_bloc.dart';
 import 'package:tv_show/presentation/bloc/tv_show_season_episodes/tv_show_season_episodes_bloc.dart';
 import 'package:watchlist/domain/usecases/get_watchlist_movies.dart';
@@ -38,7 +39,6 @@ import 'package:watchlist/domain/usecases/save_watchlist_tv_show.dart';
 import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
-import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -110,7 +110,7 @@ void init() {
     )
   );
   locator.registerFactory(
-    () => TvShowDetailNotifier(
+    () => TvShowDetailBloc(
       getTvShowDetail: locator(),
       getTvShowRecommendations: locator(),
       getWatchListStatus: locator(),

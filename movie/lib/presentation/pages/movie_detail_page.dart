@@ -143,12 +143,14 @@ class DetailContent extends StatelessWidget {
                                   key: Key('watchlistButtonMovie'),
                                   onPressed: () {
                                     if (!isAddedWatchlist) {
-                                      Provider.of<MovieDetailBloc>(context,
-                                              listen: false)
+                                      Provider.of<MovieDetailBloc>(
+                                            context,
+                                            listen: false)
                                           .add(AddToWatchlist(movie));
                                     } else {
-                                      Provider.of<MovieDetailBloc>(context,
-                                              listen: false)
+                                      Provider.of<MovieDetailBloc>(
+                                            context,
+                                            listen: false)
                                           .add(RemoveFromWatchlist(movie));
                                     }
                                   },

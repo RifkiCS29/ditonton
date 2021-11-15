@@ -4,8 +4,9 @@ import 'package:core/domain/entities/genre.dart';
 import 'package:core/common/state_enum.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/domain/entities/tv_show_detail.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv_show/presentation/bloc/tv_show_detail_bloc/tv_show_detail_bloc.dart';
 import 'package:tv_show/presentation/pages/tv_show_season_episodes_page.dart';
-import 'package:tv_show/presentation/provider/tv_show_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -26,36 +27,59 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<TvShowDetailNotifier>(context, listen: false)
-          .fetchTvShowDetail(widget.id);
-      Provider.of<TvShowDetailNotifier>(context, listen: false)
-          .loadWatchlistStatus(widget.id);
+      Provider.of<TvShowDetailBloc>(context, listen: false)
+          .add(FetchTvShowDetail(widget.id));
+      Provider.of<TvShowDetailBloc>(context, listen: false)
+          .add(LoadWatchlistStatus(widget.id));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvShowDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.tvShowState == RequestState.Loading) {
+      body: BlocConsumer<TvShowDetailBloc, TvShowDetailState>(
+        listener: (context, state) async {
+          if (state.watchlistMessage ==
+                  TvShowDetailBloc.watchlistAddSuccessMessage ||
+              state.watchlistMessage ==
+                  TvShowDetailBloc.watchlistRemoveSuccessMessage) {
+              ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(
+                  content: Text(state.watchlistMessage),
+                ));
+          } else {
+            await showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  content: Text(state.watchlistMessage),
+                );
+              }
+            );
+          }
+        },
+        listenWhen: (previousState, currentState) =>
+            previousState.watchlistMessage != currentState.watchlistMessage &&
+            currentState.watchlistMessage != '',
+        builder: (context, state) {
+          if (state.tvShowDetailState == RequestState.Loading) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.tvShowState == RequestState.Loaded) {
-            final tvShow = provider.tvShow;
-            return SafeArea(
-              child: DetailContent(
-                tvShow,
-                provider.tvShowRecommendations,
-                provider.isAddedToWatchlist,
-              ),
-            );
+          } else if (state.tvShowDetailState == RequestState.Loaded) {
+              final tvShow = state.tvShowDetail!;
+              return SafeArea(
+                child: DetailContent(
+                  tvShow,
+                  state.tvShowRecommendations,
+                  state.isAddedToWatchlist,
+                ),
+              );
+          } else if (state.tvShowDetailState == RequestState.Error) {
+              return Center(child: Text(state.message, style: kSubtitle));
           } else {
-            return Center(
-              child: Text(provider.message, style: kSubtitle)
-            );
-          }
+              return Container();
+          } 
         },
       ),
     );
@@ -110,44 +134,21 @@ class DetailContent extends StatelessWidget {
                               style: kHeading5,
                             ),
                             Row(
-                              mainAxisAlignment : MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
                                   key: Key('watchlistButtonTvShow'),
-                                  onPressed: () async {
+                                  onPressed: () {
                                     if (!isAddedWatchlist) {
-                                      await Provider.of<TvShowDetailNotifier>(
+                                      Provider.of<TvShowDetailBloc>(
+                                            context,
+                                            listen: false)
+                                          .add(AddToWatchlist(tvShow));
+                                    } else {
+                                      Provider.of<TvShowDetailBloc>(
                                               context,
                                               listen: false)
-                                          .addWatchlist(tvShow);
-                                    } else {
-                                      await Provider.of<TvShowDetailNotifier>(
-                                              context,
-                                              listen: false)
-                                          .removeFromWatchlist(tvShow);
-                                    }
-
-                                    final message =
-                                        Provider.of<TvShowDetailNotifier>(context,
-                                                listen: false)
-                                            .watchlistMessage;
-
-                                    if (message ==
-                                            TvShowDetailNotifier
-                                                .watchlistAddSuccessMessage ||
-                                        message ==
-                                            TvShowDetailNotifier
-                                                .watchlistRemoveSuccessMessage) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(content: Text(message)));
-                                    } else {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return AlertDialog(
-                                              content: Text(message),
-                                            );
-                                          });
+                                          .add(RemoveFromWatchlist(tvShow));
                                     }
                                   },
                                   child: Row(
@@ -197,66 +198,84 @@ class DetailContent extends StatelessWidget {
                             Container(
                               height: 185,
                               child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: tvShow.seasons.length,
-                                itemBuilder: (context, index) {
-                                  final season = tvShow.seasons[index];
-                                  return Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                          context, 
-                                          TvShowSeasonEpisodesPage.routeName,
-                                          arguments: <String, dynamic> {
-                                            "id": tvShow.id,
-                                            "seasonNumber": season.seasonNumber
-                                          }
-                                        );
-                                      },
-                                      child: 
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: tvShow.seasons.length,
+                                  itemBuilder: (context, index) {
+                                    final season = tvShow.seasons[index];
+                                    return Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context,
+                                              TvShowSeasonEpisodesPage
+                                                  .routeName,
+                                              arguments: <String, dynamic>{
+                                                "id": tvShow.id,
+                                                "seasonNumber":
+                                                    season.seasonNumber
+                                              });
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Container(
                                               height: 135,
                                               width: 96,
                                               child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(10),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
                                                 child: ShaderMask(
                                                   shaderCallback: (rect) {
                                                     return LinearGradient(
                                                       colors: [
                                                         Colors.transparent,
-                                                        Colors.black.withOpacity(0.4),
+                                                        Colors.black
+                                                            .withOpacity(0.4),
                                                       ],
-                                                      begin: Alignment.topCenter,
-                                                      end: Alignment.bottomCenter,
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
                                                     ).createShader(
-                                                      Rect.fromLTRB(0, 0, rect.width, rect.bottom),
+                                                      Rect.fromLTRB(
+                                                          0,
+                                                          0,
+                                                          rect.width,
+                                                          rect.bottom),
                                                     );
                                                   },
                                                   blendMode: BlendMode.darken,
                                                   child: Container(
                                                     child: CachedNetworkImage(
-                                                      imageUrl:
-                                                        season.posterPath == null
-                                                        ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
-                                                        : 'https://image.tmdb.org/t/p/w500${season.posterPath}',
-                                                      placeholder: (context, url) =>
-                                                        Center(
-                                                          child:
+                                                      imageUrl: season
+                                                                  .posterPath ==
+                                                              null
+                                                          ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
+                                                          : 'https://image.tmdb.org/t/p/w500${season.posterPath}',
+                                                      placeholder:
+                                                          (context, url) =>
+                                                              Center(
+                                                        child:
                                                             CircularProgressIndicator(),
-                                                        ),
-                                                      errorWidget:
-                                                        (context, url, error) =>
-                                                            Icon(Icons.error),
-                                                      imageBuilder: (context, imageProvider) {
+                                                      ),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          Icon(Icons.error),
+                                                      imageBuilder: (context,
+                                                          imageProvider) {
                                                         return Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            image: DecorationImage(
-                                                              image: imageProvider,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            image:
+                                                                DecorationImage(
+                                                              image:
+                                                                  imageProvider,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
@@ -267,32 +286,30 @@ class DetailContent extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            Text('Season ${season.seasonNumber}'),
-                                            Text('${season.episodeCount} Episodes')
+                                            Text(
+                                                'Season ${season.seasonNumber}'),
+                                            Text(
+                                                '${season.episodeCount} Episodes')
                                           ],
                                         ),
-                                    ),
-                                  );
-                                }
-                              ),
+                                      ),
+                                    );
+                                  }),
                             ),
                             SizedBox(height: 16),
                             Text(
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            Consumer<TvShowDetailNotifier>(
-                              builder: (context, data, child) {
-                                if (data.recommendationState ==
-                                    RequestState.Loading) {
+                            BlocBuilder<TvShowDetailBloc, TvShowDetailState>(
+                              builder: (context, state) {
+                                if (state.tvShowRecommendationState == RequestState.Loading) {
                                   return Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (data.recommendationState ==
-                                    RequestState.Error) {
-                                  return Text(data.message);
-                                } else if (data.recommendationState ==
-                                    RequestState.Loaded) {
+                                } else if (state.tvShowRecommendationState == RequestState.Error) {
+                                  return Text(state.message);
+                                } else if (state.tvShowRecommendationState == RequestState.Loaded) {
                                   return Container(
                                     height: 150,
                                     child: ListView.builder(
