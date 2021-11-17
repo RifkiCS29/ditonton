@@ -31,7 +31,7 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedTvShowsBloc, TopRatedTvShowsState>(
           builder: (context, state) {
-            if (state is TopRatedTvShowsEmpty) {
+            if (state is TopRatedTvShowsLoading) {
               return Center(
                 child: CircularProgressIndicator(),
               );
@@ -45,7 +45,7 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
               );
             } else if (state is TopRatedTvShowsEmpty) {
               return Center(
-                child: Text('Empty Top Rated TvShow', style: kSubtitle),
+                child: Text('Empty Top Rated Tv Show', style: kSubtitle),
               );
             } else if (state is TopRatedTvShowsError) {
               return Center(
