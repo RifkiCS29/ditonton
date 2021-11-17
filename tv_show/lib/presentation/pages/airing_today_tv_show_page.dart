@@ -45,7 +45,7 @@ class _AiringTodayTvShowsPageState extends State<AiringTodayTvShowsPage> {
               );
             } else if (state is AiringTodayTvShowsEmpty) {
               return Center(
-                child: Text('Empty AiringToday Tv Show', style: kSubtitle),
+                child: Text('Empty Airing Today Tv Show', style: kSubtitle),
               );
             } else if (state is AiringTodayTvShowsError) {
               return Center(

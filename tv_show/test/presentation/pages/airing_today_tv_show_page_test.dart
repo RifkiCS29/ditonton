@@ -1,26 +1,38 @@
-import 'package:core/common/state_enum.dart';
-import 'package:core/domain/entities/tv_show.dart';
-import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
-import 'package:tv_show/presentation/provider/airing_today_tv_shows_notifier.dart';
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
+import 'package:tv_show/presentation/bloc/airing_today_tv_shows_bloc/airing_today_tv_shows_bloc.dart';
+import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
 
-import 'airing_today_tv_show_page_test.mocks.dart';
+import '../../dummy_data/dummy_objects.dart';
 
-@GenerateMocks([AiringTodayTvShowsNotifier])
+class AiringTodayTvShowsEventFake extends Fake 
+  implements AiringTodayTvShowsEvent {}
+
+class AiringTodayTvShowsStateFake extends Fake 
+  implements AiringTodayTvShowsState {}
+
+class MockAiringTodayTvShowsBloc 
+  extends MockBloc<AiringTodayTvShowsEvent, AiringTodayTvShowsState> 
+  implements AiringTodayTvShowsBloc {}
+
 void main() {
-  late MockAiringTodayTvShowsNotifier mockNotifier;
+  late MockAiringTodayTvShowsBloc mockAiringTodayTvShowsBloc;
+
+  setUpAll(() {
+    registerFallbackValue(AiringTodayTvShowsEventFake());
+    registerFallbackValue(AiringTodayTvShowsStateFake());
+  });
 
   setUp(() {
-    mockNotifier = MockAiringTodayTvShowsNotifier();
+    mockAiringTodayTvShowsBloc = MockAiringTodayTvShowsBloc();
   });
 
   Widget _makeTestableWidget(Widget body) {
-    return ChangeNotifierProvider<AiringTodayTvShowsNotifier>.value(
-      value: mockNotifier,
+    return BlocProvider<AiringTodayTvShowsBloc>.value(
+      value: mockAiringTodayTvShowsBloc,
       child: MaterialApp(
         home: body,
       ),
@@ -29,7 +41,7 @@ void main() {
 
   testWidgets('Page should display center progress bar when loading',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Loading);
+    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(AiringTodayTvShowsLoading());
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
@@ -42,8 +54,7 @@ void main() {
 
   testWidgets('Page should display ListView when data is loaded',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Loaded);
-    when(mockNotifier.tvShows).thenReturn(<TvShow>[]);
+    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(AiringTodayTvShowsLoaded([testTvShow]));
 
     final listViewFinder = find.byType(ListView);
 
@@ -52,10 +63,20 @@ void main() {
     expect(listViewFinder, findsOneWidget);
   });
 
+  testWidgets('Page should display text with message when Empty',
+      (WidgetTester tester) async {
+    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(AiringTodayTvShowsEmpty());
+
+    final textFinder = find.text('Empty Airing Today Tv Show');
+
+    await tester.pumpWidget(_makeTestableWidget(AiringTodayTvShowsPage()));
+
+    expect(textFinder, findsOneWidget);
+  });
+
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(mockNotifier.state).thenReturn(RequestState.Error);
-    when(mockNotifier.message).thenReturn('Error message');
+    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(AiringTodayTvShowsError('Failed'));
 
     final textFinder = find.byKey(Key('error_message'));
 
