@@ -1,6 +1,6 @@
 part of 'tv_show_detail_bloc.dart';
 
-class TvShowDetailState {
+class TvShowDetailState extends Equatable {
   final TvShowDetail? tvShowDetail;
   final List<TvShow> tvShowRecommendations;
   final RequestState tvShowDetailState;
@@ -50,5 +50,16 @@ class TvShowDetailState {
       isAddedToWatchlist: false,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    tvShowDetail,
+    tvShowRecommendations,
+    tvShowDetailState,
+    tvShowRecommendationState,
+    message,
+    watchlistMessage,
+    isAddedToWatchlist,
+  ];
 }
 
