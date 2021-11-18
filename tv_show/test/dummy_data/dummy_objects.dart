@@ -1,5 +1,6 @@
 import 'package:core/data/models/movie_table.dart';
 import 'package:core/data/models/tv_show_table.dart';
+import 'package:core/domain/entities/episode.dart';
 import 'package:core/domain/entities/genre.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/movie_detail.dart';
@@ -37,6 +38,19 @@ final testTvShow = TvShow(
   voteAverage: 5.0,
   voteCount: 1,
 );
+
+final testEpisode = Episode(
+    airDate: 'airDate',
+    episodeNumber: 1,
+    id: 1,
+    name: 'name',
+    overview: 'overview',
+    productionCode: 'productionCode',
+    seasonNumber: 1,
+    stillPath: 'stillPath',
+    voteAverage: 1.0,
+    voteCount: 1,
+  );
 
 final testMovieList = [testMovie];
 final testTvShowList = [testTvShow];
