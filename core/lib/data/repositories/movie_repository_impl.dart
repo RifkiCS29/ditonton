@@ -32,6 +32,8 @@ class MovieRepositoryImpl implements MovieRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException catch (e) {
+        return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
     } else {
       try {
@@ -52,6 +54,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
   }
 
@@ -64,6 +68,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
   }
 
@@ -77,6 +83,8 @@ class MovieRepositoryImpl implements MovieRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException catch (e) {
+        return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
     } else {
       try {
@@ -98,6 +106,8 @@ class MovieRepositoryImpl implements MovieRepository {
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
+      } on TlsException catch (e) {
+        return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
     } else {
       try {
@@ -118,6 +128,8 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
   }
 

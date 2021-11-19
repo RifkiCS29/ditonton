@@ -6,3 +6,4 @@ export 'common/failure.dart';
 export 'common/network_info.dart';
 export 'common/state_enum.dart';
 export 'common/utils.dart';
+export 'common/http_ssl_pinning.dart';

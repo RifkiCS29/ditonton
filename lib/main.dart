@@ -29,7 +29,10 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/pages/search_page.dart';
 import 'package:watchlist/presentation/pages/watchlist_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HttpSSLPinning.init();
+  // await Firebase.initializeApp();
   di.init();
   runApp(MyApp());
 }

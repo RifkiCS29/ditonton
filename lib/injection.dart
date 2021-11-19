@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:core/common/network_info.dart';
 import 'package:core/data/datasources/db/database_helper.dart';
@@ -39,7 +40,6 @@ import 'package:watchlist/domain/usecases/save_watchlist_tv_show.dart';
 import 'package:watchlist/presentation/bloc/watchlist_bloc.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
 import 'package:core/data/datasources/tv_show_local_data_source.dart';
@@ -208,6 +208,6 @@ void init() {
   locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => HttpSSLPinning.client);
   locator.registerLazySingleton(() => DataConnectionChecker());
 }
