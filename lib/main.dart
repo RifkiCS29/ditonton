@@ -1,5 +1,6 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/movie_list_bloc/movie_list_bloc.dart';
@@ -32,7 +33,7 @@ import 'package:watchlist/presentation/pages/watchlist_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HttpSSLPinning.init();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   di.init();
   runApp(MyApp());
 }
