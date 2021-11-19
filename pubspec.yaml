@@ -51,6 +51,7 @@ dependencies:
   search:
     path: search
   sqflite_sqlcipher: ^2.1.0
+  test_cov_console: ^0.1.5
   tv_show:
     path: tv_show
   watchlist:

@@ -156,7 +156,7 @@ void main() {
     expect(find.text('Added to Watchlist'), findsOneWidget);
   });
 
-    testWidgets(
+  testWidgets(
       'Watchlist button should display Snackbar when removed from watchlist',
       (WidgetTester tester) async {
     whenListen(
