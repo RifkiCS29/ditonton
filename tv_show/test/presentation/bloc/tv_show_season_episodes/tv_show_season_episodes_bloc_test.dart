@@ -93,5 +93,22 @@ void main() {
         verify(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber));
       },
     );
+
+    blocTest<TvShowSeasonEpisodesBloc, TvShowSeasonEpisodesState> (
+      'Should emit [TvShowSeasonEpisodesLoading, TvShowSeasonEpisodesError] when get Failure TlsException',
+      build: () {
+        when(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber))
+            .thenAnswer((_) async => Left(CommonFailure('Certificated Not Valid:\n')));
+        return tvShowSeasonEpisodesBloc;
+      },
+      act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
+      expect: () => [
+        TvShowSeasonEpisodesLoading(),
+        TvShowSeasonEpisodesError('Certificated Not Valid:\n'),
+      ],
+      verify: (_) {
+        verify(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber));
+      },
+    );
   });
 }

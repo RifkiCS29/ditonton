@@ -123,6 +123,19 @@ void main() {
         verify(mockRemoteDataSource.getAiringTodayTvShows());
         expect(result, equals(Left(ServerFailure(''))));
       });
+
+      test(
+          'should return Certification Failure when the call to remote data source is unsuccessful',
+          () async {
+        // arrange
+        when(mockRemoteDataSource.getAiringTodayTvShows())
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getAiringTodayTvShows();
+        // assert
+        verify(mockRemoteDataSource.getAiringTodayTvShows());
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+      });
     });
     
     group('when device is offline', () {
@@ -214,6 +227,19 @@ void main() {
         verify(mockRemoteDataSource.getPopularTvShows());
         expect(result, equals(Left(ServerFailure(''))));
       });
+
+      test(
+          'should return Certification Failure when the call to remote data source is unsuccessful',
+          () async {
+        // arrange
+        when(mockRemoteDataSource.getPopularTvShows())
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getPopularTvShows();
+        // assert
+        verify(mockRemoteDataSource.getPopularTvShows());
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+      });
     });
     
     group('when device is offline', () {
@@ -304,6 +330,19 @@ void main() {
         // assert
         verify(mockRemoteDataSource.getTopRatedTvShows());
         expect(result, equals(Left(ServerFailure(''))));
+      });
+
+      test(
+          'should return Certification Failure when the call to remote data source is unsuccessful',
+          () async {
+        // arrange
+        when(mockRemoteDataSource.getTopRatedTvShows())
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getTopRatedTvShows();
+        // assert
+        verify(mockRemoteDataSource.getTopRatedTvShows());
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
       });
     });
     
@@ -419,6 +458,19 @@ void main() {
       expect(result,
           equals(Left(ConnectionFailure('Failed to connect to the network'))));
     });
+
+    test(
+      'should return Certification Failure when the call to remote data source is unsuccessful',
+      () async {
+        // arrange
+        when(mockRemoteDataSource.getTvShowDetail(tId))
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getTvShowDetail(tId);
+        // assert
+        verify(mockRemoteDataSource.getTvShowDetail(tId));
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+    });
   });
 
   group('Get Tv Show Season Episodes', () {
@@ -466,6 +518,20 @@ void main() {
       expect(result,
           equals(Left(ConnectionFailure('Failed to connect to the network'))));
     });
+
+    test(
+      'should return Certification Failure when the call to remote data source is unsuccessful',
+      () async {
+        // arrange
+        when(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber))
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getTvShowSeasonEpisodes(tId, tSeasonNumber);
+        // assert
+        verify(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber));
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+      },
+    );
   });
 
   group('Get Tv Show Recommendations', () {
@@ -512,6 +578,20 @@ void main() {
       expect(result,
           equals(Left(ConnectionFailure('Failed to connect to the network'))));
     });
+
+    test(
+      'should return Certification Failure when the call to remote data source is unsuccessful',
+      () async {
+        // arrange
+        when(mockRemoteDataSource.getTvShowRecommendations(tId))
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.getTvShowRecommendations(tId);
+        // assert
+        verify(mockRemoteDataSource.getTvShowRecommendations(tId));
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+      },
+    );
   });
 
   group('Seach Tv Shows', () {
@@ -553,6 +633,19 @@ void main() {
       expect(
           result, Left(ConnectionFailure('Failed to connect to the network')));
     });
+
+    test(
+      'should return Certification Failure when the call to remote data source is unsuccessful',
+      () async {
+        // arrange
+        when(mockRemoteDataSource.searchTvShows(tQuery))
+            .thenThrow(TlsException());
+        // act
+        final result = await repository.searchTvShows(tQuery);
+        // assert
+        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+      },
+    );
   });
 
   group('save watchlist', () {

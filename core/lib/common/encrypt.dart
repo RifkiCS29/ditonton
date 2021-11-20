@@ -1,3 +1,4 @@
+// coverage:ignore-file
 import 'package:encrypt/encrypt.dart';
  
 String encrypt(String plainText) {

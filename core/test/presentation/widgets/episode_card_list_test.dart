@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/episode.dart';
 import 'package:core/presentation/widgets/episode_card_list.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,8 @@ void main() {
       await tester.pumpWidget(_makeTestableWidget());
       expect(find.byType(Text), findsWidgets);
       expect(find.byIcon(Icons.access_alarm), findsOneWidget);
+      expect(find.byType(Card), findsOneWidget);
+      expect(find.byType(CachedNetworkImage), findsOneWidget);
     });
   });
 }

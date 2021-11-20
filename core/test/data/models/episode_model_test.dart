@@ -31,8 +31,27 @@ void main() {
       voteCount: 51
   );
 
+  final tEpisodeJson = {
+    "air_date": "2021-09-17",
+    "episode_number": 1,
+    "id": 1922715,
+    "name": "Red Light, Green Light",
+    "overview":
+        "Hoping to win easy money, a broke and desperate Gi-hun agrees to take part in an enigmatic game. Not long into the first round, unforeseen horrors unfold.",
+    "production_code": "",
+    "season_number": 1,
+    "still_path": "/vMFJS9LIUUAmQ1thq4vJ7iHKwRz.jpg",
+    "vote_average": 8.1,
+    "vote_count": 51
+  };
+
   test('should be a subclass Episode entity', () async {
     final result = tEpisodeModel.toEntity();
     expect(result, tEpisode);
+  });
+
+  test('should be a subclass Episode Json', () async {
+    final result = tEpisodeModel.toJson();
+    expect(result, tEpisodeJson);
   });
 }

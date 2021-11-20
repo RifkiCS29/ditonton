@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,8 @@ void main() {
       expect(find.byType(Text), findsWidgets);
       expect(find.byType(InkWell), findsOneWidget);
       expect(find.byType(Card), findsOneWidget);
+      expect(find.byType(ClipRRect), findsOneWidget);
+      expect(find.byType(CachedNetworkImage), findsOneWidget);
     });
   });
 }
