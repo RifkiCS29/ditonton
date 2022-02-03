@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_show/presentation/bloc/tv_show_detail_bloc/tv_show_detail_bloc.dart';
 import 'package:tv_show/presentation/pages/tv_show_season_episodes_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -43,19 +42,17 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
                   TvShowDetailBloc.watchlistAddSuccessMessage ||
               state.watchlistMessage ==
                   TvShowDetailBloc.watchlistRemoveSuccessMessage) {
-              ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(
-                  content: Text(state.watchlistMessage),
-                ));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.watchlistMessage),
+            ));
           } else {
             await showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  content: Text(state.watchlistMessage),
-                );
-              }
-            );
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Text(state.watchlistMessage),
+                  );
+                });
           }
         },
         listenWhen: (previousState, currentState) =>
@@ -67,19 +64,19 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
               child: CircularProgressIndicator(),
             );
           } else if (state.tvShowDetailState == RequestState.Loaded) {
-              final tvShow = state.tvShowDetail!;
-              return SafeArea(
-                child: DetailContent(
-                  tvShow,
-                  state.tvShowRecommendations,
-                  state.isAddedToWatchlist,
-                ),
-              );
+            final tvShow = state.tvShowDetail!;
+            return SafeArea(
+              child: DetailContent(
+                tvShow,
+                state.tvShowRecommendations,
+                state.isAddedToWatchlist,
+              ),
+            );
           } else if (state.tvShowDetailState == RequestState.Error) {
-              return Center(child: Text(state.message, style: kSubtitle));
+            return Center(child: Text(state.message, style: kSubtitle));
           } else {
-              return Container();
-          } 
+            return Container();
+          }
         },
       ),
     );
@@ -140,13 +137,11 @@ class DetailContent extends StatelessWidget {
                                   key: Key('watchlistButtonTvShow'),
                                   onPressed: () {
                                     if (!isAddedWatchlist) {
-                                      Provider.of<TvShowDetailBloc>(
-                                            context,
-                                            listen: false)
+                                      Provider.of<TvShowDetailBloc>(context,
+                                              listen: false)
                                           .add(AddToWatchlist(tvShow));
                                     } else {
-                                      Provider.of<TvShowDetailBloc>(
-                                              context,
+                                      Provider.of<TvShowDetailBloc>(context,
                                               listen: false)
                                           .add(RemoveFromWatchlist(tvShow));
                                     }
@@ -303,13 +298,16 @@ class DetailContent extends StatelessWidget {
                             ),
                             BlocBuilder<TvShowDetailBloc, TvShowDetailState>(
                               builder: (context, state) {
-                                if (state.tvShowRecommendationState == RequestState.Loading) {
+                                if (state.tvShowRecommendationState ==
+                                    RequestState.Loading) {
                                   return Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (state.tvShowRecommendationState == RequestState.Error) {
+                                } else if (state.tvShowRecommendationState ==
+                                    RequestState.Error) {
                                   return Text(state.message);
-                                } else if (state.tvShowRecommendationState == RequestState.Loaded) {
+                                } else if (state.tvShowRecommendationState ==
+                                    RequestState.Loaded) {
                                   return Container(
                                     height: 150,
                                     child: ListView.builder(

@@ -6,7 +6,6 @@ import 'package:search/presentation/bloc/search_bloc.dart';
 import 'package:core/presentation/widgets/movie_card_list.dart';
 import 'package:core/presentation/widgets/tv_show_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SearchPage extends StatelessWidget {
   static const routeName = '/search';
@@ -32,15 +31,12 @@ class SearchPage extends StatelessWidget {
                   context.read<SearchTvShowBloc>().add(OnQueryChanged(query));
                 },
                 decoration: InputDecoration(
-                  hintText: 'Search Title',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24)
-                  ),
-                  contentPadding: EdgeInsets.all(12)
-                ),
+                    hintText: 'Search Title',
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24)),
+                    contentPadding: EdgeInsets.all(12)),
                 textInputAction: TextInputAction.search,
-                
               ),
               SizedBox(height: 16),
               Text(
@@ -49,8 +45,8 @@ class SearchPage extends StatelessWidget {
               ),
               TabBar(
                 indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50), // Creates border
-                  color: Colors.lightGreen[600]),
+                    borderRadius: BorderRadius.circular(50), // Creates border
+                    color: Colors.lightGreen[600]),
                 tabs: [
                   Tab(
                     child: Row(
@@ -74,9 +70,7 @@ class SearchPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Flexible(
-                child: TabBarView(children: _bodyPage)
-              )
+              Flexible(child: TabBarView(children: _bodyPage))
             ],
           ),
         ),

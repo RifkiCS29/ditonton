@@ -7,9 +7,7 @@ import 'package:tv_show/presentation/pages/airing_today_tv_show_page.dart';
 import 'package:tv_show/presentation/pages/popular_tv_shows_page.dart';
 import 'package:tv_show/presentation/pages/top_rated_tv_shows_page.dart';
 import 'package:tv_show/presentation/pages/tv_show_detail_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeTvShowPage extends StatefulWidget {
   @override
@@ -17,72 +15,68 @@ class HomeTvShowPage extends StatefulWidget {
 }
 
 class _HomeTvShowPageState extends State<HomeTvShowPage> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSubHeading(
-                title: 'Airing Today',
-                onTap: () =>
-                    Navigator.pushNamed(context, AiringTodayTvShowsPage.routeName),
-              ),
-              BlocBuilder<AiringTodayTvShowListBloc, TvShowListState>(
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSubHeading(
+              title: 'Airing Today',
+              onTap: () => Navigator.pushNamed(
+                  context, AiringTodayTvShowsPage.routeName),
+            ),
+            BlocBuilder<AiringTodayTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
-                  if (state is TvShowListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is TvShowListLoaded) {
-                    return TvShowList(state.tvShows);
-                  } else {
-                    return Text('Failed');
-                  }
-                }
-              ),
-              _buildSubHeading(
-                title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularTvShowsPage.routeName),
-              ),
-              BlocBuilder<PopularTvShowListBloc, TvShowListState>(
+              if (state is TvShowListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is TvShowListLoaded) {
+                return TvShowList(state.tvShows);
+              } else {
+                return Text('Failed');
+              }
+            }),
+            _buildSubHeading(
+              title: 'Popular',
+              onTap: () =>
+                  Navigator.pushNamed(context, PopularTvShowsPage.routeName),
+            ),
+            BlocBuilder<PopularTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
-                  if (state is TvShowListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is TvShowListLoaded) {
-                    return TvShowList(state.tvShows);
-                  } else {
-                    return Text('Failed');
-                  }
-                }
-              ),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvShowsPage.routeName),
-              ),
-              BlocBuilder<TopRatedTvShowListBloc, TvShowListState>(
+              if (state is TvShowListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is TvShowListLoaded) {
+                return TvShowList(state.tvShows);
+              } else {
+                return Text('Failed');
+              }
+            }),
+            _buildSubHeading(
+              title: 'Top Rated',
+              onTap: () =>
+                  Navigator.pushNamed(context, TopRatedTvShowsPage.routeName),
+            ),
+            BlocBuilder<TopRatedTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
-                  if (state is TvShowListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is TvShowListLoaded) {
-                    return TvShowList(state.tvShows);
-                  } else {
-                    return Text('Failed');
-                  }
-               }
-              ),
-            ],
-          ),
+              if (state is TvShowListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is TvShowListLoaded) {
+                return TvShowList(state.tvShows);
+              } else {
+                return Text('Failed');
+              }
+            }),
+          ],
         ),
+      ),
     );
   }
 
