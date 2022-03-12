@@ -1,6 +1,5 @@
 import 'package:core/core.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:core/common/network_info.dart';
 import 'package:core/data/datasources/db/database_helper.dart';
 import 'package:core/data/datasources/movie_local_data_source.dart';
 import 'package:core/data/datasources/movie_remote_data_source.dart';
@@ -50,21 +49,15 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
-  locator.registerFactory(
-    () => NowPlayingMovieListBloc(
-      locator(),
-    )
-  );
-  locator.registerFactory(
-    () => TopRatedMovieListBloc(
-      locator(),
-    )
-  );
-  locator.registerFactory(
-    () => PopularMovieListBloc(
-      locator(),
-    )
-  );
+  locator.registerFactory(() => NowPlayingMovieListBloc(
+        locator(),
+      ));
+  locator.registerFactory(() => TopRatedMovieListBloc(
+        locator(),
+      ));
+  locator.registerFactory(() => PopularMovieListBloc(
+        locator(),
+      ));
   locator.registerFactory(
     () => MovieDetailBloc(
       getMovieDetail: locator(),
@@ -74,11 +67,9 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  locator.registerFactory(
-    () => SearchMovieBloc(
-      locator(),
-    )
-  );
+  locator.registerFactory(() => SearchMovieBloc(
+        locator(),
+      ));
   locator.registerFactory(
     () => PopularMoviesBloc(
       locator(),
@@ -94,21 +85,15 @@ void init() {
       locator(),
     ),
   );
-  locator.registerFactory(
-    () => AiringTodayTvShowListBloc(
-      locator(),
-    )
-  );
-  locator.registerFactory(
-    () => TopRatedTvShowListBloc(
-      locator(),
-    )
-  );
-  locator.registerFactory(
-    () => PopularTvShowListBloc(
-      locator(),
-    )
-  );
+  locator.registerFactory(() => AiringTodayTvShowListBloc(
+        locator(),
+      ));
+  locator.registerFactory(() => TopRatedTvShowListBloc(
+        locator(),
+      ));
+  locator.registerFactory(() => PopularTvShowListBloc(
+        locator(),
+      ));
   locator.registerFactory(
     () => TvShowDetailBloc(
       getTvShowDetail: locator(),
@@ -118,11 +103,9 @@ void init() {
       removeWatchlist: locator(),
     ),
   );
-  locator.registerFactory(
-    () => SearchTvShowBloc(
-      locator(),
-    )
-  );
+  locator.registerFactory(() => SearchTvShowBloc(
+        locator(),
+      ));
   locator.registerFactory(
     () => AiringTodayTvShowsBloc(
       locator(),
@@ -176,18 +159,16 @@ void init() {
   // repository
   locator.registerLazySingleton<MovieRepository>(
     () => MovieRepositoryImpl(
-      remoteDataSource: locator(),
-      localDataSource: locator(),
-      networkInfo: locator()
-    ),
+        remoteDataSource: locator(),
+        localDataSource: locator(),
+        networkInfo: locator()),
   );
 
   locator.registerLazySingleton<TvShowRepository>(
     () => TvShowRepositoryImpl(
-      remoteDataSource: locator(),
-      localDataSource: locator(),
-      networkInfo: locator()
-    ),
+        remoteDataSource: locator(),
+        localDataSource: locator(),
+        networkInfo: locator()),
   );
 
   // data sources

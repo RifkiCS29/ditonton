@@ -6,9 +6,7 @@ import 'package:movie/presentation/bloc/movie_list_bloc/movie_list_bloc.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:movie/presentation/pages/popular_movies_page.dart';
 import 'package:movie/presentation/pages/top_rated_movies_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeMoviePage extends StatefulWidget {
   @override
@@ -16,74 +14,70 @@ class HomeMoviePage extends StatefulWidget {
 }
 
 class _HomeMoviePageState extends State<HomeMoviePage> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  'Now Playing',
-                  style: kHeading6,
-                ),
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                'Now Playing',
+                style: kHeading6,
               ),
-              BlocBuilder<NowPlayingMovieListBloc, MovieListState>(
+            ),
+            BlocBuilder<NowPlayingMovieListBloc, MovieListState>(
                 builder: (context, state) {
-                  if (state is MovieListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is MovieListLoaded) {
-                    return MovieList(state.movies);
-                  } else {
-                    return Text('Failed');
-                  }
-                }
-              ),
-              _buildSubHeading(
-                title: 'Popular',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularMoviesPage.routeName),
-              ),
-              BlocBuilder<PopularMovieListBloc, MovieListState>(
+              if (state is MovieListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is MovieListLoaded) {
+                return MovieList(state.movies);
+              } else {
+                return Text('Failed');
+              }
+            }),
+            _buildSubHeading(
+              title: 'Popular',
+              onTap: () =>
+                  Navigator.pushNamed(context, PopularMoviesPage.routeName),
+            ),
+            BlocBuilder<PopularMovieListBloc, MovieListState>(
                 builder: (context, state) {
-                  if (state is MovieListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is MovieListLoaded) {
-                    return MovieList(state.movies);
-                  } else {
-                    return Text('Failed');
-                  }
-                }
-              ),
-              _buildSubHeading(
-                title: 'Top Rated',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
-              ),
-              BlocBuilder<TopRatedMovieListBloc, MovieListState>(
+              if (state is MovieListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is MovieListLoaded) {
+                return MovieList(state.movies);
+              } else {
+                return Text('Failed');
+              }
+            }),
+            _buildSubHeading(
+              title: 'Top Rated',
+              onTap: () =>
+                  Navigator.pushNamed(context, TopRatedMoviesPage.routeName),
+            ),
+            BlocBuilder<TopRatedMovieListBloc, MovieListState>(
                 builder: (context, state) {
-                  if (state is MovieListLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (state is MovieListLoaded) {
-                    return MovieList(state.movies);
-                  } else {
-                    return Text('Failed');
-                  }
-                }
-              ),
-            ],
-          ),
+              if (state is MovieListLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is MovieListLoaded) {
+                return MovieList(state.movies);
+              } else {
+                return Text('Failed');
+              }
+            }),
+          ],
         ),
+      ),
     );
   }
 
