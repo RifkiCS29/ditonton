@@ -12,23 +12,25 @@ import 'package:provider/provider.dart';
 class WatchlistPage extends StatefulWidget {
   static const routeName = '/watchlist-page';
 
+  const WatchlistPage({Key? key}) : super(key: key);
+
   @override
   _WatchlistPageState createState() => _WatchlistPageState();
 }
 
 class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   final List<String> _tabTitle = ['Movies', 'Tv Shows'];
-  final List<Widget> _bodyPage = [_WatchlistMovies(), _WatchlistTvShows()];
+  final List<Widget> _bodyPage = [const _WatchlistMovies(), const _WatchlistTvShows()];
 
   @override
   void initState() {
     super.initState();
     Future.microtask(() =>
         Provider.of<WatchlistMoviesBloc>(context, listen: false)
-            .add(WatchlistEvent()));
+            .add(WatchlistEvent()),);
     Future.microtask(() =>
         Provider.of<WatchlistTvShowsBloc>(context, listen: false)
-            .add(WatchlistEvent()));
+            .add(WatchlistEvent()),);
   }
 
   @override
@@ -51,18 +53,18 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Watchlist'),
+          title: const Text('Watchlist'),
           bottom: TabBar(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50), // Creates border
-              color: Colors.lightGreen[600]),
+              color: Colors.lightGreen[600],),
             tabs: [
               Tab(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.movie),
+                    const Icon(Icons.movie),
                     const SizedBox(width: 8),
                     Text(_tabTitle[0], style: kSubtitle),
                   ],
@@ -72,7 +74,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.tv),
+                    const Icon(Icons.tv),
                     const SizedBox(width: 8),
                     Text(_tabTitle[1], style: kSubtitle),
                   ],
@@ -103,7 +105,7 @@ class _WatchlistMovies extends StatelessWidget {
         child: BlocBuilder<WatchlistMoviesBloc, WatchlistState>(
           builder: (context, state) {
             if (state is WatchlistLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is WatchlistHasData<Movie>) {
@@ -141,7 +143,7 @@ class _WatchlistTvShows extends StatelessWidget {
         child: BlocBuilder<WatchlistTvShowsBloc, WatchlistState>(
           builder: (context, state) {
             if (state is WatchlistLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is WatchlistHasData<TvShow>) {

@@ -40,9 +40,9 @@ class TvShowDetailState extends Equatable {
   }
 
   factory TvShowDetailState.initial() {
-    return TvShowDetailState(
+    return const TvShowDetailState(
       tvShowDetail: null,
-      tvShowRecommendations: const [],
+      tvShowRecommendations: [],
       tvShowDetailState: RequestState.Empty,
       tvShowRecommendationState: RequestState.Empty,
       message: '',

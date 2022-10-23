@@ -8,6 +8,8 @@ import 'package:tv_show/presentation/bloc/top_rated_tv_shows_bloc/top_rated_tv_s
 class TopRatedTvShowsPage extends StatefulWidget {
   static const routeName = '/top-rated-tvshow';
 
+  const TopRatedTvShowsPage({Key? key}) : super(key: key);
+
   @override
   _TopRatedTvShowsPageState createState() => _TopRatedTvShowsPageState();
 }
@@ -18,21 +20,21 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
     super.initState();
     Future.microtask(() =>
         Provider.of<TopRatedTvShowsBloc>(context, listen: false)
-            .add(TopRatedTvShowsEvent()));
+            .add(TopRatedTvShowsEvent()),);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top Rated Tv Shows'),
+        title: const Text('Top Rated Tv Shows'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedTvShowsBloc, TopRatedTvShowsState>(
           builder: (context, state) {
             if (state is TopRatedTvShowsLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is TopRatedTvShowsLoaded) {
@@ -49,7 +51,7 @@ class _TopRatedTvShowsPageState extends State<TopRatedTvShowsPage> {
               );
             } else if (state is TopRatedTvShowsError) {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(state.message, style: kSubtitle),
               );
             } else {

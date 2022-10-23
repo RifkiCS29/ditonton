@@ -10,6 +10,8 @@ import 'package:tv_show/presentation/pages/tv_show_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeTvShowPage extends StatefulWidget {
+  const HomeTvShowPage({Key? key}) : super(key: key);
+
   @override
   _HomeTvShowPageState createState() => _HomeTvShowPageState();
 }
@@ -26,20 +28,20 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
             _buildSubHeading(
               title: 'Airing Today',
               onTap: () => Navigator.pushNamed(
-                  context, AiringTodayTvShowsPage.routeName),
+                  context, AiringTodayTvShowsPage.routeName,),
             ),
             BlocBuilder<AiringTodayTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
               if (state is TvShowListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is TvShowListLoaded) {
                 return TvShowList(state.tvShows);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
             _buildSubHeading(
               title: 'Popular',
               onTap: () =>
@@ -48,15 +50,15 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
             BlocBuilder<PopularTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
               if (state is TvShowListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is TvShowListLoaded) {
                 return TvShowList(state.tvShows);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
             _buildSubHeading(
               title: 'Top Rated',
               onTap: () =>
@@ -65,15 +67,15 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
             BlocBuilder<TopRatedTvShowListBloc, TvShowListState>(
                 builder: (context, state) {
               if (state is TvShowListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is TvShowListLoaded) {
                 return TvShowList(state.tvShows);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
           ],
         ),
       ),
@@ -108,12 +110,12 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
 class TvShowList extends StatelessWidget {
   final List<TvShow> tvShows;
 
-  const TvShowList(this.tvShows);
+  const TvShowList(this.tvShows, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      key: Key('tvShowItem'),
+      key: const Key('tvShowItem'),
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -130,13 +132,13 @@ class TvShowList extends StatelessWidget {
                 );
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
                   imageUrl: '$baseImageUrl${tvShow.posterPath}',
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

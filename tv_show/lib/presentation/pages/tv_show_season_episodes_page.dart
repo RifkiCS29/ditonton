@@ -14,7 +14,7 @@ class TvShowSeasonEpisodesPage extends StatefulWidget {
     { 
       Key? key, 
       required this.id, 
-      required this.seasonNumber 
+      required this.seasonNumber, 
     }
   ) : super(key: key);
 
@@ -28,7 +28,7 @@ class _TvShowSeasonEpisodesPageState extends State<TvShowSeasonEpisodesPage> {
     super.initState();
     Future.microtask(() =>
         Provider.of<TvShowSeasonEpisodesBloc>(context, listen: false)
-            .add(FetchTvShowSeasonEpisodesEvent(widget.id, widget.seasonNumber)));
+            .add(FetchTvShowSeasonEpisodesEvent(widget.id, widget.seasonNumber)),);
   }
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _TvShowSeasonEpisodesPageState extends State<TvShowSeasonEpisodesPage> {
         child: BlocBuilder<TvShowSeasonEpisodesBloc, TvShowSeasonEpisodesState>(
           builder: (context, state) {
             if (state is TvShowSeasonEpisodesLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is TvShowSeasonEpisodesLoaded) {
@@ -58,7 +58,7 @@ class _TvShowSeasonEpisodesPageState extends State<TvShowSeasonEpisodesPage> {
               );
             } else if (state is TvShowSeasonEpisodesError) {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(state.message),
               );
             } else {

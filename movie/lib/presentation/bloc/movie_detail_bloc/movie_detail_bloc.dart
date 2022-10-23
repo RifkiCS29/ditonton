@@ -39,8 +39,8 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
           emit(
             state.copyWith(
               movieDetailState: RequestState.Error, 
-              message: failure.message
-            )
+              message: failure.message,
+            ),
           );
         },
         (movie) async {
@@ -50,15 +50,15 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
               movieDetail: movie,
               movieDetailState: RequestState.Loaded,
               message: '',
-            )
+            ),
           );
           recommendationResult.fold(
             (failure) {
               emit(            
                 state.copyWith(
                   movieRecommendationState: RequestState.Error, 
-                  message: failure.message
-                )
+                  message: failure.message,
+                ),
               );
             },
             (movies) {
@@ -67,7 +67,7 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
                   movieRecommendationState: RequestState.Loaded,
                   movieRecommendations: movies,
                   message: '',
-                )
+                ),
               );
             },
           );

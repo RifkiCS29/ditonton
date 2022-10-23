@@ -46,13 +46,13 @@ void main() {
       (WidgetTester tester) async {
     when(() => mockTvShowDetailBloc.state).thenReturn(
       TvShowDetailState.initial().copyWith(
-        tvShowDetailState: RequestState.Loading
-      )
+        tvShowDetailState: RequestState.Loading,
+      ),
     );
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
 
     expect(progressBarFinder, findsOneWidget);
   });
@@ -67,12 +67,12 @@ void main() {
         tvShowRecommendationState: RequestState.Loading,
         tvShowRecommendations: <TvShow>[],
         isAddedToWatchlist: false,
-      )
+      ),
     );
 
     final progressBarFinder = find.byType(CircularProgressIndicator);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
 
     expect(progressBarFinder, findsWidgets);
   });
@@ -87,12 +87,12 @@ void main() {
         tvShowRecommendationState: RequestState.Loaded,
         tvShowRecommendations: [testTvShow],
         isAddedToWatchlist: false,
-      )
+      ),
     );
 
     final watchlistButtonIcon = find.byIcon(Icons.add);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -107,12 +107,12 @@ void main() {
         tvShowRecommendationState: RequestState.Loaded,
         tvShowRecommendations: [testTvShow],
         isAddedToWatchlist: true,
-      )
+      ),
     );
 
     final watchlistButtonIcon = find.byIcon(Icons.check);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -139,12 +139,12 @@ void main() {
             watchlistMessage: 'Added to Watchlist',
           ),
         ]),
-        initialState: TvShowDetailState.initial()
+        initialState: TvShowDetailState.initial(),
     );
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
     await tester.pump();
 
     expect(find.byIcon(Icons.add), findsOneWidget);
@@ -178,11 +178,11 @@ void main() {
             watchlistMessage: 'Removed from Watchlist',
           ),
         ]),
-        initialState: TvShowDetailState.initial());
+        initialState: TvShowDetailState.initial(),);
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
     await tester.pump();
 
     expect(find.byIcon(Icons.add), findsOneWidget);
@@ -224,11 +224,11 @@ void main() {
             watchlistMessage: 'Failed ',
           ),
         ]),
-        initialState: TvShowDetailState.initial());
+        initialState: TvShowDetailState.initial(),);
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
     await tester.pump();
 
     expect(find.byIcon(Icons.add), findsOneWidget);
@@ -246,13 +246,13 @@ void main() {
     when(() => mockTvShowDetailBloc.state).thenReturn(
       TvShowDetailState.initial().copyWith(
         tvShowDetailState: RequestState.Error,
-        message: 'Failed to connect to the network'
-      )
+        message: 'Failed to connect to the network',
+      ),
     );
 
     final textErrorBarFinder = find.text('Failed to connect to the network');
 
-    await tester.pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+    await tester.pumpWidget(_makeTestableWidget(const TvShowDetailPage(id: 1)));
     await tester.pump();
 
     expect(textErrorBarFinder, findsOneWidget);

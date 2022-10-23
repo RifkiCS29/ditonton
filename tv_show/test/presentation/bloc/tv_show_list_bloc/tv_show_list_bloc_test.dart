@@ -42,7 +42,7 @@ void main() {
       popularity: 6008.272,
       posterPath: "/iF8ai2QLNiHV4anwY1TuSGZXqfN.jpg",
       voteAverage: 8,
-      voteCount: 987
+      voteCount: 987,
   );
   final tTvShowList = <TvShow>[tTvShow];
 
@@ -72,13 +72,13 @@ void main() {
       'Should emit [TvShowListLoading, TvShowListError] when get Failure',
       build: () {
         when(mockGetAiringTodayTvShows.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return airingTodayTvShowListBloc;
       },
       act: (bloc) => bloc.add(TvShowListEvent()),
       expect: () => [
         TvShowListLoading(),
-        TvShowListError('Failed'),
+        const TvShowListError('Failed'),
       ],
       verify: (_) {
         verify(mockGetAiringTodayTvShows.execute());
@@ -112,13 +112,13 @@ void main() {
       'Should emit [TvShowListLoading, TvShowListError] when get Failure',
       build: () {
         when(mockGetPopularTvShows.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return popularTvShowListBloc;
       },
       act: (bloc) => bloc.add(TvShowListEvent()),
       expect: () => [
         TvShowListLoading(),
-        TvShowListError('Failed'),
+        const TvShowListError('Failed'),
       ],
       verify: (_) {
         verify(mockGetPopularTvShows.execute());
@@ -152,13 +152,13 @@ void main() {
       'Should emit [TvShowListLoading, TvShowListError] when get Failure',
       build: () {
         when(mockGetTopRatedTvShows.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return topRatedTvShowListBloc;
       },
       act: (bloc) => bloc.add(TvShowListEvent()),
       expect: () => [
         TvShowListLoading(),
-        TvShowListError('Failed'),
+        const TvShowListError('Failed'),
       ],
       verify: (_) {
         verify(mockGetTopRatedTvShows.execute());

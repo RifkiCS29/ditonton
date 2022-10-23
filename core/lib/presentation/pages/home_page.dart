@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _index = 0;
   final List<String> _tabTitle = ['Movies', 'Tv Shows'];
-  final List<Widget> _page = [HomeMoviePage(), HomeTvShowPage()];
+  final List<Widget> _page = [const HomeMoviePage(), const HomeTvShowPage()];
   void _onSelectedPage(int index) {
     setState(() {
       _index = index;
@@ -55,14 +55,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
+              currentAccountPicture: const CircleAvatar(
                 backgroundImage: AssetImage('assets/circle-g.png'),
               ),
               accountName: Text('Ditonton', style: kHeading6.copyWith(fontSize: 17)),
               accountEmail: Text('ditonton@dicoding.com', style: kSubtitle),
             ),
             ListTile(
-              leading: Icon(Icons.movie),
+              leading: const Icon(Icons.movie),
               title: Text(_tabTitle[0], style: kSubtitle),
               onTap: () {
                 _onSelectedPage(0);
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.tv),
+              leading: const Icon(Icons.tv),
               title: Text(_tabTitle[1], style: kSubtitle),
               onTap: () {
                 _onSelectedPage(1);
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.save_alt),
+              leading: const Icon(Icons.save_alt),
               title: Text('Watchlist', style: kSubtitle),
               onTap: () {
                 Navigator.pushNamed(context, WatchlistPage.routeName);
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pushNamed(context, AboutPage.routeName);
               },
-              leading: Icon(Icons.info_outline),
+              leading: const Icon(Icons.info_outline),
               title: Text('About', style: kSubtitle),
             ),
           ],
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pushNamed(context, SearchPage.routeName);
             },
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           )
         ],
       ),

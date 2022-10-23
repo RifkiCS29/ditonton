@@ -108,7 +108,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheMovies('now playing'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionMovies([testMovieCache], 'now playing'));
+          .insertCacheTransactionMovies([testMovieCache], 'now playing'),);
     });
 
     test('should return list of movies from db when data exist', () async {
@@ -142,7 +142,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheMovies('popular'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionMovies([testMovieCache], 'popular'));
+          .insertCacheTransactionMovies([testMovieCache], 'popular'),);
     });
 
     test('should return list of movies from db when data exist', () async {
@@ -177,7 +177,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheMovies('top rated'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionMovies([testMovieCache], 'top rated'));
+          .insertCacheTransactionMovies([testMovieCache], 'top rated'),);
     });
 
     test('should return list of movies from db when data exist', () async {

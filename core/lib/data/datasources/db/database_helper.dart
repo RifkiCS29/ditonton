@@ -34,7 +34,7 @@ class DatabaseHelper {
       databasePath, 
       version: 1, 
       onCreate: _onCreate,
-      password: encrypt('Ditonton')
+      password: encrypt('Ditonton'),
     );
     return db;
   }
@@ -79,7 +79,7 @@ class DatabaseHelper {
   }
 
   Future<void> insertCacheTransactionMovies(
-    List<MovieTable> movies, String category
+    List<MovieTable> movies, String category,
   ) async {
     final db = await database;
     db!.transaction((txn) async {
@@ -104,7 +104,7 @@ class DatabaseHelper {
 
   Future<int> clearCacheMovies(String category) async {
     final db = await database;
-    return await db!.delete(
+    return db!.delete(
       _tblCacheMovie,
       where: 'category = ?',
       whereArgs: [category],
@@ -113,12 +113,12 @@ class DatabaseHelper {
 
   Future<int> insertWatchlistMovie(MovieTable movie) async {
     final db = await database;
-    return await db!.insert(_tblWatchlistMovie, movie.toJson());
+    return db!.insert(_tblWatchlistMovie, movie.toJson());
   }
 
   Future<int> removeWatchlistMovie(MovieTable movie) async {
     final db = await database;
-    return await db!.delete(
+    return db!.delete(
       _tblWatchlistMovie,
       where: 'id = ?',
       whereArgs: [movie.id],
@@ -149,7 +149,7 @@ class DatabaseHelper {
 
   //TV SHOW
   Future<void> insertCacheTransactionTvShows(
-    List<TvShowTable> tvshows, String category
+    List<TvShowTable> tvshows, String category,
   ) async {
     final db = await database;
     db!.transaction((txn) async {
@@ -174,7 +174,7 @@ class DatabaseHelper {
 
   Future<int> clearCacheTvShows(String category) async {
     final db = await database;
-    return await db!.delete(
+    return db!.delete(
       _tblCacheTvShow,
       where: 'category = ?',
       whereArgs: [category],
@@ -183,12 +183,12 @@ class DatabaseHelper {
 
   Future<int> insertWatchlistTvShow(TvShowTable tvShow) async {
     final db = await database;
-    return await db!.insert(_tblWatchlistTvShow, tvShow.toJson());
+    return db!.insert(_tblWatchlistTvShow, tvShow.toJson());
   }
 
   Future<int> removeWatchlistTvShow(TvShowTable tvShow) async {
     final db = await database;
-    return await db!.delete(
+    return db!.delete(
       _tblWatchlistTvShow,
       where: 'id = ?',
       whereArgs: [tvShow.id],

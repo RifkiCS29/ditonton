@@ -9,6 +9,8 @@ import 'package:movie/presentation/pages/top_rated_movies_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeMoviePage extends StatefulWidget {
+  const HomeMoviePage({Key? key}) : super(key: key);
+
   @override
   _HomeMoviePageState createState() => _HomeMoviePageState();
 }
@@ -32,15 +34,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             BlocBuilder<NowPlayingMovieListBloc, MovieListState>(
                 builder: (context, state) {
               if (state is MovieListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is MovieListLoaded) {
                 return MovieList(state.movies);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
             _buildSubHeading(
               title: 'Popular',
               onTap: () =>
@@ -49,15 +51,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             BlocBuilder<PopularMovieListBloc, MovieListState>(
                 builder: (context, state) {
               if (state is MovieListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is MovieListLoaded) {
                 return MovieList(state.movies);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
             _buildSubHeading(
               title: 'Top Rated',
               onTap: () =>
@@ -66,15 +68,15 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             BlocBuilder<TopRatedMovieListBloc, MovieListState>(
                 builder: (context, state) {
               if (state is MovieListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is MovieListLoaded) {
                 return MovieList(state.movies);
               } else {
-                return Text('Failed');
+                return const Text('Failed');
               }
-            }),
+            },),
           ],
         ),
       ),
@@ -109,12 +111,12 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
 
-  const MovieList(this.movies);
+  const MovieList(this.movies, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      key: Key('movieItem'),
+      key: const Key('movieItem'),
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -131,13 +133,13 @@ class MovieList extends StatelessWidget {
                 );
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
                   imageUrl: '$baseImageUrl${movie.posterPath}',
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),

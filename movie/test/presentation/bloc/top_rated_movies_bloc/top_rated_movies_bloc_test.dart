@@ -64,13 +64,13 @@ void main() {
       'Should emit [TopRatedMoviesLoading, TopRatedMoviesLoaded[], TopRatedMoviesEmpty] when data is gotten successfully',
       build: () {
         when(mockGetTopRatedMovies.execute())
-          .thenAnswer((_) async => Right(<Movie>[]));
+          .thenAnswer((_) async => const Right(<Movie>[]));
         return topRatedMoviesBloc;
       },
       act: (bloc) => bloc.add(TopRatedMoviesEvent()),
       expect: () => [
         TopRatedMoviesLoading(),
-        TopRatedMoviesLoaded(const <Movie>[]),
+        const TopRatedMoviesLoaded(<Movie>[]),
         TopRatedMoviesEmpty(),
       ],
       verify: (bloc) {
@@ -82,13 +82,13 @@ void main() {
       'Should emit [TopRatedMoviesLoading, TopRatedMoviesError] when get Failure',
       build: () {
         when(mockGetTopRatedMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return topRatedMoviesBloc;
       },
       act: (bloc) => bloc.add(TopRatedMoviesEvent()),
       expect: () => [
         TopRatedMoviesLoading(),
-        TopRatedMoviesError('Failed'),
+        const TopRatedMoviesError('Failed'),
       ],
       verify: (_) {
         verify(mockGetTopRatedMovies.execute());

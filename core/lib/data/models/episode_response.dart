@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'episode_model.dart';
+import 'package:core/data/models/episode_model.dart';
 
 class EpisodeResponse extends Equatable {
   const EpisodeResponse({
@@ -11,7 +11,7 @@ class EpisodeResponse extends Equatable {
   factory EpisodeResponse.fromJson(Map<String, dynamic> json) =>
       EpisodeResponse(
         episodes: List<EpisodeModel>.from(
-            json["episodes"].map((x) => EpisodeModel.fromJson(x))),
+            json["episodes"].map((x) => EpisodeModel.fromJson(x)),),
       );
 
   @override

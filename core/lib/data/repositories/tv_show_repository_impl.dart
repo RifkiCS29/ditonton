@@ -20,7 +20,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
   TvShowRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
-    required this.networkInfo
+    required this.networkInfo,
   });
 
   @override
@@ -29,10 +29,10 @@ class TvShowRepositoryImpl implements TvShowRepository {
       try {
         final result = await remoteDataSource.getAiringTodayTvShows();
         localDataSource.cacheNowPlayingTvShows(
-            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList());
+            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -52,9 +52,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
       final result = await remoteDataSource.getTvShowDetail(id);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
@@ -66,9 +66,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
       final result = await remoteDataSource.getTvShowSeasonEpisodes(id, seasonNumber);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
@@ -80,9 +80,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
       final result = await remoteDataSource.getTvShowRecommendations(id);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
@@ -94,10 +94,10 @@ class TvShowRepositoryImpl implements TvShowRepository {
       try {
         final result = await remoteDataSource.getPopularTvShows();
         localDataSource.cachePopularTvShows(
-            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList());
+            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -117,10 +117,10 @@ class TvShowRepositoryImpl implements TvShowRepository {
       try {
         final result = await remoteDataSource.getTopRatedTvShows();
         localDataSource.cacheTopRatedTvShows(
-            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList());
+            result.map((tvShow) => TvShowTable.fromDTO(tvShow)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -140,9 +140,9 @@ class TvShowRepositoryImpl implements TvShowRepository {
       final result = await remoteDataSource.searchTvShows(query);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }

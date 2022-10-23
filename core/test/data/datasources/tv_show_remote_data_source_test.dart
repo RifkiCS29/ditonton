@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 import 'package:core/common/exception.dart';
 import 'package:core/data/datasources/tv_show_remote_data_source.dart';
@@ -26,20 +28,20 @@ void main() {
 
   group('get Now Playing Tv Shows', () {
     final tTvShowList = TvShowResponse.fromJson(
-            json.decode(readJson('dummy_data/tv_show_airing_today.json')))
+            json.decode(readJson('dummy_data/tv_show_airing_today.json')),)
         .tvShowList;
 
     test('should return list of Tv Show Model when the response code is 200',
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')),)
           .thenAnswer((_) async =>
               http.Response(readJson('dummy_data/tv_show_airing_today.json'), 200, 
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getAiringTodayTvShows();
       // assert
@@ -51,7 +53,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')),)
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getAiringTodayTvShows();
@@ -74,7 +76,7 @@ void main() {
                 headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getPopularTvShows();
       // assert
@@ -96,7 +98,7 @@ void main() {
 
   group('get Top Rated Tv Shows', () {
     final tTvShowList = TvShowResponse.fromJson(
-            json.decode(readJson('dummy_data/tv_show_top_rated.json')))
+            json.decode(readJson('dummy_data/tv_show_top_rated.json')),)
         .tvShowList;
 
     test('should return list of Tv Shows when response code is 200 ', () async {
@@ -107,7 +109,7 @@ void main() {
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getTopRatedTvShows();
       // assert
@@ -129,7 +131,7 @@ void main() {
   group('get Tv Show detail', () {
     const tId = 1;
     final tTvShowDetail = TvShowDetailResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_show_detail.json')));
+        json.decode(readJson('dummy_data/tv_show_detail.json')),);
 
     test('should return Tv Show detail when the response code is 200', () async {
       // arrange
@@ -139,7 +141,7 @@ void main() {
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getTvShowDetail(tId);
       // assert
@@ -160,7 +162,7 @@ void main() {
 
   group('get Tv Show Season Episodes', () {
     final tTvShowEpisodeList = EpisodeResponse.fromJson(
-      json.decode(readJson('dummy_data/tv_show_episodes.json')))
+      json.decode(readJson('dummy_data/tv_show_episodes.json')),)
         .episodes;
     const tIdTv = 1;
     const tSeasonNumber = 1;
@@ -169,13 +171,13 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-              Uri.parse('$BASE_URL/tv/$tIdTv/season/$tSeasonNumber?$API_KEY')))
+              Uri.parse('$BASE_URL/tv/$tIdTv/season/$tSeasonNumber?$API_KEY'),),)
           .thenAnswer((_) async => http.Response(
                   readJson('dummy_data/tv_show_episodes.json'), 200,
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getTvShowSeasonEpisodes(tIdTv, tSeasonNumber);
       // assert
@@ -186,7 +188,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient.get(
-              Uri.parse('$BASE_URL/tv/$tIdTv/season/$tSeasonNumber?$API_KEY')))
+              Uri.parse('$BASE_URL/tv/$tIdTv/season/$tSeasonNumber?$API_KEY'),),)
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getTvShowSeasonEpisodes(tIdTv, tSeasonNumber);
@@ -197,7 +199,7 @@ void main() {
 
   group('get Tv Show recommendations', () {
     final tTvShowList = TvShowResponse.fromJson(
-            json.decode(readJson('dummy_data/tv_show_recommendations.json')))
+            json.decode(readJson('dummy_data/tv_show_recommendations.json')),)
         .tvShowList;
     const tId = 93405;
 
@@ -205,13 +207,13 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')),)
           .thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_show_recommendations.json'), 200,
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.getTvShowRecommendations(tId);
       // assert
@@ -222,7 +224,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')))
+              .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')),)
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getTvShowRecommendations(tId);
@@ -233,20 +235,20 @@ void main() {
 
   group('search Tv Shows', () {
     final tSearchResult = TvShowResponse.fromJson(
-            json.decode(readJson('dummy_data/tv_show_search.json')))
+            json.decode(readJson('dummy_data/tv_show_search.json')),)
         .tvShowList;
     const tQuery = 'Game of Thrones';
 
     test('should return list of Tv Shows when response code is 200', () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')))
+              .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')),)
           .thenAnswer((_) async => http.Response(
               readJson('dummy_data/tv_show_search.json'), 200,
                   headers: {
                     HttpHeaders.contentTypeHeader:
                         'application/json; charset=utf-8',
-                  }));
+                  },),);
       // act
       final result = await dataSource.searchTvShows(tQuery);
       // assert
@@ -257,7 +259,7 @@ void main() {
         () async {
       // arrange
       when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')))
+              .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')),)
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.searchTvShows(tQuery);

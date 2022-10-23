@@ -34,7 +34,7 @@ class TvShowTable extends Equatable {
     id:  tvShow.id, 
     name: tvShow.name, 
     posterPath: tvShow.posterPath, 
-    overview: tvShow.overview
+    overview: tvShow.overview,
   );
 
   Map<String, dynamic> toJson() => {

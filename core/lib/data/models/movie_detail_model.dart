@@ -55,7 +55,7 @@ class MovieDetailResponse extends Equatable {
         backdropPath: json["backdrop_path"],
         budget: json["budget"],
         genres: List<GenreModel>.from(
-            json["genres"].map((x) => GenreModel.fromJson(x))),
+            json["genres"].map((x) => GenreModel.fromJson(x)),),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],

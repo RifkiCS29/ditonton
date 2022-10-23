@@ -3,10 +3,10 @@ import 'package:core/domain/entities/tv_show.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tTvShowModel = TvShowModel(
+  const tTvShowModel = TvShowModel(
       backdropPath: "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
       firstAirDate: "2021-10-12",
-      genreIds: const [10765, 35, 80],
+      genreIds: [10765, 35, 80],
       id: 90462,
       name: "Chucky",
       originalName: "Chucky",
@@ -15,7 +15,7 @@ void main() {
       popularity: 6008.272,
       posterPath: "/iF8ai2QLNiHV4anwY1TuSGZXqfN.jpg",
       voteAverage: 8,
-      voteCount: 987
+      voteCount: 987,
   );
 
   final tTvShow = TvShow(
@@ -30,7 +30,7 @@ void main() {
       popularity: 6008.272,
       posterPath: "/iF8ai2QLNiHV4anwY1TuSGZXqfN.jpg",
       voteAverage: 8,
-      voteCount: 987
+      voteCount: 987,
   );
 
   test('should be a subclass of Tv Show entity', () async {

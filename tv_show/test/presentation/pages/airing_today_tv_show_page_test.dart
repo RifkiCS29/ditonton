@@ -46,7 +46,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(_makeTestableWidget(AiringTodayTvShowsPage()));
+    await tester.pumpWidget(_makeTestableWidget(const AiringTodayTvShowsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -58,7 +58,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(_makeTestableWidget(AiringTodayTvShowsPage()));
+    await tester.pumpWidget(_makeTestableWidget(const AiringTodayTvShowsPage()));
 
     expect(listViewFinder, findsOneWidget);
   });
@@ -69,18 +69,18 @@ void main() {
 
     final textFinder = find.text('Empty Airing Today Tv Show');
 
-    await tester.pumpWidget(_makeTestableWidget(AiringTodayTvShowsPage()));
+    await tester.pumpWidget(_makeTestableWidget(const AiringTodayTvShowsPage()));
 
     expect(textFinder, findsOneWidget);
   });
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(AiringTodayTvShowsError('Failed'));
+    when(() => mockAiringTodayTvShowsBloc.state).thenReturn(const AiringTodayTvShowsError('Failed'));
 
-    final textFinder = find.byKey(Key('error_message'));
+    final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(_makeTestableWidget(AiringTodayTvShowsPage()));
+    await tester.pumpWidget(_makeTestableWidget(const AiringTodayTvShowsPage()));
 
     expect(textFinder, findsOneWidget);
   });

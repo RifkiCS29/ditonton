@@ -16,27 +16,27 @@ class EpisodeModel extends Equatable {
   });
 
   final String? airDate;
-  final int episodeNumber;
-  final int id;
-  final String name;
-  final String overview;
-  final String productionCode;
-  final int seasonNumber;
+  final int ?episodeNumber;
+  final int? id;
+  final String? name;
+  final String? overview;
+  final String? productionCode;
+  final int? seasonNumber;
   final String? stillPath;
-  final double voteAverage;
-  final int voteCount;
+  final double? voteAverage;
+  final int? voteCount;
 
   factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
-        airDate: json["air_date"] ?? null,
-        episodeNumber: json["episode_number"] ?? null,
-        id: json["id"] ?? null,
-        name: json["name"] ?? null,
-        overview: json["overview"] ?? null,
-        productionCode: json["production_code"] ?? null,
-        seasonNumber: json["season_number"] ?? null,
-        stillPath: json["still_path"] ?? null,
-        voteAverage: json["vote_average"] == null ? null : json["vote_average"].toDouble(),
-        voteCount: json["vote_count"] ?? null,
+        airDate: json["air_date"],
+        episodeNumber: json["episode_number"],
+        id: json["id"],
+        name: json["name"],
+        overview: json["overview"],
+        productionCode: json["production_code"],
+        seasonNumber: json["season_number"],
+        stillPath: json["still_path"],
+        voteAverage: json["vote_average"],
+        voteCount: json["vote_count"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -63,7 +63,7 @@ class EpisodeModel extends Equatable {
       seasonNumber: seasonNumber,
       stillPath: stillPath,
       voteAverage: voteAverage,
-      voteCount: voteCount
+      voteCount: voteCount,
     );
   }
 

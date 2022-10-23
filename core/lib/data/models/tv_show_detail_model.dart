@@ -1,7 +1,7 @@
 import 'package:core/data/models/season_model.dart';
 import 'package:core/domain/entities/tv_show_detail.dart';
 import 'package:equatable/equatable.dart';
-import 'genre_model.dart';
+import 'package:core/data/models/genre_model.dart';
 
 class TvShowDetailResponse  extends Equatable {
     const TvShowDetailResponse({
@@ -112,7 +112,7 @@ class TvShowDetailResponse  extends Equatable {
         seasons: seasons.map((genre) => genre.toEntity()).toList(),
         tagline: tagline,
         voteAverage: voteAverage,
-        voteCount: voteCount
+        voteCount: voteCount,
     );
   }
 

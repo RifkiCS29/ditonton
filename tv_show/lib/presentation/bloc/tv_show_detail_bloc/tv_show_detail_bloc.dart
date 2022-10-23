@@ -39,8 +39,8 @@ class TvShowDetailBloc extends Bloc<TvShowDetailEvent, TvShowDetailState> {
           emit(
             state.copyWith(
               tvShowDetailState: RequestState.Error, 
-              message: failure.message
-            )
+              message: failure.message,
+            ),
           );
         },
         (tvShow) async {
@@ -50,15 +50,15 @@ class TvShowDetailBloc extends Bloc<TvShowDetailEvent, TvShowDetailState> {
               tvShowDetail: tvShow,
               tvShowDetailState: RequestState.Loaded,
               message: '',
-            )
+            ),
           );
           recommendationResult.fold(
             (failure) {
               emit(            
                 state.copyWith(
                   tvShowRecommendationState: RequestState.Error, 
-                  message: failure.message
-                )
+                  message: failure.message,
+                ),
               );
             },
             (tvShows) {
@@ -67,7 +67,7 @@ class TvShowDetailBloc extends Bloc<TvShowDetailEvent, TvShowDetailState> {
                   tvShowRecommendationState: RequestState.Loaded,
                   tvShowRecommendations: tvShows,
                   message: '',
-                )
+                ),
               );
             },
           );

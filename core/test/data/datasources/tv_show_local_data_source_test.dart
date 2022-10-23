@@ -108,7 +108,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheTvShows('now playing'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionTvShows([testTvShowCache], 'now playing'));
+          .insertCacheTransactionTvShows([testTvShowCache], 'now playing'),);
     });
 
     test('should return list of Tv Shows from db when data exist', () async {
@@ -142,7 +142,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheTvShows('popular'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionTvShows([testTvShowCache], 'popular'));
+          .insertCacheTransactionTvShows([testTvShowCache], 'popular'),);
     });
 
     test('should return list of Tv Shows from db when data exist', () async {
@@ -177,7 +177,7 @@ void main() {
       // assert
       verify(mockDatabaseHelper.clearCacheTvShows('top rated'));
       verify(mockDatabaseHelper
-          .insertCacheTransactionTvShows([testTvShowCache], 'top rated'));
+          .insertCacheTransactionTvShows([testTvShowCache], 'top rated'),);
     });
 
     test('should return list of TvShows from db when data exist', () async {

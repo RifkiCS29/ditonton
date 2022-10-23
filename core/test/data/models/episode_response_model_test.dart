@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../json_reader.dart';
 
 void main() {
-  final tEpisodeModel = EpisodeModel(
+  const tEpisodeModel = EpisodeModel(
       airDate: "2021-09-17",
       episodeNumber: 1,
       id: 1922715,
@@ -17,10 +17,10 @@ void main() {
       seasonNumber: 1,
       stillPath: "/vMFJS9LIUUAmQ1thq4vJ7iHKwRz.jpg",
       voteAverage: 8.1,
-      voteCount: 51
+      voteCount: 51,
   );
 
-  final tEpisodeResponseModel = EpisodeResponse(episodes: <EpisodeModel>[tEpisodeModel]);
+  const tEpisodeResponseModel = EpisodeResponse(episodes: <EpisodeModel>[tEpisodeModel]);
   group('fromJson', () {
     test('should return a valid model from JSON', () async {
       // arrange

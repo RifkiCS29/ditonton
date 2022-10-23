@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class EpisodeCard extends StatelessWidget {
   final Episode episode;
 
-  const EpisodeCard(this.episode);
+  const EpisodeCard(this.episode, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +27,21 @@ class EpisodeCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      episode.name,
+                      episode.name ?? "Name Episode" ,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kHeading6,
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(Icons.access_alarm, size: 14, color: Colors.lightGreen[600]),
-                        SizedBox(width: 4),
+                        const SizedBox(width: 4),
                         Text(episode.airDate ?? '', style: TextStyle(color: Colors.lightGreen[600]))
                       ],
                     ),
                     Text(
-                      episode.overview,
+                      episode.overview ?? "Episode Preview",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -53,7 +52,7 @@ class EpisodeCard extends StatelessWidget {
             Container(
               height: 110,
               width: 100,
-              margin: EdgeInsets.only(left: 16, bottom: 16),
+              margin: const EdgeInsets.only(left: 16, bottom: 16),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: ShaderMask(
@@ -70,27 +69,25 @@ class EpisodeCard extends StatelessWidget {
                     );
                   },
                   blendMode: BlendMode.darken,
-                  child: Container(
-                    child: CachedNetworkImage(
-                      imageUrl: episode.stillPath == null
-                          ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
-                          : 'https://image.tmdb.org/t/p/w500${episode.stillPath}',
-                      placeholder: (context, url) => Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                      imageBuilder: (context, imageProvider) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
+                  child: CachedNetworkImage(
+                    imageUrl: episode.stillPath == null
+                        ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
+                        : 'https://image.tmdb.org/t/p/w500${episode.stillPath}',
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
                     ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    imageBuilder: (context, imageProvider) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

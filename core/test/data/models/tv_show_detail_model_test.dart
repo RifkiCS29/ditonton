@@ -7,9 +7,9 @@ import 'package:core/domain/entities/tv_show_detail.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tTvShowDetailModel = TvShowDetailResponse(
+  const tTvShowDetailModel = TvShowDetailResponse(
     backdropPath: 'backdropPath',
-    episodeRunTime: const [1, 2, 3],
+    episodeRunTime: [1, 2, 3],
     firstAirDate: 'firstAirDate',
     genres: [GenreModel(id: 1, name: 'Action')],
     homepage: 'homepage',
@@ -31,7 +31,7 @@ void main() {
         name: 'name', 
         overview: 'overview', 
         posterPath: 'posterPath', 
-        seasonNumber: 1
+        seasonNumber: 1,
       )
     ],
     status: 'status',
@@ -41,7 +41,7 @@ void main() {
     voteCount: 1,
   );
 
-  final tTvShowDetail = TvShowDetail(
+  const tTvShowDetail = TvShowDetail(
     backdropPath: 'backdropPath',
     firstAirDate: 'firstAirDate',
     genres: [Genre(id: 1, name: 'Action')],
@@ -58,7 +58,7 @@ void main() {
         name: 'name', 
         overview: 'overview', 
         posterPath: 'posterPath', 
-        seasonNumber: 1
+        seasonNumber: 1,
       )
     ],
     tagline: 'tagline',

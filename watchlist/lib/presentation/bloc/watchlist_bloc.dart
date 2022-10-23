@@ -10,7 +10,7 @@ part 'watchlist_state.dart';
 
 class WatchlistMoviesBloc extends Bloc<WatchlistEvent, WatchlistState> {
   final GetWatchlistMovies _getWatchlistMovies;
-  WatchlistMoviesBloc(this._getWatchlistMovies) : super(WatchlistEmpty('')) {
+  WatchlistMoviesBloc(this._getWatchlistMovies) : super(const WatchlistEmpty('')) {
     on<WatchlistEvent>((event, emit) async {
       emit(WatchlistLoading());
       final result = await _getWatchlistMovies.execute();
@@ -19,7 +19,7 @@ class WatchlistMoviesBloc extends Bloc<WatchlistEvent, WatchlistState> {
         (moviesData) { 
           emit(WatchlistHasData<Movie>(moviesData));
           if(moviesData.isEmpty) {
-            emit(WatchlistEmpty('You haven\'t added a watch list'));
+            emit(const WatchlistEmpty("You haven't added a watch list"));
           }
         }
       );
@@ -29,7 +29,7 @@ class WatchlistMoviesBloc extends Bloc<WatchlistEvent, WatchlistState> {
 
 class WatchlistTvShowsBloc extends Bloc<WatchlistEvent, WatchlistState> {
   final GetWatchlistTvShows _getWatchlistTvShows;
-  WatchlistTvShowsBloc(this._getWatchlistTvShows) : super(WatchlistEmpty('')) {
+  WatchlistTvShowsBloc(this._getWatchlistTvShows) : super(const WatchlistEmpty('')) {
     on<WatchlistEvent>((event, emit) async {
       emit(WatchlistLoading());
       final result = await _getWatchlistTvShows.execute();
@@ -38,7 +38,7 @@ class WatchlistTvShowsBloc extends Bloc<WatchlistEvent, WatchlistState> {
         (tvShowsData) { 
           emit(WatchlistHasData<TvShow>(tvShowsData));
           if(tvShowsData.isEmpty) {
-            emit(WatchlistEmpty('You haven\'t added a watch list'));
+            emit(const WatchlistEmpty("You haven't added a watch list"));
           }
         }
       );

@@ -8,6 +8,8 @@ import 'package:tv_show/presentation/bloc/popular_tv_shows_bloc/popular_tv_shows
 class PopularTvShowsPage extends StatefulWidget {
   static const routeName = '/popular-tvshow';
 
+  const PopularTvShowsPage({Key? key}) : super(key: key);
+
   @override
   _PopularTvShowsPageState createState() => _PopularTvShowsPageState();
 }
@@ -18,21 +20,21 @@ class _PopularTvShowsPageState extends State<PopularTvShowsPage> {
     super.initState();
     Future.microtask(() =>
         Provider.of<PopularTvShowsBloc>(context, listen: false)
-            .add(PopularTvShowsEvent()));
+            .add(PopularTvShowsEvent()),);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Popular Tv Shows'),
+        title: const Text('Popular Tv Shows'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<PopularTvShowsBloc, PopularTvShowsState>(
           builder: (context, state) {
             if (state is PopularTvShowsLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is PopularTvShowsLoaded) {
@@ -49,7 +51,7 @@ class _PopularTvShowsPageState extends State<PopularTvShowsPage> {
               );
             } else if (state is PopularTvShowsError) {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(state.message),
               );
             } else {

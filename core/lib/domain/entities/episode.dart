@@ -15,15 +15,15 @@ class Episode extends Equatable {
   });
 
   final String? airDate;
-  final int episodeNumber;
-  final int id;
-  final String name;
-  final String overview;
-  final String productionCode;
-  final int seasonNumber;
+  final int ?episodeNumber;
+  final int? id;
+  final String? name;
+  final String? overview;
+  final String? productionCode;
+  final int? seasonNumber;
   final String? stillPath;
-  final double voteAverage;
-  final int voteCount;
+  final double? voteAverage;
+  final int? voteCount;
 
   @override
   List<Object?> get props => [

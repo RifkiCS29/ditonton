@@ -47,8 +47,8 @@ void main() {
     final centerFinder = find.byType(Center);
 
     await tester.pumpWidget(_makeTestableWidget(
-      TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1)
-    ));
+      const TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1),
+    ),);
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -57,14 +57,14 @@ void main() {
   testWidgets('Page should display ListView when data is loaded',
       (WidgetTester tester) async {
     when(() => mockTvShowSeasonEpisodesBloc.state).thenReturn(
-      TvShowSeasonEpisodesLoaded([testEpisode])
+      const TvShowSeasonEpisodesLoaded([testEpisode]),
     );
 
     final listViewFinder = find.byType(ListView);
 
     await tester.pumpWidget(_makeTestableWidget(
-      TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1)
-    ));
+      const TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1),
+    ),);
 
     expect(listViewFinder, findsOneWidget);
   });
@@ -76,21 +76,21 @@ void main() {
     final textFinder = find.text('Empty Episode');
 
     await tester.pumpWidget(_makeTestableWidget(
-      TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1)
-    ));
+      const TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1),
+    ),);
 
     expect(textFinder, findsOneWidget);
   });
 
   testWidgets('Page should display text with message when Error',
       (WidgetTester tester) async {
-    when(() => mockTvShowSeasonEpisodesBloc.state).thenReturn(TvShowSeasonEpisodesError('Failed'));
+    when(() => mockTvShowSeasonEpisodesBloc.state).thenReturn(const TvShowSeasonEpisodesError('Failed'));
 
-    final textFinder = find.byKey(Key('error_message'));
+    final textFinder = find.byKey(const Key('error_message'));
 
     await tester.pumpWidget(_makeTestableWidget(
-      TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1)
-    ));
+      const TvShowSeasonEpisodesPage(id: 1, seasonNumber: 1),
+    ),);
 
     expect(textFinder, findsOneWidget);
   });

@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 class TopRatedMoviesPage extends StatefulWidget {
   static const routeName = '/top-rated-movie';
 
+  const TopRatedMoviesPage({Key? key}) : super(key: key);
+
   @override
   _TopRatedMoviesPageState createState() => _TopRatedMoviesPageState();
 }
@@ -18,21 +20,21 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
     super.initState();
     Future.microtask(() =>
         Provider.of<TopRatedMoviesBloc>(context, listen: false)
-            .add(TopRatedMoviesEvent()));
+            .add(TopRatedMoviesEvent()),);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top Rated Movies'),
+        title: const Text('Top Rated Movies'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
           builder: (context, state) {
             if (state is TopRatedMoviesLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is TopRatedMoviesLoaded) {
@@ -49,7 +51,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
               );
             } else if (state is TopRatedMoviesError) {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(state.message, style: kSubtitle),
               );
             } else {

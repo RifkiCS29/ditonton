@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 class SearchPage extends StatelessWidget {
   static const routeName = '/search';
   final List<String> _tabTitle = ['Movies', 'Tv Shows'];
-  final List<Widget> _bodyPage = [_SearchMovieResult(), _SearchTvShowResult()];
+  final List<Widget> _bodyPage = [const _SearchMovieResult(), const _SearchTvShowResult()];
+
+  SearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class SearchPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Search'),
+          title: const Text('Search'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -32,13 +34,13 @@ class SearchPage extends StatelessWidget {
                 },
                 decoration: InputDecoration(
                     hintText: 'Search Title',
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24)),
-                    contentPadding: EdgeInsets.all(12)),
+                        borderRadius: BorderRadius.circular(24),),
+                    contentPadding: const EdgeInsets.all(12),),
                 textInputAction: TextInputAction.search,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'Search Result',
                 style: kHeading6,
@@ -46,13 +48,13 @@ class SearchPage extends StatelessWidget {
               TabBar(
                 indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(50), // Creates border
-                    color: Colors.lightGreen[600]),
+                    color: Colors.lightGreen[600],),
                 tabs: [
                   Tab(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.movie),
+                        const Icon(Icons.movie),
                         const SizedBox(width: 8),
                         Text(_tabTitle[0], style: kSubtitle),
                       ],
@@ -62,7 +64,7 @@ class SearchPage extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.tv),
+                        const Icon(Icons.tv),
                         const SizedBox(width: 8),
                         Text(_tabTitle[1], style: kSubtitle),
                       ],
@@ -87,7 +89,7 @@ class _SearchMovieResult extends StatelessWidget {
     return BlocBuilder<SearchMovieBloc, SearchState>(
       builder: (context, state) {
         if (state is SearchLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is SearchHasData<Movie>) {
@@ -124,7 +126,7 @@ class _SearchTvShowResult extends StatelessWidget {
     return BlocBuilder<SearchTvShowBloc, SearchState>(
       builder: (context, state) {
         if (state is SearchLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is SearchHasData<TvShow>) {

@@ -19,7 +19,7 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
-    required this.networkInfo
+    required this.networkInfo,
   });
 
   @override
@@ -28,10 +28,10 @@ class MovieRepositoryImpl implements MovieRepository {
       try {
         final result = await remoteDataSource.getNowPlayingMovies();
         localDataSource.cacheNowPlayingMovies(
-            result.map((movie) => MovieTable.fromDTO(movie)).toList());
+            result.map((movie) => MovieTable.fromDTO(movie)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -51,9 +51,9 @@ class MovieRepositoryImpl implements MovieRepository {
       final result = await remoteDataSource.getMovieDetail(id);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
@@ -65,9 +65,9 @@ class MovieRepositoryImpl implements MovieRepository {
       final result = await remoteDataSource.getMovieRecommendations(id);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }
@@ -79,10 +79,10 @@ class MovieRepositoryImpl implements MovieRepository {
       try {
         final result = await remoteDataSource.getPopularMovies();
         localDataSource.cachePopularMovies(
-            result.map((movie) => MovieTable.fromDTO(movie)).toList());
+            result.map((movie) => MovieTable.fromDTO(movie)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -102,10 +102,10 @@ class MovieRepositoryImpl implements MovieRepository {
       try {
         final result = await remoteDataSource.getTopRatedMovies();
         localDataSource.cacheTopRatedMovies(
-            result.map((movie) => MovieTable.fromDTO(movie)).toList());
+            result.map((movie) => MovieTable.fromDTO(movie)).toList(),);
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
-        return Left(ServerFailure(''));
+        return const Left(ServerFailure(''));
       } on TlsException catch (e) {
         return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
       }
@@ -125,9 +125,9 @@ class MovieRepositoryImpl implements MovieRepository {
       final result = await remoteDataSource.searchMovies(query);
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     } on TlsException catch (e) {
       return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
     }

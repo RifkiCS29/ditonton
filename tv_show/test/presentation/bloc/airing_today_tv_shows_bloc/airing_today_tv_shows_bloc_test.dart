@@ -32,7 +32,7 @@ void main() {
       popularity: 6008.272,
       posterPath: "/iF8ai2QLNiHV4anwY1TuSGZXqfN.jpg",
       voteAverage: 8,
-      voteCount: 987
+      voteCount: 987,
   );
 
   final tTvShowList = <TvShow>[tTvShow];
@@ -63,13 +63,13 @@ void main() {
       'Should emit [AiringTodayTvShowsLoading, AiringTodayTvShowsLoaded[], AiringTodayTvShowsEmpty] when data is gotten successfully',
       build: () {
         when(mockGetAiringTodayTvShows.execute())
-          .thenAnswer((_) async => Right(<TvShow>[]));
+          .thenAnswer((_) async => const Right(<TvShow>[]));
         return airingTodayTvShowsBloc;
       },
       act: (bloc) => bloc.add(AiringTodayTvShowsEvent()),
       expect: () => [
         AiringTodayTvShowsLoading(),
-        AiringTodayTvShowsLoaded(const <TvShow>[]),
+        const AiringTodayTvShowsLoaded(<TvShow>[]),
         AiringTodayTvShowsEmpty(),
       ],
       verify: (bloc) {
@@ -81,13 +81,13 @@ void main() {
       'Should emit [AiringTodayTvShowsLoading, AiringTodayTvShowsError] when get Failure',
       build: () {
         when(mockGetAiringTodayTvShows.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return airingTodayTvShowsBloc;
       },
       act: (bloc) => bloc.add(AiringTodayTvShowsEvent()),
       expect: () => [
         AiringTodayTvShowsLoading(),
-        AiringTodayTvShowsError('Failed'),
+        const AiringTodayTvShowsError('Failed'),
       ],
       verify: (_) {
         verify(mockGetAiringTodayTvShows.execute());

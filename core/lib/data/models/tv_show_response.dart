@@ -9,7 +9,7 @@ class TvShowResponse extends Equatable {
   factory TvShowResponse.fromJson(Map<String, dynamic> json) => TvShowResponse(
         tvShowList: List<TvShowModel>.from((json["results"] as List)
             .map((x) => TvShowModel.fromJson(x))
-            .where((element) => element.posterPath != null)),
+            .where((element) => element.posterPath != null),),
       );
 
   Map<String, dynamic> toJson() => {

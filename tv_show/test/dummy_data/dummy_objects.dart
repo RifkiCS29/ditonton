@@ -39,7 +39,7 @@ final testTvShow = TvShow(
   voteCount: 1,
 );
 
-final testEpisode = Episode(
+const testEpisode = Episode(
     airDate: 'airDate',
     episodeNumber: 1,
     id: 1,
@@ -55,10 +55,10 @@ final testEpisode = Episode(
 final testMovieList = [testMovie];
 final testTvShowList = [testTvShow];
 
-final testMovieDetail = MovieDetail(
+const testMovieDetail = MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',
-  genres: const [Genre(id: 1, name: 'Action')],
+  genres: [Genre(id: 1, name: 'Action')],
   id: 1,
   originalTitle: 'originalTitle',
   overview: 'overview',
@@ -70,13 +70,13 @@ final testMovieDetail = MovieDetail(
   voteCount: 1,
 );
 
-final testTvShowDetail = TvShowDetail(
+const testTvShowDetail = TvShowDetail(
   backdropPath: 'backdropPath', 
   firstAirDate: '2021-10-31', 
-  genres: const [
+  genres: [
     Genre(
       id: 1, 
-      name: 'Action'
+      name: 'Action',
     )
   ], 
   id: 1, 
@@ -84,7 +84,7 @@ final testTvShowDetail = TvShowDetail(
   originalName: 'originalName', 
   overview: 'overview', 
   posterPath: 'posterPath', 
-  seasons: const [
+  seasons: [
     Season(
       airDate: '2012-02-27',
       episodeCount: 1,
@@ -97,10 +97,10 @@ final testTvShowDetail = TvShowDetail(
   ], 
   tagline: 'tagline', 
   voteAverage: 5.0, 
-  voteCount: 1
+  voteCount: 1,
 );
 
-final testMovieCache = MovieTable(
+const testMovieCache = MovieTable(
   id: 557,
   overview:
       'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
@@ -108,12 +108,12 @@ final testMovieCache = MovieTable(
   title: 'Spider-Man',
 );
 
-final testTvShowCache = TvShowTable(
+const testTvShowCache = TvShowTable(
   id: 93405,
   name: 'Squid Game',
   posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   overview:
-      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
+      "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
 );
 
 final testMovieCacheMap = {
@@ -129,7 +129,7 @@ final testTvShowCacheMap = {
   'name': 'Squid Game',
   'posterPath': '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   'overview':
-      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
+      "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
 };
 
 final testMovieFromCache = Movie.watchlist(
@@ -143,7 +143,7 @@ final testMovieFromCache = Movie.watchlist(
 final testTvShowFromCache = TvShow.watchlist(
   id: 93405,
   overview:
-      'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
+      "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
   posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
   name: 'Squid Game',
 );
@@ -160,17 +160,17 @@ final testWatchlistTvShow = TvShow.watchlist(
   id: 1,
   overview: 'overview',
   posterPath: 'posterPath',
-  name: 'name'
+  name: 'name',
 );
 
-final testMovieTable = MovieTable(
+const testMovieTable = MovieTable(
   id: 1,
   title: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
 );
 
-final testTvShowTable = TvShowTable(
+const testTvShowTable = TvShowTable(
   id: 1,
   name: 'name',
   posterPath: 'posterPath',

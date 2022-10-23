@@ -32,7 +32,7 @@ void main() {
   group('Watchlist Movies', () {
 
     test('Initial state should be empty', () {
-      expect(watchlistMoviesBloc.state, WatchlistEmpty(''));
+      expect(watchlistMoviesBloc.state, const WatchlistEmpty(''));
     });
 
     blocTest<WatchlistMoviesBloc, WatchlistState> (
@@ -56,14 +56,14 @@ void main() {
       'Should emit [WatchlistLoading, WatchlistHasData[], WatchlistEmpty] when data is empty',
       build: () {
         when(mockGetWatchlistMovies.execute())
-          .thenAnswer((_) async => Right(<Movie>[]));
+          .thenAnswer((_) async => const Right(<Movie>[]));
         return watchlistMoviesBloc;
       },
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistHasData(const <Movie>[]),
-        WatchlistEmpty('You haven\'t added a watch list'),
+        const WatchlistHasData(<Movie>[]),
+        const WatchlistEmpty("You haven't added a watch list"),
       ],
       verify: (bloc) {
         verify(mockGetWatchlistMovies.execute());
@@ -74,13 +74,13 @@ void main() {
       'Should emit [WatchlistLoading, WatchlistError] when data is unsuccessful',
       build: () {
         when(mockGetWatchlistMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return watchlistMoviesBloc;
       },
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistError('Server Failure'),
+        const WatchlistError('Server Failure'),
       ],
       verify: (bloc) {
         verify(mockGetWatchlistMovies.execute());
@@ -93,7 +93,7 @@ void main() {
   group('Watchlist Tv Shows', () {
 
     test('Initial state should be empty', () {
-        expect(watchlistTvShowsBloc.state, WatchlistEmpty(''));
+        expect(watchlistTvShowsBloc.state, const WatchlistEmpty(''));
     });
 
     blocTest<WatchlistTvShowsBloc, WatchlistState> (
@@ -117,14 +117,14 @@ void main() {
       'Should emit [WatchlistLoading, WatchlistHasData[], WatchlistEmpty] when data is empty',
       build: () {
         when(mockGetWatchlistTvShows.execute())
-          .thenAnswer((_) async => Right(<TvShow>[]));
+          .thenAnswer((_) async => const Right(<TvShow>[]));
         return watchlistTvShowsBloc;
       },
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistHasData(const <TvShow>[]),
-        WatchlistEmpty('You haven\'t added a watch list'),
+        const WatchlistHasData(<TvShow>[]),
+        const WatchlistEmpty("You haven't added a watch list"),
       ],
       verify: (bloc) {
         verify(mockGetWatchlistTvShows.execute());
@@ -135,13 +135,13 @@ void main() {
       'Should emit [WatchlistLoading, WatchlistError] when data is unsuccessful',
       build: () {
         when(mockGetWatchlistTvShows.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return watchlistTvShowsBloc;
       },
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistError('Server Failure'),
+        const WatchlistError('Server Failure'),
       ],
       verify: (bloc) {
         verify(mockGetWatchlistTvShows.execute());

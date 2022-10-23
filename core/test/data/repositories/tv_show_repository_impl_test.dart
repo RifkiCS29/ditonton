@@ -33,19 +33,19 @@ void main() {
     );
   });
 
-  final tTvShowModel = TvShowModel(
+  const tTvShowModel = TvShowModel(
       backdropPath: '/qw3J9cNeLioOLoR68WX7z79aCdK.jpg',
       firstAirDate: '2021-09-17',
-      genreIds: const [10759, 9648, 18],
+      genreIds: [10759, 9648, 18],
       id: 93405,
       name: 'Squid Game',
       originalName: '오징어 게임',
       overview:
-          'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
+          "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
       popularity: 3686.872,
       posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
       voteAverage: 7.8,
-      voteCount: 8271
+      voteCount: 8271,
   );
 
   final tTvShow = TvShow(
@@ -56,11 +56,11 @@ void main() {
       name: 'Squid Game',
       originalName: '오징어 게임',
       overview:
-          'Hundreds of cash-strapped players accept a strange invitation to compete in children\'s games—with high stakes. But, a tempting prize awaits the victor.',
+          "Hundreds of cash-strapped players accept a strange invitation to compete in children's games—with high stakes. But, a tempting prize awaits the victor.",
       popularity: 3686.872,
       posterPath: '/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
       voteAverage: 7.8,
-      voteCount: 8271
+      voteCount: 8271,
   );
 
   final tTvShowModelList = <TvShowModel>[tTvShowModel];
@@ -121,7 +121,7 @@ void main() {
         final result = await repository.getAiringTodayTvShows();
         // assert
         verify(mockRemoteDataSource.getAiringTodayTvShows());
-        expect(result, equals(Left(ServerFailure(''))));
+        expect(result, equals(const Left(ServerFailure(''))));
       });
 
       test(
@@ -129,12 +129,12 @@ void main() {
           () async {
         // arrange
         when(mockRemoteDataSource.getAiringTodayTvShows())
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getAiringTodayTvShows();
         // assert
         verify(mockRemoteDataSource.getAiringTodayTvShows());
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       });
     });
     
@@ -165,7 +165,7 @@ void main() {
         final result = await repository.getAiringTodayTvShows();
         // assert
         verify(mockLocalDataSource.getCachedNowPlayingTvShows());
-        expect(result, Left(CacheFailure('No Cache')));
+        expect(result, const Left(CacheFailure('No Cache')));
       });
     });
   });
@@ -225,7 +225,7 @@ void main() {
         final result = await repository.getPopularTvShows();
         // assert
         verify(mockRemoteDataSource.getPopularTvShows());
-        expect(result, equals(Left(ServerFailure(''))));
+        expect(result, equals(const Left(ServerFailure(''))));
       });
 
       test(
@@ -233,12 +233,12 @@ void main() {
           () async {
         // arrange
         when(mockRemoteDataSource.getPopularTvShows())
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getPopularTvShows();
         // assert
         verify(mockRemoteDataSource.getPopularTvShows());
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       });
     });
     
@@ -269,7 +269,7 @@ void main() {
         final result = await repository.getPopularTvShows();
         // assert
         verify(mockLocalDataSource.getCachedPopularTvShows());
-        expect(result, Left(CacheFailure('No Cache')));
+        expect(result, const Left(CacheFailure('No Cache')));
       });
     });
   });
@@ -329,7 +329,7 @@ void main() {
         final result = await repository.getTopRatedTvShows();
         // assert
         verify(mockRemoteDataSource.getTopRatedTvShows());
-        expect(result, equals(Left(ServerFailure(''))));
+        expect(result, equals(const Left(ServerFailure(''))));
       });
 
       test(
@@ -337,12 +337,12 @@ void main() {
           () async {
         // arrange
         when(mockRemoteDataSource.getTopRatedTvShows())
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getTopRatedTvShows();
         // assert
         verify(mockRemoteDataSource.getTopRatedTvShows());
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       });
     });
     
@@ -373,21 +373,21 @@ void main() {
         final result = await repository.getTopRatedTvShows();
         // assert
         verify(mockLocalDataSource.getCachedTopRatedTvShows());
-        expect(result, Left(CacheFailure('No Cache')));
+        expect(result, const Left(CacheFailure('No Cache')));
       });
     });
   });
 
   group('Get Tv Show Detail', () {
     const tId = 1;
-    final tTvShowResponse = TvShowDetailResponse(
+    const tTvShowResponse = TvShowDetailResponse(
       backdropPath: 'backdropPath',
-      episodeRunTime: const [1, 2],
+      episodeRunTime: [1, 2],
       firstAirDate: "2021-10-31",
       genres: [
         GenreModel(
           id: 1, 
-          name: 'Action'
+          name: 'Action',
         )
       ],
       homepage: "https://google.com",
@@ -429,7 +429,7 @@ void main() {
       final result = await repository.getTvShowDetail(tId);
       // assert
       verify(mockRemoteDataSource.getTvShowDetail(tId));
-      expect(result, equals(Right(testTvShowDetail)));
+      expect(result, equals(const Right(testTvShowDetail)));
     });
 
     test(
@@ -442,7 +442,7 @@ void main() {
       final result = await repository.getTvShowDetail(tId);
       // assert
       verify(mockRemoteDataSource.getTvShowDetail(tId));
-      expect(result, equals(Left(ServerFailure(''))));
+      expect(result, equals(const Left(ServerFailure(''))));
     });
 
     test(
@@ -450,13 +450,13 @@ void main() {
         () async {
       // arrange
       when(mockRemoteDataSource.getTvShowDetail(tId))
-          .thenThrow(SocketException('Failed to connect to the network'));
+          .thenThrow(const SocketException('Failed to connect to the network'));
       // act
       final result = await repository.getTvShowDetail(tId);
       // assert
       verify(mockRemoteDataSource.getTvShowDetail(tId));
       expect(result,
-          equals(Left(ConnectionFailure('Failed to connect to the network'))));
+          equals(const Left(ConnectionFailure('Failed to connect to the network'))),);
     });
 
     test(
@@ -464,12 +464,12 @@ void main() {
       () async {
         // arrange
         when(mockRemoteDataSource.getTvShowDetail(tId))
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getTvShowDetail(tId);
         // assert
         verify(mockRemoteDataSource.getTvShowDetail(tId));
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
     });
   });
 
@@ -502,7 +502,7 @@ void main() {
       final result = await repository.getTvShowSeasonEpisodes(tId, tSeasonNumber);
       // assertbuild runner
       verify(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber));
-      expect(result, equals(Left(ServerFailure(''))));
+      expect(result, equals(const Left(ServerFailure(''))));
     });
 
     test(
@@ -510,13 +510,13 @@ void main() {
         () async {
       // arrange
       when(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber))
-          .thenThrow(SocketException('Failed to connect to the network'));
+          .thenThrow(const SocketException('Failed to connect to the network'));
       // act
       final result = await repository.getTvShowSeasonEpisodes(tId, tSeasonNumber);
       // assert
       verify(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber));
       expect(result,
-          equals(Left(ConnectionFailure('Failed to connect to the network'))));
+          equals(const Left(ConnectionFailure('Failed to connect to the network'))),);
     });
 
     test(
@@ -524,12 +524,12 @@ void main() {
       () async {
         // arrange
         when(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber))
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getTvShowSeasonEpisodes(tId, tSeasonNumber);
         // assert
         verify(mockRemoteDataSource.getTvShowSeasonEpisodes(tId, tSeasonNumber));
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       },
     );
   });
@@ -562,7 +562,7 @@ void main() {
       final result = await repository.getTvShowRecommendations(tId);
       // assertbuild runner
       verify(mockRemoteDataSource.getTvShowRecommendations(tId));
-      expect(result, equals(Left(ServerFailure(''))));
+      expect(result, equals(const Left(ServerFailure(''))));
     });
 
     test(
@@ -570,13 +570,13 @@ void main() {
         () async {
       // arrange
       when(mockRemoteDataSource.getTvShowRecommendations(tId))
-          .thenThrow(SocketException('Failed to connect to the network'));
+          .thenThrow(const SocketException('Failed to connect to the network'));
       // act
       final result = await repository.getTvShowRecommendations(tId);
       // assert
       verify(mockRemoteDataSource.getTvShowRecommendations(tId));
       expect(result,
-          equals(Left(ConnectionFailure('Failed to connect to the network'))));
+          equals(const Left(ConnectionFailure('Failed to connect to the network'))),);
     });
 
     test(
@@ -584,12 +584,12 @@ void main() {
       () async {
         // arrange
         when(mockRemoteDataSource.getTvShowRecommendations(tId))
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.getTvShowRecommendations(tId);
         // assert
         verify(mockRemoteDataSource.getTvShowRecommendations(tId));
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       },
     );
   });
@@ -618,7 +618,7 @@ void main() {
       // act
       final result = await repository.searchTvShows(tQuery);
       // assert
-      expect(result, Left(ServerFailure('')));
+      expect(result, const Left(ServerFailure('')));
     });
 
     test(
@@ -626,12 +626,12 @@ void main() {
         () async {
       // arrange
       when(mockRemoteDataSource.searchTvShows(tQuery))
-          .thenThrow(SocketException('Failed to connect to the network'));
+          .thenThrow(const SocketException('Failed to connect to the network'));
       // act
       final result = await repository.searchTvShows(tQuery);
       // assert
       expect(
-          result, Left(ConnectionFailure('Failed to connect to the network')));
+          result, const Left(ConnectionFailure('Failed to connect to the network')),);
     });
 
     test(
@@ -639,11 +639,11 @@ void main() {
       () async {
         // arrange
         when(mockRemoteDataSource.searchTvShows(tQuery))
-            .thenThrow(TlsException());
+            .thenThrow(const TlsException());
         // act
         final result = await repository.searchTvShows(tQuery);
         // assert
-        expect(result, equals(Left(CommonFailure('Certificated Not Valid:\n'))));
+        expect(result, equals(const Left(CommonFailure('Certificated Not Valid:\n'))));
       },
     );
   });
@@ -656,7 +656,7 @@ void main() {
       // act
       final result = await repository.saveWatchlistTvShow(testTvShowDetail);
       // assert
-      expect(result, Right('Added to Watchlist'));
+      expect(result, const Right('Added to Watchlist'));
     });
 
     test('should return DatabaseFailure when saving unsuccessful', () async {
@@ -666,7 +666,7 @@ void main() {
       // act
       final result = await repository.saveWatchlistTvShow(testTvShowDetail);
       // assert
-      expect(result, Left(DatabaseFailure('Failed to add watchlist')));
+      expect(result, const Left(DatabaseFailure('Failed to add watchlist')));
     });
   });
 
@@ -678,7 +678,7 @@ void main() {
       // act
       final result = await repository.removeWatchlistTvShow(testTvShowDetail);
       // assert
-      expect(result, Right('Removed from watchlist'));
+      expect(result, const Right('Removed from watchlist'));
     });
 
     test('should return DatabaseFailure when remove unsuccessful', () async {
@@ -688,7 +688,7 @@ void main() {
       // act
       final result = await repository.removeWatchlistTvShow(testTvShowDetail);
       // assert
-      expect(result, Left(DatabaseFailure('Failed to remove watchlist')));
+      expect(result, const Left(DatabaseFailure('Failed to remove watchlist')));
     });
   });
 

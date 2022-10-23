@@ -15,7 +15,7 @@ class TvShowDetailPage extends StatefulWidget {
   static const routeName = '/detail-tvShow';
 
   final int id;
-  const TvShowDetailPage({required this.id});
+  const TvShowDetailPage({Key? key, required this.id}) : super(key: key);
 
   @override
   _TvShowDetailPageState createState() => _TvShowDetailPageState();
@@ -44,7 +44,7 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
                   TvShowDetailBloc.watchlistRemoveSuccessMessage) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.watchlistMessage),
-            ));
+            ),);
           } else {
             await showDialog(
                 context: context,
@@ -52,7 +52,7 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
                   return AlertDialog(
                     content: Text(state.watchlistMessage),
                   );
-                });
+                },);
           }
         },
         listenWhen: (previousState, currentState) =>
@@ -60,7 +60,7 @@ class _TvShowDetailPageState extends State<TvShowDetailPage> {
             currentState.watchlistMessage != '',
         builder: (context, state) {
           if (state.tvShowDetailState == RequestState.Loading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state.tvShowDetailState == RequestState.Loaded) {
@@ -88,7 +88,7 @@ class DetailContent extends StatelessWidget {
   final List<TvShow> recommendations;
   final bool isAddedWatchlist;
 
-  const DetailContent(this.tvShow, this.recommendations, this.isAddedWatchlist);
+  const DetailContent(this.tvShow, this.recommendations, this.isAddedWatchlist, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,17 +98,17 @@ class DetailContent extends StatelessWidget {
         CachedNetworkImage(
           imageUrl: 'https://image.tmdb.org/t/p/w500${tvShow.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => Center(
+          placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
           child: DraggableScrollableSheet(
             builder: (context, scrollController) {
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kRichBlack,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
@@ -134,15 +134,15 @@ class DetailContent extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
-                                  key: Key('watchlistButtonTvShow'),
+                                  key: const Key('watchlistButtonTvShow'),
                                   onPressed: () {
                                     if (!isAddedWatchlist) {
                                       Provider.of<TvShowDetailBloc>(context,
-                                              listen: false)
+                                              listen: false,)
                                           .add(AddToWatchlist(tvShow));
                                     } else {
                                       Provider.of<TvShowDetailBloc>(context,
-                                              listen: false)
+                                              listen: false,)
                                           .add(RemoveFromWatchlist(tvShow));
                                     }
                                   },
@@ -150,33 +150,31 @@ class DetailContent extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       isAddedWatchlist
-                                          ? Icon(Icons.check)
-                                          : Icon(Icons.add),
-                                      Text('Watchlist'),
+                                          ? const Icon(Icons.check)
+                                          : const Icon(Icons.add),
+                                      const Text('Watchlist'),
                                     ],
                                   ),
                                 ),
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      RatingBarIndicator(
-                                        rating: tvShow.voteAverage / 2,
-                                        itemBuilder: (context, index) => Icon(
-                                          Icons.star,
-                                          color: kMikadoYellow,
-                                        ),
-                                        itemSize: 24,
+                                Row(
+                                  children: [
+                                    RatingBarIndicator(
+                                      rating: tvShow.voteAverage / 2,
+                                      itemBuilder: (context, index) => const Icon(
+                                        Icons.star,
+                                        color: kMikadoYellow,
                                       ),
-                                      Text('${tvShow.voteAverage}')
-                                    ],
-                                  ),
+                                      itemSize: 24,
+                                    ),
+                                    Text('${tvShow.voteAverage}')
+                                  ],
                                 )
                               ],
                             ),
                             Text(
                               _showGenres(tvShow.genres),
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Overview',
                               style: kHeading6,
@@ -184,7 +182,7 @@ class DetailContent extends StatelessWidget {
                             Text(
                               tvShow.overview,
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Seasons',
                               style: kHeading6,
@@ -208,11 +206,9 @@ class DetailContent extends StatelessWidget {
                                                 "id": tvShow.id,
                                                 "seasonNumber":
                                                     season.seasonNumber
-                                              });
+                                              },);
                                         },
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
                                           children: [
                                             SizedBox(
                                               height: 135,
@@ -237,60 +233,58 @@ class DetailContent extends StatelessWidget {
                                                           0,
                                                           0,
                                                           rect.width,
-                                                          rect.bottom),
+                                                          rect.bottom,),
                                                     );
                                                   },
                                                   blendMode: BlendMode.darken,
-                                                  child: Container(
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: season
-                                                                  .posterPath ==
-                                                              null
-                                                          ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
-                                                          : 'https://image.tmdb.org/t/p/w500${season.posterPath}',
-                                                      placeholder:
-                                                          (context, url) =>
-                                                              Center(
-                                                        child:
-                                                            CircularProgressIndicator(),
-                                                      ),
-                                                      errorWidget: (context,
-                                                              url, error) =>
-                                                          Icon(Icons.error),
-                                                      imageBuilder: (context,
-                                                          imageProvider) {
-                                                        return Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            image:
-                                                                DecorationImage(
-                                                              image:
-                                                                  imageProvider,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: season
+                                                                .posterPath ==
+                                                            null
+                                                        ? 'https://titan-autoparts.com/development/wp-content/uploads/2019/09/no.png'
+                                                        : 'https://image.tmdb.org/t/p/w500${season.posterPath}',
+                                                    placeholder:
+                                                        (context, url) =>
+                                                            const Center(
+                                                      child:
+                                                          CircularProgressIndicator(),
                                                     ),
+                                                    errorWidget: (context,
+                                                            url, error,) =>
+                                                        const Icon(Icons.error),
+                                                    imageBuilder: (context,
+                                                        imageProvider,) {
+                                                      return Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10,),
+                                                          image:
+                                                              DecorationImage(
+                                                            image:
+                                                                imageProvider,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
                                                 ),
                                               ),
                                             ),
                                             Text(
-                                                'Season ${season.seasonNumber}'),
+                                                'Season ${season.seasonNumber}',),
                                             Text(
-                                                '${season.episodeCount} Episodes')
+                                                '${season.episodeCount} Episodes',)
                                           ],
                                         ),
                                       ),
                                     );
-                                  }),
+                                  },),
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                             Text(
                               'Recommendations',
                               style: kHeading6,
@@ -299,7 +293,7 @@ class DetailContent extends StatelessWidget {
                               builder: (context, state) {
                                 if (state.tvShowRecommendationState ==
                                     RequestState.Loading) {
-                                  return Center(
+                                  return const Center(
                                     child: CircularProgressIndicator(),
                                   );
                                 } else if (state.tvShowRecommendationState ==
@@ -324,20 +318,20 @@ class DetailContent extends StatelessWidget {
                                               );
                                             },
                                             child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
+                                              borderRadius: const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
                                                     'https://image.tmdb.org/t/p/w500${tvShow.posterPath}',
                                                 placeholder: (context, url) =>
-                                                    Center(
+                                                    const Center(
                                                   child:
                                                       CircularProgressIndicator(),
                                                 ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                        Icon(Icons.error),
+                                                        const Icon(Icons.error),
                                               ),
                                             ),
                                           ),
@@ -367,8 +361,6 @@ class DetailContent extends StatelessWidget {
                 ),
               );
             },
-            // initialChildSize: 0.5,
-            minChildSize: 0.25,
             // maxChildSize: 1.0,
           ),
         ),
@@ -378,7 +370,7 @@ class DetailContent extends StatelessWidget {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               },

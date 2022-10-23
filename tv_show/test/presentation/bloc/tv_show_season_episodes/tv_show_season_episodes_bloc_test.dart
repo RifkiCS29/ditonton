@@ -22,7 +22,7 @@ void main() {
   
   const tId = 1;
   const tSeasonNumber = 1;
-  final tEpisode = Episode(
+  const tEpisode = Episode(
     airDate: 'airDate',
     episodeNumber: 1,
     id: 1,
@@ -49,7 +49,7 @@ void main() {
           .thenAnswer((_) async => Right(tEpisodeList));
         return tvShowSeasonEpisodesBloc;
       },
-      act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
+      act: (bloc) => bloc.add(const FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
       expect: () => [
         TvShowSeasonEpisodesLoading(),
         TvShowSeasonEpisodesLoaded(tEpisodeList),
@@ -63,13 +63,13 @@ void main() {
       'Should emit [TvShowSeasonEpisodesLoading, TvShowSeasonEpisodesLoaded[], TvShowSeasonEpisodesEmpty] when data is gotten successfully',
       build: () {
         when(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber))
-          .thenAnswer((_) async => Right(<Episode>[]));
+          .thenAnswer((_) async => const Right(<Episode>[]));
         return tvShowSeasonEpisodesBloc;
       },
-      act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
+      act: (bloc) => bloc.add(const FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
       expect: () => [
         TvShowSeasonEpisodesLoading(),
-        TvShowSeasonEpisodesLoaded(const <Episode>[]),
+        const TvShowSeasonEpisodesLoaded(<Episode>[]),
         TvShowSeasonEpisodesEmpty(),
       ],
       verify: (bloc) {
@@ -81,13 +81,13 @@ void main() {
       'Should emit [TvShowSeasonEpisodesLoading, TvShowSeasonEpisodesError] when get Failure',
       build: () {
         when(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber))
-            .thenAnswer((_) async => Left(ServerFailure('Failed')));
+            .thenAnswer((_) async => const Left(ServerFailure('Failed')));
         return tvShowSeasonEpisodesBloc;
       },
-      act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
+      act: (bloc) => bloc.add(const FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
       expect: () => [
         TvShowSeasonEpisodesLoading(),
-        TvShowSeasonEpisodesError('Failed'),
+        const TvShowSeasonEpisodesError('Failed'),
       ],
       verify: (_) {
         verify(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber));
@@ -98,13 +98,13 @@ void main() {
       'Should emit [TvShowSeasonEpisodesLoading, TvShowSeasonEpisodesError] when get Failure TlsException',
       build: () {
         when(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber))
-            .thenAnswer((_) async => Left(CommonFailure('Certificated Not Valid:\n')));
+            .thenAnswer((_) async => const Left(CommonFailure('Certificated Not Valid:\n')));
         return tvShowSeasonEpisodesBloc;
       },
-      act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
+      act: (bloc) => bloc.add(const FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
       expect: () => [
         TvShowSeasonEpisodesLoading(),
-        TvShowSeasonEpisodesError('Certificated Not Valid:\n'),
+        const TvShowSeasonEpisodesError('Certificated Not Valid:\n'),
       ],
       verify: (_) {
         verify(mockGetTvShowSeasonEpisodes.execute(tId, tSeasonNumber));

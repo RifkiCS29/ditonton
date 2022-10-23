@@ -1,7 +1,7 @@
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/movie_detail.dart';
 import 'package:equatable/equatable.dart';
-import 'movie_model.dart';
+import 'package:core/data/models/movie_model.dart';
 
 class MovieTable extends Equatable {
   final int id;
@@ -34,7 +34,7 @@ class MovieTable extends Equatable {
     id:  movie.id, 
     title: movie.title, 
     posterPath: movie.posterPath, 
-    overview: movie.overview
+    overview: movie.overview,
   );
 
   Map<String, dynamic> toJson() => {

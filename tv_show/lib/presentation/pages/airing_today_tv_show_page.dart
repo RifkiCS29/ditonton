@@ -8,6 +8,8 @@ import 'package:tv_show/presentation/bloc/airing_today_tv_shows_bloc/airing_toda
 class AiringTodayTvShowsPage extends StatefulWidget {
   static const routeName = '/airing-today-tvshow';
 
+  const AiringTodayTvShowsPage({Key? key}) : super(key: key);
+
   @override
   _AiringTodayTvShowsPageState createState() => _AiringTodayTvShowsPageState();
 }
@@ -18,21 +20,21 @@ class _AiringTodayTvShowsPageState extends State<AiringTodayTvShowsPage> {
     super.initState();
     Future.microtask(() =>
         Provider.of<AiringTodayTvShowsBloc>(context, listen: false)
-            .add(AiringTodayTvShowsEvent()));
+            .add(AiringTodayTvShowsEvent()),);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Airing Today Tv Shows'),
+        title: const Text('Airing Today Tv Shows'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<AiringTodayTvShowsBloc, AiringTodayTvShowsState>(
           builder: (context, state) {
             if (state is AiringTodayTvShowsLoading) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is AiringTodayTvShowsLoaded) {
@@ -49,7 +51,7 @@ class _AiringTodayTvShowsPageState extends State<AiringTodayTvShowsPage> {
               );
             } else if (state is AiringTodayTvShowsError) {
               return Center(
-                key: Key('error_message'),
+                key: const Key('error_message'),
                 child: Text(state.message),
               );
             } else {

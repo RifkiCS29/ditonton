@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final episode = Episode(
+  const episode = Episode(
     airDate: '2021-09-17',
     episodeNumber: 1,
     id: 1922715,
@@ -20,7 +20,7 @@ void main() {
 
   group('Episode card list Widget Test', () {
     Widget _makeTestableWidget() {
-      return MaterialApp(home: Scaffold(body: EpisodeCard(episode)));
+      return const MaterialApp(home: Scaffold(body: EpisodeCard(episode)));
     }
 
     testWidgets('Testing if name episode shows', (WidgetTester tester) async {

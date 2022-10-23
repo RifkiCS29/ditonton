@@ -2,17 +2,17 @@ import 'package:bloc/bloc.dart';
 import 'package:core/domain/entities/movie.dart';
 import 'package:core/domain/entities/tv_show.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:search/domain/usecases/search_movies.dart';
 import 'package:search/domain/usecases/search_tv_shows.dart';
-import 'package:rxdart/src/transformers/backpressure/debounce.dart';
-import 'package:rxdart/src/transformers/flat_map.dart';
+
 
 part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchMovieBloc extends Bloc<SearchEvent, SearchState> {
   final SearchMovies _searchMovies;
-  SearchMovieBloc(this._searchMovies) : super(SearchEmpty('')) {
+  SearchMovieBloc(this._searchMovies) : super(const SearchEmpty('')) {
     on<OnQueryChanged>((event, emit) async {
       final query = event.query;
       emit(SearchLoading());
@@ -22,17 +22,17 @@ class SearchMovieBloc extends Bloc<SearchEvent, SearchState> {
         (moviesData) { 
           emit(SearchHasData<Movie>(moviesData));
           if(moviesData.isEmpty) {
-            emit(SearchEmpty('No Result Found'));
+            emit(const SearchEmpty('No Result Found'));
           }
         }
       );
-    }, transformer: debounce(const Duration(milliseconds: 500)));
+    }, transformer: debounce(const Duration(milliseconds: 500)),);
   }
 }
 
 class SearchTvShowBloc extends Bloc<SearchEvent, SearchState> {
   final SearchTvShows _searchTvShows;
-  SearchTvShowBloc(this._searchTvShows) : super(SearchEmpty('')) {
+  SearchTvShowBloc(this._searchTvShows) : super(const SearchEmpty('')) {
     on<OnQueryChanged>((event, emit) async {
       final query = event.query;
       emit(SearchLoading());
@@ -42,11 +42,11 @@ class SearchTvShowBloc extends Bloc<SearchEvent, SearchState> {
         (tvShowsData) { 
           emit(SearchHasData<TvShow>(tvShowsData));
           if(tvShowsData.isEmpty) {
-            emit(SearchEmpty('No Result Found'));
+            emit(const SearchEmpty('No Result Found'));
           }
         }
       );
-    }, transformer: debounce(const Duration(milliseconds: 500)));
+    }, transformer: debounce(const Duration(milliseconds: 500)),);
   }
 }
 
