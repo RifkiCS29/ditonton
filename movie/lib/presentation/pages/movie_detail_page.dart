@@ -14,7 +14,7 @@ class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail-movie';
 
   final int id;
-  MovieDetailPage({required this.id});
+  const MovieDetailPage({required this.id});
 
   @override
   _MovieDetailPageState createState() => _MovieDetailPageState();
@@ -87,7 +87,7 @@ class DetailContent extends StatelessWidget {
   final List<Movie> recommendations;
   final bool isAddedWatchlist;
 
-  DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
+  const DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +160,6 @@ class DetailContent extends StatelessWidget {
                                     children: [
                                       RatingBarIndicator(
                                         rating: movie.voteAverage / 2,
-                                        itemCount: 5,
                                         itemBuilder: (context, index) => Icon(
                                           Icons.star,
                                           color: kMikadoYellow,
@@ -205,7 +204,7 @@ class DetailContent extends StatelessWidget {
                                   return Text(state.message);
                                 } else if (state.movieRecommendationState ==
                                     RequestState.Loaded) {
-                                  return Container(
+                                  return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,

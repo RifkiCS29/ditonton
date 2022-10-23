@@ -47,12 +47,12 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
   final movieDetailStateInit = MovieDetailState.initial();
   final tMovie = Movie(
     adult: false,
     backdropPath: 'backdropPath',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     id: 1,
     originalTitle: 'originalTitle',
     overview: 'overview',
@@ -69,7 +69,7 @@ void main() {
   final tMovieDetail = MovieDetail(
     adult: false,
     backdropPath: 'backdropPath',
-    genres: [Genre(id: 1, name: 'Comedy')],
+    genres: const [Genre(id: 1, name: 'Comedy')],
     id: 1,
     originalTitle: 'originalTitle',
     overview: 'overview',

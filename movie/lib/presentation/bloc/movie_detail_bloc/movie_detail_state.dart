@@ -9,7 +9,7 @@ class MovieDetailState extends Equatable {
   final String watchlistMessage;
   final bool isAddedToWatchlist;
 
-  MovieDetailState({
+  const MovieDetailState({
     required this.movieDetail,
     required this.movieRecommendations,
     required this.movieDetailState,
@@ -42,7 +42,7 @@ class MovieDetailState extends Equatable {
   factory MovieDetailState.initial() {
     return MovieDetailState(
       movieDetail: null,
-      movieRecommendations: [],
+      movieRecommendations: const [],
       movieDetailState: RequestState.Empty,
       movieRecommendationState: RequestState.Empty,
       message: '',

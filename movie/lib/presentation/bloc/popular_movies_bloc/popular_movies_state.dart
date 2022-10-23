@@ -14,7 +14,7 @@ class PopularMoviesLoading extends PopularMoviesState {}
 class PopularMoviesLoaded extends PopularMoviesState {
   final List<Movie> movies;
 
-  PopularMoviesLoaded(this.movies);
+  const PopularMoviesLoaded(this.movies);
 
   @override
   List<Object> get props => [movies];
@@ -23,7 +23,7 @@ class PopularMoviesLoaded extends PopularMoviesState {
 class PopularMoviesError extends PopularMoviesState {
   final String message;
 
-  PopularMoviesError(this.message);
+  const PopularMoviesError(this.message);
 
   @override
   List<Object> get props => [message];
