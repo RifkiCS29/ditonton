@@ -14,7 +14,7 @@ class AiringTodayTvShowsLoading extends AiringTodayTvShowsState {}
 class AiringTodayTvShowsLoaded extends AiringTodayTvShowsState {
   final List<TvShow> tvShows;
 
-  AiringTodayTvShowsLoaded(this.tvShows);
+  const AiringTodayTvShowsLoaded(this.tvShows);
 
   @override
   List<Object> get props => [tvShows];
@@ -23,7 +23,7 @@ class AiringTodayTvShowsLoaded extends AiringTodayTvShowsState {
 class AiringTodayTvShowsError extends AiringTodayTvShowsState {
   final String message;
 
-  AiringTodayTvShowsError(this.message);
+  const AiringTodayTvShowsError(this.message);
 
   @override
   List<Object> get props => [message];

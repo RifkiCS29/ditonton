@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class MovieCard extends StatelessWidget {
   final Movie movie;
 
-  MovieCard(this.movie);
+  const MovieCard(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +56,7 @@ class MovieCard extends StatelessWidget {
                 bottom: 16,
               ),
               child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
                 child: CachedNetworkImage(
                   imageUrl: '$baseImageUrl${movie.posterPath}',
                   width: 80,
@@ -64,7 +65,6 @@ class MovieCard extends StatelessWidget {
                   ),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
             ),
           ],

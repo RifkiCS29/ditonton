@@ -96,7 +96,7 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+              children: const [Text('See More'), Icon(Icons.arrow_forward_ios)],
             ),
           ),
         ),
@@ -108,11 +108,11 @@ class _HomeTvShowPageState extends State<HomeTvShowPage> {
 class TvShowList extends StatelessWidget {
   final List<TvShow> tvShows;
 
-  TvShowList(this.tvShows);
+  const TvShowList(this.tvShows);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       key: Key('tvShowItem'),
       height: 200,
       child: ListView.builder(

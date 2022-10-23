@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final tTvShowDetailModel = TvShowDetailResponse(
     backdropPath: 'backdropPath',
-    episodeRunTime: [1, 2, 3],
+    episodeRunTime: const [1, 2, 3],
     firstAirDate: 'firstAirDate',
     genres: [GenreModel(id: 1, name: 'Action')],
     homepage: 'homepage',

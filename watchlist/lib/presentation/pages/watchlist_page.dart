@@ -37,6 +37,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
     routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 
+  @override
   void didPopNext() {
     Provider.of<WatchlistMoviesBloc>(context, listen: false)
       .add(WatchlistEvent());

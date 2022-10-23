@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class EpisodeCard extends StatelessWidget {
   final Episode episode;
 
-  EpisodeCard(this.episode);
+  const EpisodeCard(this.episode);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class EpisodeCard extends StatelessWidget {
                       errorWidget: (context, url, error) => Icon(Icons.error),
                       imageBuilder: (context, imageProvider) {
                         return Container(
-                          decoration: new BoxDecoration(
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                               image: imageProvider,

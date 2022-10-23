@@ -43,6 +43,4 @@ class MockGetPopularTvShows extends _i1.Mock implements _i4.GetPopularTvShows {
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
-  @override
-  String toString() => super.toString();
 }

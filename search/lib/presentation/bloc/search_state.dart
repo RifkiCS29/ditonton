@@ -10,7 +10,7 @@ abstract class SearchState extends Equatable {
 class SearchEmpty extends SearchState {
   final String message;
  
-  SearchEmpty(this.message);
+  const SearchEmpty(this.message);
  
   @override
   List<Object> get props => [message];
@@ -21,7 +21,7 @@ class SearchLoading extends SearchState {}
 class SearchError extends SearchState {
   final String message;
  
-  SearchError(this.message);
+  const SearchError(this.message);
  
   @override
   List<Object> get props => [message];
@@ -30,7 +30,7 @@ class SearchError extends SearchState {
 class SearchHasData<T> extends SearchState {
   final List<T> searchResult;
  
-  SearchHasData(this.searchResult);
+  const SearchHasData(this.searchResult);
  
   @override
   List<Object> get props => [searchResult];

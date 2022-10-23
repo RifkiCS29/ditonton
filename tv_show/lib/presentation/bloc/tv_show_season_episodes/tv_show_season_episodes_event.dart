@@ -11,7 +11,7 @@ class FetchTvShowSeasonEpisodesEvent extends TvShowSeasonEpisodesEvent {
   final int id;
   final int seasonNumber;
 
-  FetchTvShowSeasonEpisodesEvent(this.id, this.seasonNumber);
+  const FetchTvShowSeasonEpisodesEvent(this.id, this.seasonNumber);
 
   @override
   List<Object> get props => [id, seasonNumber];

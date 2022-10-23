@@ -9,7 +9,7 @@ class TvShowDetailState extends Equatable {
   final String watchlistMessage;
   final bool isAddedToWatchlist;
 
-  TvShowDetailState({
+  const TvShowDetailState({
     required this.tvShowDetail,
     required this.tvShowRecommendations,
     required this.tvShowDetailState,
@@ -42,7 +42,7 @@ class TvShowDetailState extends Equatable {
   factory TvShowDetailState.initial() {
     return TvShowDetailState(
       tvShowDetail: null,
-      tvShowRecommendations: [],
+      tvShowRecommendations: const [],
       tvShowDetailState: RequestState.Empty,
       tvShowRecommendationState: RequestState.Empty,
       message: '',

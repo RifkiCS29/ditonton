@@ -10,7 +10,7 @@ import 'package:core/domain/entities/tv_show_detail.dart';
 final testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-  genreIds: [14, 28],
+  genreIds: const [14, 28],
   id: 557,
   originalTitle: 'Spider-Man',
   overview:
@@ -27,7 +27,7 @@ final testMovie = Movie(
 final testTvShow = TvShow(
   backdropPath: 'backdropPath',
   firstAirDate: '2021-10-31',
-  genreIds: [10, 20],
+  genreIds: const [10, 20],
   id: 1,
   name: 'name',
   originalName: 'originalName',

@@ -20,8 +20,8 @@ void main() {
     tvShowSeasonEpisodesBloc = TvShowSeasonEpisodesBloc(mockGetTvShowSeasonEpisodes);
   });
   
-  final tId = 1;
-  final tSeasonNumber = 1;
+  const tId = 1;
+  const tSeasonNumber = 1;
   final tEpisode = Episode(
     airDate: 'airDate',
     episodeNumber: 1,
@@ -69,7 +69,7 @@ void main() {
       act: (bloc) => bloc.add(FetchTvShowSeasonEpisodesEvent(tId, tSeasonNumber)),
       expect: () => [
         TvShowSeasonEpisodesLoading(),
-        TvShowSeasonEpisodesLoaded(<Episode>[]),
+        TvShowSeasonEpisodesLoaded(const <Episode>[]),
         TvShowSeasonEpisodesEmpty(),
       ],
       verify: (bloc) {

@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('${_tabTitle[_index]}'),
+        title: Text(_tabTitle[_index]),
         actions: [
           IconButton(
             onPressed: () {

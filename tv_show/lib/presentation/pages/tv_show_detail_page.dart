@@ -15,7 +15,7 @@ class TvShowDetailPage extends StatefulWidget {
   static const routeName = '/detail-tvShow';
 
   final int id;
-  TvShowDetailPage({required this.id});
+  const TvShowDetailPage({required this.id});
 
   @override
   _TvShowDetailPageState createState() => _TvShowDetailPageState();
@@ -88,7 +88,7 @@ class DetailContent extends StatelessWidget {
   final List<TvShow> recommendations;
   final bool isAddedWatchlist;
 
-  DetailContent(this.tvShow, this.recommendations, this.isAddedWatchlist);
+  const DetailContent(this.tvShow, this.recommendations, this.isAddedWatchlist);
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +161,6 @@ class DetailContent extends StatelessWidget {
                                     children: [
                                       RatingBarIndicator(
                                         rating: tvShow.voteAverage / 2,
-                                        itemCount: 5,
                                         itemBuilder: (context, index) => Icon(
                                           Icons.star,
                                           color: kMikadoYellow,
@@ -190,7 +189,7 @@ class DetailContent extends StatelessWidget {
                               'Seasons',
                               style: kHeading6,
                             ),
-                            Container(
+                            SizedBox(
                               height: 185,
                               child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
@@ -215,7 +214,7 @@ class DetailContent extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               height: 135,
                                               width: 96,
                                               child: ClipRRect(
@@ -308,7 +307,7 @@ class DetailContent extends StatelessWidget {
                                   return Text(state.message);
                                 } else if (state.tvShowRecommendationState ==
                                     RequestState.Loaded) {
-                                  return Container(
+                                  return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,

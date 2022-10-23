@@ -65,7 +65,7 @@ class TvShowLocalDataSourceImpl implements TvShowLocalDataSource {
   @override
   Future<List<TvShowTable>> getCachedNowPlayingTvShows() async {
     final result = await databaseHelper.getCacheTvShows('now playing');
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       return result.map((data) => TvShowTable.fromMap(data)).toList();
     } else {
       throw CacheException("Can't get the data :(");
@@ -81,7 +81,7 @@ class TvShowLocalDataSourceImpl implements TvShowLocalDataSource {
   @override
   Future<List<TvShowTable>> getCachedPopularTvShows() async {
     final result = await databaseHelper.getCacheTvShows('popular');
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       return result.map((data) => TvShowTable.fromMap(data)).toList();
     } else {
       throw CacheException("Can't get the data :(");
@@ -97,7 +97,7 @@ class TvShowLocalDataSourceImpl implements TvShowLocalDataSource {
   @override
   Future<List<TvShowTable>> getCachedTopRatedTvShows() async {
     final result = await databaseHelper.getCacheTvShows('top rated');
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       return result.map((data) => TvShowTable.fromMap(data)).toList();
     } else {
       throw CacheException("Can't get the data :(");

@@ -11,7 +11,7 @@ import 'package:core/domain/entities/tv_show_detail.dart';
 final testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-  genreIds: [14, 28],
+  genreIds: const [14, 28],
   id: 557,
   originalTitle: 'Spider-Man',
   overview:
@@ -28,7 +28,7 @@ final testMovie = Movie(
 final testTvShow = TvShow(
   backdropPath: 'backdropPath',
   firstAirDate: '2021-10-31',
-  genreIds: [10, 20],
+  genreIds: const [10, 20],
   id: 1,
   name: 'name',
   originalName: 'originalName',
@@ -58,7 +58,7 @@ final testTvShowList = [testTvShow];
 final testMovieDetail = MovieDetail(
   adult: false,
   backdropPath: 'backdropPath',
-  genres: [Genre(id: 1, name: 'Action')],
+  genres: const [Genre(id: 1, name: 'Action')],
   id: 1,
   originalTitle: 'originalTitle',
   overview: 'overview',
@@ -73,7 +73,7 @@ final testMovieDetail = MovieDetail(
 final testTvShowDetail = TvShowDetail(
   backdropPath: 'backdropPath', 
   firstAirDate: '2021-10-31', 
-  genres: [
+  genres: const [
     Genre(
       id: 1, 
       name: 'Action'
@@ -84,7 +84,7 @@ final testTvShowDetail = TvShowDetail(
   originalName: 'originalName', 
   overview: 'overview', 
   posterPath: 'posterPath', 
-  seasons: [
+  seasons: const [
     Season(
       airDate: '2012-02-27',
       episodeCount: 1,

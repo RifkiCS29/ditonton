@@ -62,7 +62,7 @@ void main() {
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistHasData(<Movie>[]),
+        WatchlistHasData(const <Movie>[]),
         WatchlistEmpty('You haven\'t added a watch list'),
       ],
       verify: (bloc) {
@@ -123,7 +123,7 @@ void main() {
       act: (bloc) => bloc.add(WatchlistEvent()),
       expect: () => [
         WatchlistLoading(),
-        WatchlistHasData(<TvShow>[]),
+        WatchlistHasData(const <TvShow>[]),
         WatchlistEmpty('You haven\'t added a watch list'),
       ],
       verify: (bloc) {

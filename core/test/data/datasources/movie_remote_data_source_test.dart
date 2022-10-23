@@ -114,7 +114,7 @@ void main() {
   });
 
   group('get movie detail', () {
-    final tId = 1;
+    const tId = 1;
     final tMovieDetail = MovieDetailResponse.fromJson(
         json.decode(readJson('dummy_data/movie_detail.json')));
 
@@ -145,7 +145,7 @@ void main() {
     final tMovieList = MovieResponse.fromJson(
             json.decode(readJson('dummy_data/movie_recommendations.json')))
         .movieList;
-    final tId = 1;
+    const tId = 1;
 
     test('should return list of Movie Model when the response code is 200',
         () async {
@@ -177,7 +177,7 @@ void main() {
     final tSearchResult = MovieResponse.fromJson(
             json.decode(readJson('dummy_data/search_spiderman_movie.json')))
         .movieList;
-    final tQuery = 'Spiderman';
+    const tQuery = 'Spiderman';
 
     test('should return list of movies when response code is 200', () async {
       // arrange

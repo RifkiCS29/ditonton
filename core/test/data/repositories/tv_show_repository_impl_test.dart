@@ -36,7 +36,7 @@ void main() {
   final tTvShowModel = TvShowModel(
       backdropPath: '/qw3J9cNeLioOLoR68WX7z79aCdK.jpg',
       firstAirDate: '2021-09-17',
-      genreIds: [10759, 9648, 18],
+      genreIds: const [10759, 9648, 18],
       id: 93405,
       name: 'Squid Game',
       originalName: '오징어 게임',
@@ -51,7 +51,7 @@ void main() {
   final tTvShow = TvShow(
       backdropPath: '/qw3J9cNeLioOLoR68WX7z79aCdK.jpg',
       firstAirDate: '2021-09-17',
-      genreIds: [10759, 9648, 18],
+      genreIds: const [10759, 9648, 18],
       id: 93405,
       name: 'Squid Game',
       originalName: '오징어 게임',
@@ -379,10 +379,10 @@ void main() {
   });
 
   group('Get Tv Show Detail', () {
-    final tId = 1;
+    const tId = 1;
     final tTvShowResponse = TvShowDetailResponse(
       backdropPath: 'backdropPath',
-      episodeRunTime: [1, 2],
+      episodeRunTime: const [1, 2],
       firstAirDate: "2021-10-31",
       genres: [
         GenreModel(
@@ -475,8 +475,8 @@ void main() {
 
   group('Get Tv Show Season Episodes', () {
     final tEpisodeList = <EpisodeModel>[];
-    final tId = 1;
-    final tSeasonNumber = 1;
+    const tId = 1;
+    const tSeasonNumber = 1;
 
     test('should return episode list data when the call is successful',
         () async {
@@ -536,7 +536,7 @@ void main() {
 
   group('Get Tv Show Recommendations', () {
     final tTvShowList = <TvShowModel>[];
-    final tId = 1;
+    const tId = 1;
 
     test('should return data Tv Show Recommendations when the call is successful',
         () async {
@@ -595,7 +595,7 @@ void main() {
   });
 
   group('Seach Tv Shows', () {
-    final tQuery = 'Game of Thrones';
+    const tQuery = 'Game of Thrones';
 
     test('should return Tv Show list when call to data source is successful',
         () async {
@@ -695,7 +695,7 @@ void main() {
   group('get watchlist status', () {
     test('should return watch status whether data is found', () async {
       // arrange
-      final tId = 1;
+      const tId = 1;
       when(mockLocalDataSource.getTvShowById(tId)).thenAnswer((_) async => null);
       // act
       final result = await repository.isAddedToWatchlistTvShow(tId);

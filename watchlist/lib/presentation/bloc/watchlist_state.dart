@@ -10,7 +10,7 @@ abstract class WatchlistState extends Equatable {
 class WatchlistEmpty extends WatchlistState {
   final String message;
  
-  WatchlistEmpty(this.message);
+  const WatchlistEmpty(this.message);
  
   @override
   List<Object> get props => [message];
@@ -21,7 +21,7 @@ class WatchlistLoading extends WatchlistState {}
 class WatchlistError extends WatchlistState {
   final String message;
  
-  WatchlistError(this.message);
+  const WatchlistError(this.message);
  
   @override
   List<Object> get props => [message];
@@ -30,7 +30,7 @@ class WatchlistError extends WatchlistState {
 class WatchlistHasData<T> extends WatchlistState {
   final List<T> WatchlistResult;
  
-  WatchlistHasData(this.WatchlistResult);
+  const WatchlistHasData(this.WatchlistResult);
  
   @override
   List<Object> get props => [WatchlistResult];

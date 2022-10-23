@@ -2,7 +2,7 @@ import 'package:core/domain/entities/episode.dart';
 import 'package:equatable/equatable.dart';
 
 class EpisodeModel extends Equatable {
-  EpisodeModel({
+  const EpisodeModel({
     required this.airDate,
     required this.episodeNumber,
     required this.id,
@@ -27,16 +27,16 @@ class EpisodeModel extends Equatable {
   final int voteCount;
 
   factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
-        airDate: json["air_date"] == null ? null : json["air_date"],
-        episodeNumber: json["episode_number"] == null ? null : json["episode_number"],
-        id: json["id"] == null ? null : json["id"],
-        name: json["name"] == null ? null : json["name"],
-        overview: json["overview"] == null ? null : json["overview"],
-        productionCode: json["production_code"] == null ? null : json["production_code"],
-        seasonNumber: json["season_number"] == null ? null : json["season_number"],
-        stillPath: json["still_path"] == null ? null : json["still_path"],
+        airDate: json["air_date"] ?? null,
+        episodeNumber: json["episode_number"] ?? null,
+        id: json["id"] ?? null,
+        name: json["name"] ?? null,
+        overview: json["overview"] ?? null,
+        productionCode: json["production_code"] ?? null,
+        seasonNumber: json["season_number"] ?? null,
+        stillPath: json["still_path"] ?? null,
         voteAverage: json["vote_average"] == null ? null : json["vote_average"].toDouble(),
-        voteCount: json["vote_count"] == null ? null : json["vote_count"],
+        voteCount: json["vote_count"] ?? null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -54,16 +54,16 @@ class EpisodeModel extends Equatable {
 
   Episode toEntity() {
     return Episode(
-      airDate: this.airDate,
-      episodeNumber: this.episodeNumber,
-      id: this.id,
-      name: this.name,
-      overview: this.overview,
-      productionCode: this.productionCode,
-      seasonNumber: this.seasonNumber,
-      stillPath: this.stillPath,
-      voteAverage: this.voteAverage,
-      voteCount: this.voteCount
+      airDate: airDate,
+      episodeNumber: episodeNumber,
+      id: id,
+      name: name,
+      overview: overview,
+      productionCode: productionCode,
+      seasonNumber: seasonNumber,
+      stillPath: stillPath,
+      voteAverage: voteAverage,
+      voteCount: voteCount
     );
   }
 

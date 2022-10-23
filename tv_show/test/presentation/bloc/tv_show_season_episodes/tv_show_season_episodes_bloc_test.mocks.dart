@@ -46,6 +46,4 @@ class MockGetTvShowSeasonEpisodes extends _i1.Mock
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.Episode>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.Episode>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.Episode>>>);
-  @override
-  String toString() => super.toString();
 }

@@ -29,7 +29,7 @@ void main() {
   final tMovieModel = Movie(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
+    genreIds: const [14, 28],
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
@@ -43,7 +43,7 @@ void main() {
     voteCount: 13507,
   );
   final tMovieList = <Movie>[tMovieModel];
-  final tQuery = 'spiderman';
+  const tQuery = 'spiderman';
 
   group('Search Movies', () {
 
@@ -80,7 +80,7 @@ void main() {
       wait: const Duration(milliseconds: 500),
       expect: () => [
         SearchLoading(),
-        SearchHasData(<Movie>[]),
+        SearchHasData(const <Movie>[]),
         SearchEmpty('No Result Found'),
       ],
       verify: (bloc) {
@@ -110,7 +110,7 @@ void main() {
   final tTvShowModel = TvShow(
       backdropPath: "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
       firstAirDate: "2021-10-12",
-      genreIds: [10765, 35, 80],
+      genreIds: const [10765, 35, 80],
       id: 90462,
       name: "Chucky",
       originalName: "Chucky",
@@ -122,7 +122,7 @@ void main() {
       voteCount: 987
   );
   final tTvShowList = <TvShow>[tTvShowModel];
-  final tQueryTvShow = 'chucky';
+  const tQueryTvShow = 'chucky';
 
   group('Search Tv Shows', () {
     
@@ -159,7 +159,7 @@ void main() {
       wait: const Duration(milliseconds: 500),
       expect: () => [
         SearchLoading(),
-        SearchHasData(<TvShow>[]),
+        SearchHasData(const <TvShow>[]),
         SearchEmpty('No Result Found'),
       ],
       verify: (bloc) {

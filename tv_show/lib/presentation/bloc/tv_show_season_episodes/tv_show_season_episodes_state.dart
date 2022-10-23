@@ -14,7 +14,7 @@ class TvShowSeasonEpisodesLoading extends TvShowSeasonEpisodesState {}
 class TvShowSeasonEpisodesLoaded extends TvShowSeasonEpisodesState {
   final List<Episode> episodes;
 
-  TvShowSeasonEpisodesLoaded(this.episodes);
+  const TvShowSeasonEpisodesLoaded(this.episodes);
 
   @override
   List<Object> get props => [episodes];
@@ -23,7 +23,7 @@ class TvShowSeasonEpisodesLoaded extends TvShowSeasonEpisodesState {
 class TvShowSeasonEpisodesError extends TvShowSeasonEpisodesState {
   final String message;
 
-  TvShowSeasonEpisodesError(this.message);
+  const TvShowSeasonEpisodesError(this.message);
 
   @override
   List<Object> get props => [message];

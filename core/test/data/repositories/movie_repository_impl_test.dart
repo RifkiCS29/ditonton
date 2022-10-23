@@ -34,7 +34,7 @@ void main() {
   final tMovieModel = MovieModel(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
+    genreIds: const [14, 28],
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
@@ -51,7 +51,7 @@ void main() {
   final tMovie = Movie(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
+    genreIds: const [14, 28],
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
@@ -381,7 +381,7 @@ void main() {
   });
 
   group('Get Movie Detail', () {
-    final tId = 1;
+    const tId = 1;
     final tMovieResponse = MovieDetailResponse(
       adult: false,
       backdropPath: 'backdropPath',
@@ -462,7 +462,7 @@ void main() {
 
   group('Get Movie Recommendations', () {
     final tMovieList = <MovieModel>[];
-    final tId = 1;
+    const tId = 1;
 
     test('should return data (movie list) when the call is successful',
         () async {
@@ -520,7 +520,7 @@ void main() {
   });
 
   group('Seach Movies', () {
-    final tQuery = 'spiderman';
+    const tQuery = 'spiderman';
 
     test('should return movie list when call to data source is successful',
         () async {
@@ -619,7 +619,7 @@ void main() {
   group('get watchlist status', () {
     test('should return watch status whether data is found', () async {
       // arrange
-      final tId = 1;
+      const tId = 1;
       when(mockLocalDataSource.getMovieById(tId)).thenAnswer((_) async => null);
       // act
       final result = await repository.isAddedToWatchlistMovie(tId);

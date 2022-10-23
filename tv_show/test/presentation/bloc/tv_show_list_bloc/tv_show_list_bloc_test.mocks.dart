@@ -46,8 +46,6 @@ class MockGetAiringTodayTvShows extends _i1.Mock
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
-  @override
-  String toString() => super.toString();
 }
 
 /// A class which mocks [GetPopularTvShows].
@@ -68,8 +66,6 @@ class MockGetPopularTvShows extends _i1.Mock implements _i8.GetPopularTvShows {
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
-  @override
-  String toString() => super.toString();
 }
 
 /// A class which mocks [GetTopRatedTvShows].
@@ -91,6 +87,4 @@ class MockGetTopRatedTvShows extends _i1.Mock
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.TvShow>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.TvShow>>>);
-  @override
-  String toString() => super.toString();
 }

@@ -48,12 +48,12 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
   final TvShowDetailStateInit = TvShowDetailState.initial();
   final tTvShow = TvShow(
       backdropPath: "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
       firstAirDate: "2021-10-12",
-      genreIds: [10765, 35, 80],
+      genreIds: const [10765, 35, 80],
       id: 90462,
       name: "Chucky",
       originalName: "Chucky",
@@ -69,13 +69,13 @@ void main() {
   final tTvShowDetail = TvShowDetail(
     backdropPath: 'backdropPath',
     firstAirDate: 'firstAirDate',
-    genres: [Genre(id: 1, name: 'Comedy')],
+    genres: const [Genre(id: 1, name: 'Comedy')],
     id: 1,
     name: 'name',
     originalName: 'originalName',
     overview: 'overview',
     posterPath: 'posterPath',
-    seasons: [
+    seasons: const [
       Season(
         airDate: 'airDate',
         episodeCount: 1,

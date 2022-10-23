@@ -6,7 +6,7 @@ void main() {
   final tTvShowModel = TvShowModel(
       backdropPath: "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
       firstAirDate: "2021-10-12",
-      genreIds: [10765, 35, 80],
+      genreIds: const [10765, 35, 80],
       id: 90462,
       name: "Chucky",
       originalName: "Chucky",
@@ -21,7 +21,7 @@ void main() {
   final tTvShow = TvShow(
       backdropPath: "/xAKMj134XHQVNHLC6rWsccLMenG.jpg",
       firstAirDate: "2021-10-12",
-      genreIds: [10765, 35, 80],
+      genreIds: const [10765, 35, 80],
       id: 90462,
       name: "Chucky",
       originalName: "Chucky",

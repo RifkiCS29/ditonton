@@ -3,7 +3,7 @@ import 'package:core/domain/entities/season.dart';
 import 'package:equatable/equatable.dart';
 
 class TvShowDetail extends Equatable {
-  TvShowDetail({
+  const TvShowDetail({
         required this.backdropPath,
         required this.firstAirDate,
         required this.genres,

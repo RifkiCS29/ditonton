@@ -14,7 +14,7 @@ class PopularTvShowsLoading extends PopularTvShowsState {}
 class PopularTvShowsLoaded extends PopularTvShowsState {
   final List<TvShow> tvShows;
 
-  PopularTvShowsLoaded(this.tvShows);
+  const PopularTvShowsLoaded(this.tvShows);
 
   @override
   List<Object> get props => [tvShows];
@@ -23,7 +23,7 @@ class PopularTvShowsLoaded extends PopularTvShowsState {
 class PopularTvShowsError extends PopularTvShowsState {
   final String message;
 
-  PopularTvShowsError(this.message);
+  const PopularTvShowsError(this.message);
 
   @override
   List<Object> get props => [message];
